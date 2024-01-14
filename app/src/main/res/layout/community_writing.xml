@@ -8,6 +8,7 @@
     tools:context=".MainActivity">
 
     <View
+        android:id="@+id/TopView"
         android:layout_width="match_parent"
         android:layout_height="110dp"
         android:background="@color/white"
@@ -34,7 +35,7 @@
         android:id="@+id/BackButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:text="<-"
+        android:text="B"
         android:textColor="#28BEEE"
         android:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -60,76 +61,87 @@
         app:layout_constraintVertical_bias="0.05"
         app:layout_constraintHorizontal_bias="0.9" />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="번호 (선택)"
-        android:textSize="23dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2"
-        app:layout_constraintHorizontal_bias="0.2" />
+        android:fillViewport="true"
+        android:scrollbars="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/TopView">
 
-    <EditText
-        android:id="@+id/OptionalPhoneNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="01012345678"
-        android:width="300dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.27"
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/StoryTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="내용 작성하기"
-        android:textSize="23dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.4"
-        app:layout_constraintHorizontal_bias="0.2" />
+            <TextView
+                android:id="@+id/phonelable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="60dp"
+                android:layout_marginTop="30dp"
+                android:text="번호 (선택)"
+                android:textSize="23dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/TopView" />
 
-    <EditText
-        android:id="@+id/StoryBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="내용을 입력하세요"
-        android:width="300dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.75"
-        android:lines="16"
-        android:minLines="12"
-        android:maxLines="16"
-        android:scrollbars="vertical"
-        android:gravity="left"
-        />
+            <EditText
+                android:id="@+id/OptionalPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="60dp"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="60dp"
+                android:width="300dp"
+                android:hint="01012345678"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/phonelable" />
 
-    <Button
-        android:id="@+id/EndWriteButton"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:text="작성하기"
-        android:textColor="@color/white"
-        android:backgroundTint="#28BEEE"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.95"
-        />
+            <TextView
+                android:id="@+id/StoryTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="60dp"
+                android:layout_marginTop="30dp"
+                android:text="내용 작성하기"
+                android:textSize="23dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/OptionalPhoneNumber" />
+
+            <EditText
+                android:id="@+id/StoryBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="60dp"
+                android:width="300dp"
+                android:gravity="left"
+                android:hint="내용을 입력하세요"
+                android:lines="16"
+                android:maxLines="16"
+                android:minLines="12"
+                android:scrollbars="vertical"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/StoryTitle" />
+
+            <Button
+                android:id="@+id/EndWriteButton"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="120dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="120dp"
+                android:backgroundTint="#28BEEE"
+                android:text="작성하기"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/CallStory" />
+        </LinearLayout>
+
+    </ScrollView>
 
 
 

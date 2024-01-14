@@ -51,7 +51,7 @@
         app:queryHint="번호를 입력하세요." />
 
     <Button
-        android:id="@+id/CenterButton"
+        android:id="@+id/DiagnoseButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="보이스피싱 진단하기\n방금 내가 받은 전화\n의심된다면?"

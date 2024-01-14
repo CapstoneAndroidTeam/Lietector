@@ -8,6 +8,7 @@
     tools:context=".MainActivity">
 
     <View
+        android:id="@+id/TopView"
         android:layout_width="match_parent"
         android:layout_height="110dp"
         android:background="@color/white"
@@ -34,7 +35,7 @@
         android:id="@+id/BackButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:text="<-"
+        android:text="B"
         android:textColor="#28BEEE"
         android:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -61,6 +62,7 @@
         app:layout_constraintHorizontal_bias="0.9" />
 
     <View
+        android:id="@+id/EndRiskPercentView"
         android:layout_width="350dp"
         android:layout_height="180dp"
         android:background="@color/white"
@@ -76,11 +78,10 @@
         android:text="신고가 완료되었습니다."
         android:textSize="20dp"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" >
+        app:layout_constraintTop_toTopOf="@+id/EndRiskPercentView"
+        android:layout_marginTop="30dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" >
 
     </TextView>
 
@@ -90,12 +91,10 @@
         android:text="신고한 번호"
         android:textSize="17dp"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3"
-        app:layout_constraintHorizontal_bias="0.32"/>
+        app:layout_constraintTop_toTopOf="@+id/EndRiskPercentView"
+        android:layout_marginTop="80dp"
+        app:layout_constraintRight_toRightOf="@id/EndRiskPercentView"
+        android:layout_marginEnd="200dp"/>
 
     <TextView
         android:id="@+id/phonenumber"
@@ -103,12 +102,10 @@
         android:layout_height="wrap_content"
         android:text="01012345678"
         android:textSize="17dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3"
-        app:layout_constraintHorizontal_bias="0.65"/>
+        app:layout_constraintTop_toTopOf="@+id/EndRiskPercentView"
+        android:layout_marginTop="80dp"
+        app:layout_constraintStart_toStartOf="@id/EndRiskPercentView"
+        android:layout_marginStart="165dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -116,12 +113,10 @@
         android:text="유형"
         android:textSize="17dp"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.35"
-        app:layout_constraintHorizontal_bias="0.41"/>
+        app:layout_constraintTop_toTopOf="@+id/EndRiskPercentView"
+        android:layout_marginTop="110dp"
+        app:layout_constraintRight_toRightOf="@id/EndRiskPercentView"
+        android:layout_marginEnd="200dp"/>
 
     <TextView
         android:id="@+id/reportreason"
@@ -129,12 +124,10 @@
         android:layout_height="wrap_content"
         android:text="기관 사칭형"
         android:textSize="17dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.35"
-        app:layout_constraintHorizontal_bias="0.60"/>
+        app:layout_constraintTop_toTopOf="@+id/EndRiskPercentView"
+        android:layout_marginTop="110dp"
+        app:layout_constraintStart_toStartOf="@id/EndRiskPercentView"
+        android:layout_marginStart="165dp"/>
 
     <Button
         android:id="@+id/BanNumberButton"
@@ -144,11 +137,10 @@
         android:textSize="20dp"
         android:textColor="@color/black"
         android:backgroundTint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.55"
+        app:layout_constraintTop_toBottomOf="@+id/EndRiskPercentView"
+        android:layout_marginTop="50dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         android:gravity="left|center_vertical"/>
 
     <Button
@@ -159,11 +151,10 @@
         android:textSize="20dp"
         android:textColor="@color/black"
         android:backgroundTint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.67"
+        app:layout_constraintTop_toBottomOf="@+id/BanNumberButton"
+        android:layout_marginTop="1dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         android:gravity="left|center_vertical"/>
 
     <Button
@@ -174,12 +165,25 @@
         android:textSize="20dp"
         android:textColor="@color/black"
         android:backgroundTint="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/WriteinGalleryButton"
+        android:layout_marginTop="1dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:gravity="left|center_vertical"/>
+
+    <Button
+        android:id="@+id/MoreButton"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="더 알아보기"
+        android:textSize="25dp"
+        android:textColor="@color/white"
+        android:backgroundTint="#28BEEE"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.79"
-        android:gravity="left|center_vertical"/>
+        />
 
 
 

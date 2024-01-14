@@ -8,13 +8,21 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ReportingEnd extends AppCompatActivity {
-    Button BanNumberButton = findViewById(R.id.BanNumberButton);
-    Button WriteInGalleryButton = findViewById(R.id.WriteinGalleryButton);
-    Button PreventButton = findViewById(R.id.PreventionButton);
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.endreport);
+        Button HomeBtn = findViewById(R.id.HomeButton);
+        Button BanNumberButton = findViewById(R.id.BanNumberButton);
+        Button WriteInGalleryButton = findViewById(R.id.WriteinGalleryButton);
+        Button PreventButton = findViewById(R.id.PreventionButton);
+        HomeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goHomePage = new Intent (getApplicationContext(), MainActivity.class);
+                startActivity(goHomePage);
+            }
+        });
         /*
         BanNumberButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -8,6 +8,7 @@
     tools:context=".MainActivity">
 
     <View
+        android:id="@+id/TopView"
         android:layout_width="match_parent"
         android:layout_height="110dp"
         android:background="@color/white"
@@ -34,7 +35,7 @@
         android:id="@+id/BackButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:text="<-"
+        android:text="B"
         android:textColor="#28BEEE"
         android:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -68,11 +69,10 @@
         android:textColor="@color/black"
         android:backgroundTint="@color/white"
         android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3"
+        app:layout_constraintTop_toBottomOf="@+id/TopView"
+        android:layout_marginTop="30dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         android:gravity="left"/>
 
     <TextView
@@ -95,11 +95,10 @@
         android:textColor="@color/black"
         android:backgroundTint="@color/white"
         android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.7"
+        app:layout_constraintTop_toBottomOf="@+id/InputByVoiceRecord"
+        android:layout_marginTop="30dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         android:gravity="left"/>
 
     <TextView

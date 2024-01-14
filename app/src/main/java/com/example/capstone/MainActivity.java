@@ -11,13 +11,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Button diagnoseBtn = findViewById(R.id.CenterButton);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Button diagnoseBtn = findViewById(R.id.DiagnoseButton);
         Button communityBtn = findViewById(R.id.CommunityBtn);
         Button preventBtn = findViewById(R.id.PreventBtn);
         Button reportBtn = findViewById(R.id.ReportBtn);
         Button myPageBtn = findViewById(R.id.MyPageBtn);
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
         //Go Diagnose page
         diagnoseBtn.setOnClickListener(new View.OnClickListener() {
             @Override
