@@ -69,6 +69,7 @@
         />
 
     <Button
+        android:id="@+id/CommunityBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="커뮤니티"
@@ -86,6 +87,7 @@
         app:layout_constraintHorizontal_bias="0.20" />
 
     <Button
+        android:id="@+id/ReportBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="신고하기"
@@ -103,6 +105,7 @@
         app:layout_constraintHorizontal_bias="0.80" />
 
     <Button
+        android:id="@+id/PreventBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="대처방법"
@@ -120,6 +123,7 @@
         app:layout_constraintHorizontal_bias="0.2" />
 
     <Button
+        android:id="@+id/MyPageBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="마이페이지"

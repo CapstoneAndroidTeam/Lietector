@@ -22,7 +22,7 @@ public class Reporting extends AppCompatActivity {
             reportButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent (getApplicationContext(), endreporting.class);
+                    Intent intent = new Intent (getApplicationContext(), ReportingEnd.class);
                     startActivity(intent);
                 }
             });

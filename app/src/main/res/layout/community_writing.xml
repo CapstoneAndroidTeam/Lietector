@@ -117,7 +117,7 @@
         />
 
     <Button
-        android:id="@+id/EndWrite"
+        android:id="@+id/EndWriteButton"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:text="작성하기"
