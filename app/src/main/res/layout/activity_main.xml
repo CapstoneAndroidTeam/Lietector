@@ -7,21 +7,31 @@
     tools:context=".MainActivity"
     android:background="#F0F0F0">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:scrollbars="horizontal"
+        app:layout_constraintTop_toTopOf="parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
 
     <TextView
         android:id="@+id/TopRedText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TopView"
         android:text="의심이 가는"
         android:textColor="#E76363"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.185"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.098" />
+        android:textSize="23dp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/TopBlackText"
@@ -31,114 +41,109 @@
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.25"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.136" />
+        app:layout_constraintBottom_toTopOf="@+id/TopRedText"
+        android:layout_marginTop="0dp"
+        android:layout_marginStart="50dp"/>
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search"
-        android:layout_width="330dp"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:iconifiedByDefault="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintBottom_toTopOf="@+id/TopBlackText"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="50dp"
         app:queryHint="번호를 입력하세요." />
 
     <Button
         android:id="@+id/DiagnoseButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="보이스피싱 진단하기\n방금 내가 받은 전화\n의심된다면?"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.361"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="40dp"
         android:height="150dp"
-        android:width="300dp"
         android:backgroundTint="#28BEEE"
         android:textSize="19dp"
         android:textStyle="bold"
         android:gravity="left|center_vertical"
         />
 
-    <Button
-        android:id="@+id/CommunityBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="커뮤니티"
-        android:textSize="15dp"
-        android:textColor="@color/black"
-        android:height="120dp"
-        android:width="120dp"
-        android:backgroundTint="@color/white"
-        android:gravity="left"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.65"
-        app:layout_constraintHorizontal_bias="0.20" />
 
-    <Button
-        android:id="@+id/ReportBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="신고하기"
-        android:textSize="15dp"
-        android:textColor="@color/black"
-        android:height="120dp"
-        android:width="120dp"
-        android:backgroundTint="@color/white"
-        android:gravity="left"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.65"
-        app:layout_constraintHorizontal_bias="0.80" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+            <Button
+                android:id="@+id/CommunityBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"
+                android:width="150dp"
+                android:height="150dp"
+                android:backgroundTint="@color/white"
+                android:gravity="left"
+                android:text="커뮤니티"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                app:layout_constraintBottom_toTopOf="@+id/dialog_button" />
 
-    <Button
-        android:id="@+id/PreventBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="대처방법"
-        android:textSize="15dp"
-        android:textColor="@color/black"
-        android:height="120dp"
-        android:width="120dp"
-        android:backgroundTint="@color/white"
-        android:gravity="left"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.9"
-        app:layout_constraintHorizontal_bias="0.2" />
+            <Button
+                android:id="@+id/ReportBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:width="150dp"
+                android:height="150dp"
+                android:backgroundTint="@color/white"
+                android:gravity="left"
+                android:text="신고하기"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                app:layout_constraintBottom_toTopOf="@+id/dialog_button"
+                app:layout_constraintLeft_toLeftOf="@id/CommunityBtn"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/MyPageBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="마이페이지"
-        android:textSize="15dp"
-        android:textColor="@color/black"
-        android:height="120dp"
-        android:width="120dp"
-        android:backgroundTint="@color/white"
-        android:gravity="left"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.9"
-        app:layout_constraintHorizontal_bias="0.8" />
+            <Button
+                android:id="@+id/PreventBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="대처방법"
+                android:textSize="15dp"
+                android:textColor="@color/black"
+                android:height="150dp"
+                android:width="150dp"
+                android:backgroundTint="@color/white"
+                android:gravity="left"
+                app:layout_constraintBottom_toTopOf="@+id/ReportBtn"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="40dp"/>
+
+            <Button
+                android:id="@+id/MyPageBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="마이페이지"
+                android:textSize="15dp"
+                android:textColor="@color/black"
+                android:height="150dp"
+                android:width="150dp"
+                android:backgroundTint="@color/white"
+                android:gravity="left"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="30dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+    </ScrollView>
 
 
 

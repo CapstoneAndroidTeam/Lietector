@@ -26,7 +26,7 @@ public class Reporting extends AppCompatActivity {
                 startActivity(goHomePage);
             }
         });
-        if (StringReportPhoneNum != "" && StringReportReason != "") {
+        if (!StringReportPhoneNum.isEmpty() && !StringReportReason.isEmpty()) {
             reportButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
