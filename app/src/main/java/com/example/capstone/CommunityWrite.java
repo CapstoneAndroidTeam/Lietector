@@ -33,7 +33,7 @@ public class CommunityWrite extends AppCompatActivity {
                 String PhoneNumString = PhoneNum.getText().toString();
                 String StoryString = Story.getText().toString();
 
-                if (!PhoneNumString.isEmpty() && !StoryString.isEmpty()) {
+                if (!StoryString.isEmpty()) {
                     Intent goCommunityMain = new Intent(getApplicationContext(), CommunityMain.class);
                     goCommunityMain.putExtra("PhoneNum", PhoneNumString);
                     goCommunityMain.putExtra("Story", StoryString);

@@ -171,19 +171,6 @@
         app:layout_constraintRight_toRightOf="parent"
         android:gravity="left|center_vertical"/>
 
-    <Button
-        android:id="@+id/MoreButton"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="더 알아보기"
-        android:textSize="25dp"
-        android:textColor="@color/white"
-        android:backgroundTint="#28BEEE"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
 
 
 

@@ -18,7 +18,7 @@ public class Reporting extends AppCompatActivity {
         Button HomeBtn = findViewById(R.id.HomeButton);
         Button reportButton = findViewById(R.id.EndWriteButton);
         String StringReportPhoneNum = reportphonenum.getText().toString();
-        String StringReportReason = reportreason.getText().toString();
+
         HomeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -26,15 +26,16 @@ public class Reporting extends AppCompatActivity {
                 startActivity(goHomePage);
             }
         });
-        if (!StringReportPhoneNum.isEmpty() && !StringReportReason.isEmpty()) {
-            reportButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent (getApplicationContext(), ReportingEnd.class);
+        reportButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String StringReportReason = reportreason.getText().toString();
+                if(!StringReportReason.isEmpty()) {
+                    Intent intent = new Intent(getApplicationContext(), ReportingEnd.class);
                     startActivity(intent);
                 }
-            });
-        }
+            }
+        });
     }
 
 
