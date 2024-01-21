@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import androidx.appcompat.widget.SearchView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,6 +20,35 @@ public class MainActivity extends AppCompatActivity {
         Button preventBtn = findViewById(R.id.PreventBtn);
         Button reportBtn = findViewById(R.id.ReportBtn);
         Button myPageBtn = findViewById(R.id.MyPageBtn);
+        SearchView searchview = findViewById(R.id.search);
+
+
+        searchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            String searchViewText = searchview.getQuery().toString();
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                if (searchViewText == "01077397749") {
+                    Intent goNumSearch = new Intent(getApplicationContext(), NumSearch.class);
+                    startActivity(goNumSearch);
+                } else {
+                    Intent goNumNotSearch = new Intent(getApplicationContext(), NumNotSearch.class);
+                    startActivity(goNumNotSearch);
+                }
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                if (searchViewText == "01077397749") {
+                    Intent goNumSearch = new Intent(getApplicationContext(), NumSearch.class);
+                    startActivity(goNumSearch);
+                } else {
+                    Intent goNumNotSearch = new Intent(getApplicationContext(), NumNotSearch.class);
+                    startActivity(goNumNotSearch);
+                }
+                return false;
+            }
+        });
 
         //Go Diagnose page
         diagnoseBtn.setOnClickListener(new View.OnClickListener() {

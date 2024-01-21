@@ -37,6 +37,12 @@
         <activity android:name=".DiagnoseWrite"
             android:exported="false">
         </activity>
+        <activity android:name=".NumSearch"
+            android:exported="false">
+        </activity>
+        <activity android:name=".NumNotSearch"
+            android:exported="false">
+        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true"
