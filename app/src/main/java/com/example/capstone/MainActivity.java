@@ -20,14 +20,14 @@ public class MainActivity extends AppCompatActivity {
         Button preventBtn = findViewById(R.id.PreventBtn);
         Button reportBtn = findViewById(R.id.ReportBtn);
         Button myPageBtn = findViewById(R.id.MyPageBtn);
+
+
         SearchView searchview = findViewById(R.id.search);
 
-
         searchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            String searchViewText = searchview.getQuery().toString();
             @Override
             public boolean onQueryTextSubmit(String query) {
-                if (searchViewText == "01077397749") {
+                if (query.equals("01012345678")) {
                     Intent goNumSearch = new Intent(getApplicationContext(), NumSearch.class);
                     startActivity(goNumSearch);
                 } else {
@@ -39,13 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                if (searchViewText == "01077397749") {
-                    Intent goNumSearch = new Intent(getApplicationContext(), NumSearch.class);
-                    startActivity(goNumSearch);
-                } else {
-                    Intent goNumNotSearch = new Intent(getApplicationContext(), NumNotSearch.class);
-                    startActivity(goNumNotSearch);
-                }
+                // Handle text change if needed
                 return false;
             }
         });

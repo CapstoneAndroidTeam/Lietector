@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 
 public class NumSearch extends AppCompatActivity {
 
@@ -48,7 +49,30 @@ public class NumSearch extends AppCompatActivity {
             }
         });
 
+        SearchView searchview = findViewById(R.id.searchView);
 
-    }
+        searchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                if (query.equals("01012345678")) {
+                    Intent goNumSearch = new Intent(getApplicationContext(), NumSearch.class);
+                    startActivity(goNumSearch);
+                } else {
+                    Intent goNumNotSearch = new Intent(getApplicationContext(), NumNotSearch.class);
+                    startActivity(goNumNotSearch);
+                }
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // Handle text change if needed
+                return false;
+            }
+        });
+
+
+
+}
 }
 
