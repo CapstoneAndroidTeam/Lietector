@@ -9,7 +9,7 @@
     <TextView
         android:id="@+id/NumText"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="37dp"
         android:text="검색 결과가 없습니다"
         android:textColor="#1E1E1E"
         android:textSize="25sp"
@@ -17,53 +17,9 @@
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TopView"
-        app:layout_constraintVertical_bias="0.75">
+        app:layout_constraintTop_toBottomOf="@+id/TopView">
 
     </TextView>
-
-    <Button
-        android:id="@+id/BanNumberButton"
-        android:layout_width="350dp"
-        android:layout_height="70dp"
-        android:layout_marginBottom="1dp"
-        android:backgroundTint="@color/white"
-        android:gravity="left|center_vertical"
-        android:text="번호 신고하기"
-        android:textColor="@color/black"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/GalleryButton"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <Button
-        android:id="@+id/GalleryButton"
-        android:layout_width="350dp"
-        android:layout_height="70dp"
-        android:layout_marginBottom="1dp"
-        android:backgroundTint="@color/white"
-        android:gravity="left|center_vertical"
-        android:text="관련 게시물 보러 가기"
-        android:textColor="@color/black"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/PreventionButton"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <Button
-        android:id="@+id/PreventionButton"
-        android:layout_width="350dp"
-        android:layout_height="70dp"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="@color/white"
-        android:gravity="left|center_vertical"
-        android:text="대처 방법 보러가기"
-        android:textColor="@color/black"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
 
     <View
         android:id="@+id/TopView"
@@ -132,13 +88,59 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="309dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="250dp"
         android:layout_marginBottom="10dp"
         android:text="보이스피싱으로 의심되는 전화를 받았다면"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/BanNumberButton"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TopView" />
+
+    <Button
+        android:id="@+id/BanNumberBtn"
+        android:layout_width="350dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="465dp"
+        android:backgroundTint="@color/white"
+        android:gravity="left|center_vertical"
+        android:text="번호 신고하기"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/GalleryBtn"
+        android:layout_width="350dp"
+        android:layout_height="70dp"
+        android:backgroundTint="@color/white"
+        android:gravity="left|center_vertical"
+        android:text="관련 게시물 보러 가기"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BanNumberBtn"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/PreventionBtn"
+        android:layout_width="350dp"
+        android:layout_height="70dp"
+        android:backgroundTint="@color/white"
+        android:gravity="left|center_vertical"
+        android:text="대처 방법 보러가기"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/GalleryBtn" />
 </androidx.constraintlayout.widget.ConstraintLayout>

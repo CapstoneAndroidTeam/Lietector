@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent goDiagnose = new Intent(getApplicationContext(), DiagnoseMain.class);
                 startActivity(goDiagnose);
-            }
+            } //진단하기 버튼 누르면 진단하기 창으로
         });
         //Go Community Page
         communityBtn.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +69,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //PreventPage, myPage have not been finished.
+        myPageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent gomyPage = new Intent(getApplicationContext(), MypageMain.class);
+                startActivity(gomyPage);
+            }
+        });
+
+        //PreventPage have not been finished.
     }
 }
