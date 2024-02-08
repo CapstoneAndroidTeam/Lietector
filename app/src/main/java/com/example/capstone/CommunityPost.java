@@ -41,8 +41,12 @@ public class CommunityPost extends AppCompatActivity {
         ListView ReplyList = findViewById(R.id.replylist);
 
 
+        /* 오류 수정 예정
+
         ReplyAdapter = new ArrayAdapter<String>(this, Names, Replies, Images);
         ReplyList.setAdapter(ReplyAdapter);
+
+         */
 
         Button HomeBtn = findViewById(R.id.HomeButton);
         HomeBtn.setOnClickListener(new View.OnClickListener() {

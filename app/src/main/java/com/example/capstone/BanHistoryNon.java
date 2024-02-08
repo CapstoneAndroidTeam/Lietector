@@ -15,10 +15,11 @@ public class BanHistoryNon extends AppCompatActivity {
 
         Button BackBtn = findViewById(R.id.BackButton);
         BackBtn.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent goMainPage = new Intent(getApplicationContext(), MypageMain.class);
-            startActivity(goMainPage);
-        }
-    });
+            @Override
+            public void onClick(View v) {
+                Intent goMainPage = new Intent(getApplicationContext(), MypageMain.class);
+                startActivity(goMainPage);
+            }
+        });
+    }
 }

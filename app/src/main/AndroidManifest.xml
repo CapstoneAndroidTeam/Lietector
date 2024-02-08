@@ -43,8 +43,27 @@
         <activity android:name=".NumNotSearch"
             android:exported="false">
         </activity>
+        <activity android:name=".BanHistory"
+            android:exported="false">
+        </activity>
+        <activity android:name=".BanHistoryNon"
+            android:exported="false">
+        </activity>
+        <activity android:name=".MypageMain"
+            android:exported="false">
+        </activity>
+        <activity android:name=".MypageEdit"
+            android:exported="false">
+        </activity>
+        <activity android:name=".CommunityPost"
+            android:exported="false">
+        </activity>
+
+        <activity android:name=".MainActivity"
+            android:exported="false">
+        </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".LogIn"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>

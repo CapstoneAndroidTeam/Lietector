@@ -34,6 +34,13 @@ public class MypageMain extends AppCompatActivity {
             }
         });
 
-        }
+        BanBtn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent BanPage = new Intent(getApplicationContext(), BanHistory.class);
+                startActivity(BanPage);
+            }
+        });
     }
 }

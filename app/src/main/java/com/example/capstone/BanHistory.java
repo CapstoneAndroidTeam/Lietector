@@ -33,5 +33,5 @@ public class BanHistory extends AppCompatActivity {
                 startActivity(goMainPage);
             }
         });
-
+    }
 }
