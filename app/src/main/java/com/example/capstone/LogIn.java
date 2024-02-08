@@ -14,15 +14,27 @@ public class LogIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
+        String ExID = "capstone1234";
+        String ExPW = "12345678";
+
         Button signbtn = findViewById(R.id.signinButton);
+        Button loginbtn = findViewById(R.id.LogInButton);
         String ID = findViewById(R.id.IDEditText).toString();
         String PassWord = findViewById(R.id.PassWordEditText).toString();
+
+        loginbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goHomePage = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(goHomePage);
+            }
+        });
 
         signbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goEditPage = new Intent(getApplicationContext(), SignIn.class);
-                startActivity(goEditPage);
+                Intent goSignInPage = new Intent(getApplicationContext(), SignIn.class);
+                startActivity(goSignInPage);
             }
         });
     }

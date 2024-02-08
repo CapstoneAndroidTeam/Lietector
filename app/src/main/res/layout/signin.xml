@@ -172,6 +172,7 @@
                     android:layout_marginLeft="50dp"/>
 
                 <Button
+                    android:id="@+id/AuthButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="인증번호 전송"
@@ -195,7 +196,7 @@
                 />
 
             <EditText
-                android:id="@+id/certificate"
+                android:id="@+id/AuthNum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:width="300dp"
@@ -222,6 +223,7 @@
                 android:orientation="horizontal" >
 
                 <CheckBox
+                    android:id="@+id/checkbox1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="첫번째 약관"
@@ -229,6 +231,7 @@
                     android:layout_marginTop="20dp"/>
 
                 <Button
+                    android:id="@+id/viewbtn1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="보기"
@@ -247,6 +250,7 @@
                 android:orientation="horizontal" >
 
                 <CheckBox
+                    android:id="@+id/checkbox2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="두번째 약관"
@@ -254,6 +258,7 @@
                     android:layout_marginTop="20dp"/>
 
                 <Button
+                    android:id="@+id/viewbtn2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="보기"
@@ -272,6 +277,7 @@
                 android:orientation="horizontal" >
 
                 <CheckBox
+                    android:id="@+id/checkbox3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="세번째 약관"
@@ -279,6 +285,7 @@
                     android:layout_marginTop="20dp"/>
 
                 <Button
+                    android:id="@+id/viewbtn3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="보기"
@@ -293,6 +300,7 @@
 
 
             <CheckBox
+                android:id="@+id/AllAgreeBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="모두 동의합니다."
@@ -302,6 +310,7 @@
                 android:layout_marginTop="20dp"/>
 
             <Button
+                android:id="@+id/SignInBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="회원가입"
