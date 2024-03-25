@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="post_array">
+        <item>최신순</item>
+        <item>오름차순</item>
+        <item>내림차순</item>
+    </string-array>
+
+    <string-array name="type_array">
+        <item>금융 사기형</item>
+        <item>기관 사칭형</item>
+        <item>지인 사칭형</item>
+        <item>대면 편취형</item>
+        <item>기타</item>
+    </string-array>
+
+    <string-array name="disclosure">
+        <item>공개</item>
+        <item>비공개</item>
+    </string-array>
+
+    <string-array name="ban">
+        <item>팝업창 확인</item>
+        <item>신고 후 자동 차단</item>
+        <item>허용 안함</item>
+    </string-array>
+
+<!--    <string-array name="allow">-->
+<!--        <item>동의</item>-->
+<!--        <item>비동의</item>-->
+<!--    </string-array>-->
+
+</resources>

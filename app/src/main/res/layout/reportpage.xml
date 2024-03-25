@@ -110,13 +110,13 @@
                 android:id="@+id/PopUpButton"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="60dp"
+                android:backgroundTint="@color/white"
                 android:text="유형선택"
                 android:textColor="#28BEEE"
-                android:backgroundTint="@color/white"
-                app:layout_constraintTop_toBottomOf="@+id/whichLabel"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="60dp"
-                android:layout_marginEnd="60dp"/>
+                app:layout_constraintTop_toBottomOf="@+id/whichLabel" />
 
 
             <TextView
@@ -149,7 +149,7 @@
 
             <Button
                 android:id="@+id/EndWriteButton"
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:text="작성하기"
                 android:textColor="@color/white"
@@ -159,7 +159,9 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginLeft="60dp"
                 android:layout_marginRight="60dp"
+                android:layout_marginStart="60dp"
                 />
+
         </LinearLayout>
 
     </ScrollView>
