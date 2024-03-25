@@ -19,7 +19,7 @@
         android:id="@+id/topTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="차단 내역"
+        android:text="신고 내역"
         android:textColor="@color/black"
         android:textSize="30dp"
         android:textStyle="bold"
