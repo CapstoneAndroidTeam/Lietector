@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,9 +14,17 @@ public class DiagnoseWrite extends AppCompatActivity{
         super.onCreate(savedInstanceStatus);
         setContentView(R.layout.diagnose_writing);
         int RiskPercent = 55;
-        Button HomeBtn = findViewById(R.id.HomeButton);
+        ImageButton HomeBtn = findViewById(R.id.HomeButton);
         EditText Story = findViewById(R.id.CallStory);
         Button saveBtn = findViewById(R.id.EndWriteButton);
+        ImageButton BackBtn = findViewById(R.id.BackButton);
+        BackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Finish the current activity to go to the parent page
+                finish();
+            }
+        });
         HomeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

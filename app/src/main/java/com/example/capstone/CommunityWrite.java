@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,10 +15,18 @@ public class CommunityWrite extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.community_writing);
 
-        Button HomeBtn = findViewById(R.id.HomeButton);
+        ImageButton HomeBtn = findViewById(R.id.HomeButton);
         EditText PhoneNum = findViewById(R.id.OptionalPhoneNumber);
         EditText Story = findViewById(R.id.StoryBox);
         Button SaveBtn = findViewById(R.id.EndWriteButton);
+        ImageButton BackBtn = findViewById(R.id.BackButton);
+        BackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Finish the current activity to go to the parent page
+                finish();
+            }
+        });
 
         HomeBtn.setOnClickListener(new View.OnClickListener() {
             @Override

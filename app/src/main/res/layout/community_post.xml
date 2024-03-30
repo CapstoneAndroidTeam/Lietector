@@ -29,12 +29,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.05" />
 
-    <Button
+    <ImageButton
         android:id="@+id/BackButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:backgroundTint="@color/white"
-        android:text="B"
+        android:src="@drawable/backbtn"
         android:textColor="#28BEEE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,21 +43,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.05">
 
-    </Button>
+    </ImageButton>
 
-    <Button
+    <ImageButton
         android:id="@+id/HomeButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:backgroundTint="@color/white"
-        android:text="H"
+        android:src="@drawable/homebtn"
         android:textColor="#28BEEE"
+        android:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05" />
+        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.9" />
 
     <ScrollView
         android:layout_width="411dp"

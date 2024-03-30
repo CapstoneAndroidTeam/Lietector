@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,10 +13,18 @@ public class QnAWrite extends AppCompatActivity{
     protected void onCreate (Bundle savedInstanceStatus) {
         super.onCreate(savedInstanceStatus);
         setContentView(R.layout.qnawriting);
-        Button HomeBtn = findViewById(R.id.HomeButton);
+        ImageButton HomeBtn = findViewById(R.id.HomeButton);
         Button saveBtn = findViewById(R.id.EndWriteButton);
         EditText title = findViewById(R.id.title);
         EditText story = findViewById(R.id.story);
+        ImageButton BackBtn = findViewById(R.id.BackButton);
+        BackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Finish the current activity to go to the parent page
+                finish();
+            }
+        });
         HomeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

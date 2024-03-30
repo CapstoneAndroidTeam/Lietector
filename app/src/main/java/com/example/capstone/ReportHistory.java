@@ -14,20 +14,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BanHistory extends AppCompatActivity {
+public class ReportHistory extends AppCompatActivity {
 
     ListView listView;
+    ArrayList<Integer> percent = new ArrayList<>();
     ArrayList<String> phonenum = new ArrayList<>();
     ArrayList<String> type = new ArrayList<>();
-    ArrayList<String> date = new ArrayList<>();
+    ArrayList<String> reportedtimes = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.banhistory);
+        setContentView(R.layout.reporthistory);
 
 
-        ListView listView = findViewById(R.id.banlist);
+        ListView listView = findViewById(R.id.listView);
 
         ImageButton BackBtn = findViewById(R.id.BackButton);
 
@@ -35,11 +36,12 @@ public class BanHistory extends AppCompatActivity {
         for(int i = 0; i < 5; i ++) {
             phonenum.add("01012345678");
             type.add("기관사칭형");
-            date.add("2024.03.23");
+            reportedtimes.add("50건");
+            percent.add(R.drawable.percent);
         }
 
         if(type.size() == 0) {
-            setContentView(R.layout.banhistory_non);
+            listView.getEmptyView();
         }
 
         BackBtn.setOnClickListener(new View.OnClickListener() {
@@ -49,7 +51,7 @@ public class BanHistory extends AppCompatActivity {
                 finish();
             }
         });
-        BanListAdapter banlistadapter = new BanListAdapter(BanHistory.this,  phonenum, type, date);
-        listView.setAdapter(banlistadapter);
+        ReportListAdapter reportListAdapter = new ReportListAdapter(ReportHistory.this, percent, phonenum, type, reportedtimes);
+        listView.setAdapter(reportListAdapter);
     }
 }

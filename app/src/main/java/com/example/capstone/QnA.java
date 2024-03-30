@@ -24,6 +24,14 @@ public class QnA extends AppCompatActivity {
             ImageButton AddBtn = findViewById(R.id.AddBtn);
 
             ListView listView = findViewById(R.id.QnAlistView);
+            ImageButton BackBtn = findViewById(R.id.BackButton);
+            BackBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // Finish the current activity to go to the parent page
+                    finish();
+                }
+            });
 
 
             for(int i = 0; i < 5; i ++) {

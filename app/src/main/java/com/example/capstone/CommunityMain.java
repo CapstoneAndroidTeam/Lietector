@@ -48,8 +48,9 @@ public class CommunityMain extends AppCompatActivity {
 
 
 
-        Button HomeBtn = findViewById(R.id.HomeButton);
+        ImageButton HomeBtn = findViewById(R.id.HomeButton);
         ImageButton AddBtn = findViewById(R.id.AddStoryButton);
+        ImageButton BackBtn = findViewById(R.id.BackButton);
         HomeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +63,13 @@ public class CommunityMain extends AppCompatActivity {
             public void onClick(View view) {
                 Intent goWritePage = new Intent(getApplicationContext(), CommunityWrite.class);
                 startActivity(goWritePage);
+            }
+        });
+        BackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Finish the current activity to go to the parent page
+                finish();
             }
         });
         CommunityListAdapter listadapter = new CommunityListAdapter(CommunityMain.this,  profileimg, nickname, storytext);
