@@ -2,20 +2,20 @@ package com.example.capstone;
 
 
 public class LogInSrv {
-    private String code;
-    private String msg;
+    private Character code;
+    private Character msg;
 
-    public LogInSrv(String code, String msg) {
+    public LogInSrv(Character code, Character msg) {
         this.code = code;
         this.msg = msg;
     }
 
-    public String getCode() {
+    public Character getCode() {
         return code;
     }
 
 
-    public String getMsg() {
+    public Character getMsg() {
         return msg;
     }
 

@@ -3,10 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools">
     
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -15,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Capstone"
         tools:targetApi="31"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        android:hardwareAccelerated="true">
         <activity
             android:name=".DiagnoseMain"
             android:exported="false">
@@ -52,9 +54,6 @@
         <activity android:name=".BanHistory"
             android:exported="false">
         </activity>
-        <activity android:name=".BanHistoryNon"
-            android:exported="false">
-        </activity>
         <activity android:name=".MypageMain"
             android:exported="false">
         </activity>
@@ -65,14 +64,22 @@
             android:exported="false">
         </activity>
 
-        <activity android:name=".MainActivity"
+        <activity android:name=".LogIn"
             android:exported="false">
         </activity>
         <activity android:name=".SignIn"
             android:exported="false">
         </activity>
+        <activity android:name=".MyWritingHistory"
+            android:exported="false"/>
+        <activity android:name=".BanHistoryNone"
+            android:exported="false"/>
+        <activity android:name=".QnA"
+            android:exported="false"/>
+        <activity android:name=".QnAWrite"
+            android:exported="false"/>
         <activity
-            android:name=".LogIn"
+            android:name=".MainActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>

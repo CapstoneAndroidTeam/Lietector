@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+
 import androidx.appcompat.widget.SearchView;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,10 +18,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button diagnoseBtn = findViewById(R.id.DiagnoseButton);
-        Button communityBtn = findViewById(R.id.CommunityBtn);
-        Button preventBtn = findViewById(R.id.PreventBtn);
-        Button reportBtn = findViewById(R.id.ReportBtn);
-        Button myPageBtn = findViewById(R.id.MyPageBtn);
+        ImageButton communityBtn = findViewById(R.id.CommunityBtn);
+        ImageButton reportBtn = findViewById(R.id.ReportBtn);
+        ImageButton treatBtn = findViewById(R.id.TreatBtn);
+        ImageButton myPageBtn = findViewById(R.id.MyPageBtn);
 
 
         SearchView searchview = findViewById(R.id.search);

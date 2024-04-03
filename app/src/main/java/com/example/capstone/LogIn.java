@@ -1,5 +1,7 @@
 package com.example.capstone;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,8 +9,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.capstone.LogInService;
+import com.example.capstone.LogInSrv;
+import com.example.capstone.MainActivity;
+import com.example.capstone.R;
+import com.example.capstone.SignIn;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -35,7 +44,7 @@ public class LogIn extends AppCompatActivity {
         Button logInButton = findViewById(R.id.LogInButton);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://54.180.213.170/")
+                .baseUrl("http://54.180.213.170/login/") // Adjust the base URL as per your backend endpoint
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(clientBuilder.build())
                 .build();
@@ -47,34 +56,30 @@ public class LogIn extends AppCompatActivity {
                 String ID = idEditText.getText().toString();
                 String PassWord = passwordEditText.getText().toString();
 
-                loginService.requestLogin(ID, PassWord).enqueue(new Callback<LogInSrv>() {
+                Call<LogInSrv> call = loginService.requestLogin(ID, PassWord);
+
+                call.enqueue(new Callback<LogInSrv>() {
                     @Override
                     public void onResponse(Call<LogInSrv> call, Response<LogInSrv> response) {
                         if (response.isSuccessful()) {
-                            LogInSrv loginResponse = response.body();
-                            Log.d("LOGIN", "msg : " + loginResponse.getMsg());
-                            Log.d("LOGIN", "code : " + loginResponse.getCode());
+                            Log.d(TAG, "계정 확인 완료용!!" + response.toString());
+                            Toast.makeText(getApplicationContext(), response.message(), Toast.LENGTH_SHORT).show();
 
-                            AlertDialog.Builder dialog = new AlertDialog.Builder(LogIn.this);
-                            dialog.setTitle(loginResponse.getMsg());
-                            dialog.setMessage(loginResponse.getCode());
-                            dialog.show();
+                            // 로그인. Main Activity2 를 호출한다. (갤러리와 이미지 처리 버튼이 나오는 부분이다)
+                            // text view 내의 값들이 db에 있는 경우
+                            Intent goHome = new Intent(getApplicationContext(), MainActivity.class);
+                            goHome.putExtra("firstKeyName", ID); // Verify된 경우 userId 다음 액티비티로 전달하기
+                            startActivity(goHome);
                         } else {
-                            Log.e("LOGIN", "Unsuccessful response: " + response.message());
-                            AlertDialog.Builder dialog = new AlertDialog.Builder(LogIn.this);
-                            dialog.setTitle("에러");
-                            dialog.setMessage(response.message());
-                            dialog.show();
+                            Log.d(TAG, "Post Status Code ㅠㅠ : " + response.code());
+                            Toast.makeText(getApplicationContext(), response.message(), Toast.LENGTH_LONG).show();
+                            Log.d(TAG, response.errorBody().toString());
                         }
                     }
 
                     @Override
                     public void onFailure(Call<LogInSrv> call, Throwable t) {
-                        Log.e("LOGIN", "Failed to connect: " + t.getMessage());
-                        AlertDialog.Builder dialog = new AlertDialog.Builder(LogIn.this);
-                        dialog.setTitle("에러");
-                        dialog.setMessage("서버와의 연결에 실패했습니다.");
-                        dialog.show();
+                        Log.d(TAG, "Fail msg : " + t.getMessage());
                     }
                 });
             }

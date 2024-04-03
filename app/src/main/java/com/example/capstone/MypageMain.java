@@ -16,11 +16,11 @@ public class MypageMain extends AppCompatActivity {
         setContentView(R.layout.mypage_main);
 
         //edit, Inquire 왜이러는지..?
-        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) Button editBtn = findViewById(R.id.myedit);
-        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) Button BanBtn = findViewById(R.id.banhistoryBtn);
-        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) Button ReportBtn = findViewById(R.id.reporthistoryBtn);
+        Button editBtn = findViewById(R.id.myedit);
+        Button BanBtn = findViewById(R.id.banhistoryBtn);
+        Button ReportBtn = findViewById(R.id.reporthistoryBtn);
         Button PostBtn = findViewById(R.id.mypost);
-        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) Button InquireBtn = findViewById(R.id.inquire);
+        Button InquireBtn = findViewById(R.id.inquire);
 
         Button BackBtn = findViewById(R.id.BackButton);
         Button SettingBtn = findViewById(R.id.SetButton);
@@ -40,6 +40,23 @@ public class MypageMain extends AppCompatActivity {
             public void onClick(View v) {
                 Intent BanPage = new Intent(getApplicationContext(), BanHistory.class);
                 startActivity(BanPage);
+            }
+        });
+        PostBtn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent PostPage = new Intent(getApplicationContext(), MyWritingHistory.class);
+                startActivity(PostPage);
+            }
+        });
+
+        InquireBtn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent QnAPage = new Intent(getApplicationContext(), QnA.class);
+                startActivity(QnAPage);
             }
         });
     }
