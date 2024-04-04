@@ -59,5 +59,14 @@ public class MypageMain extends AppCompatActivity {
                 startActivity(QnAPage);
             }
         });
+
+        SettingBtn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent SettingsPage = new Intent(getApplicationContext(), Settings.class);
+                startActivity(SettingsPage);
+            }
+        });
     }
 }
