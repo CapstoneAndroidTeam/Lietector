@@ -16,18 +16,21 @@
         app:layout_constraintTop_toTopOf="parent"
         android:background="@color/white"/>
 
-    <Button
+    <ImageButton
         android:id="@+id/BackButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="B"
-        android:textColor="#28BEEE"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:backgroundTint="@color/white"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
+        android:src="@drawable/backbtn"
+        android:textColor="#28BEEE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        style="?android:attr/borderlessButtonStyle"/>
+        app:layout_constraintVertical_bias="0.05">
+
+    </ImageButton>
 
     <TextView
         android:id="@+id/textView"

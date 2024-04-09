@@ -36,7 +36,7 @@ public class SettingFragment extends PreferenceFragmentCompat {
 
             prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
 
-        //선택 시
+            //선택 시
             if (!prefs.getString("disclosure_list", "").equals("")) {
                 DisclosurePref.setSummary(prefs.getString("disclosure_list", "공개 범위를 설정하세요"));
             }
@@ -48,17 +48,17 @@ public class SettingFragment extends PreferenceFragmentCompat {
         }
     }
     //변경 시
-        SharedPreferences.OnSharedPreferenceChangeListener prefListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
-            @Override
-            public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, @Nullable String key) {
-                if (key.equals("disclosure_list")){
-                    DisclosurePref.setSummary(prefs.getString("disclosure_list", "공개 범위를 설정하세요"));
-                }
-                if (key.equals("ban_list")) {
-                    BanPref.setSummary(prefs.getString("ban_list", "차단 방법을 설정하세요"));
-                }
+    SharedPreferences.OnSharedPreferenceChangeListener prefListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+        @Override
+        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, @Nullable String key) {
+            if (key.equals("disclosure_list")){
+                DisclosurePref.setSummary(prefs.getString("disclosure_list", "공개 범위를 설정하세요"));
             }
-        };
+            if (key.equals("ban_list")) {
+                BanPref.setSummary(prefs.getString("ban_list", "차단 방법을 설정하세요"));
+            }
+        }
+    };
 
     @Override
     public void onNavigateToScreen(PreferenceScreen preferenceScreen) {
@@ -66,5 +66,4 @@ public class SettingFragment extends PreferenceFragmentCompat {
         intent.putExtra("target",preferenceScreen.getKey());
         startActivity(intent);
     }
-
 }

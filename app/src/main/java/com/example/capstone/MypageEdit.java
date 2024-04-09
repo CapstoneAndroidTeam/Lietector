@@ -19,15 +19,22 @@ public class MypageEdit extends AppCompatActivity {
         Button VerifyBtn = findViewById(R.id.VerifyBtn); //인증번호
         Button EditBtn = findViewById(R.id.EditBtn);
 
-        Button BackBtn = findViewById(R.id.BackButton);
-        Button SettingBtn = findViewById(R.id.SetButton);
+        ImageButton BackBtn = findViewById(R.id.BackButton);
+        ImageButton SettingBtn = findViewById(R.id.SetButton);
 
         //backbtn -> 마이페이지 메인으로
         BackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
+            public void onClick(View view) {
+                // Finish the current activity to go to the parent page
+                finish();
+            }
+        });
+        SettingBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
-                Intent goMainPage = new Intent(getApplicationContext(), MypageMain.class);
-                startActivity(goMainPage);
+                Intent goSettingPage = new Intent(getApplicationContext(), Settings.class);
+                startActivity(goSettingPage);
             }
         });
 

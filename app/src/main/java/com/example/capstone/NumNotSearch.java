@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
@@ -15,9 +16,18 @@ public class NumNotSearch extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.num_notsearch);
 
-        Button bannumBtn = findViewById(R.id.BanNumberButton);
-        Button communityBtn = findViewById(R.id.GalleryButton);
-        Button preventBtn = findViewById(R.id.PreventionButton);
+        Button bannumBtn = findViewById(R.id.BanNumberBtn);
+        Button communityBtn = findViewById(R.id.GalleryBtn);
+        Button preventBtn = findViewById(R.id.PreventionBtn);
+        ImageButton BackBtn = findViewById(R.id.BackButton);
+        BackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Finish the current activity to go to the parent page
+                finish();
+            }
+        });
+
 
         bannumBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,7 +44,7 @@ public class NumNotSearch extends AppCompatActivity {
             }
         });
 
-        Button HomeBtn = findViewById(R.id.HomeButton);
+        ImageButton HomeBtn = findViewById(R.id.HomeButton);
 
         HomeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
