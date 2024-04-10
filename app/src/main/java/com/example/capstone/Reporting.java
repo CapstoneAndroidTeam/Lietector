@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,9 +16,17 @@ public class Reporting extends AppCompatActivity {
         setContentView(R.layout.reportpage);
         EditText reportphonenum = findViewById(R.id.OptionalPhoneNumber);
         EditText reportreason = findViewById(R.id.StoryBox);
-        Button HomeBtn = findViewById(R.id.HomeButton);
+        ImageButton HomeBtn = findViewById(R.id.HomeButton);
         Button reportButton = findViewById(R.id.EndWriteButton);
         String StringReportPhoneNum = reportphonenum.getText().toString();
+        ImageButton BackBtn = findViewById(R.id.BackButton);
+        BackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Finish the current activity to go to the parent page
+                finish();
+            }
+        });
 
         HomeBtn.setOnClickListener(new View.OnClickListener() {
             @Override

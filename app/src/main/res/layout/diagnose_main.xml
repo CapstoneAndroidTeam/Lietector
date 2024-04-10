@@ -31,27 +31,26 @@
         app:layout_constraintVertical_bias="0.05" />
 
 
-    <Button
+    <ImageButton
         android:id="@+id/BackButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:text="B"
-        android:textColor="#28BEEE"
         android:backgroundTint="@color/white"
+        android:src="@drawable/backbtn"
+        android:textColor="#28BEEE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05"
-        app:layout_constraintHorizontal_bias="0.1">
+        app:layout_constraintVertical_bias="0.05">
 
-    </Button>
-
-    <Button
+    </ImageButton>
+    <ImageButton
         android:id="@+id/HomeButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:text="H"
+        android:src="@drawable/homebtn"
         android:textColor="#28BEEE"
         android:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -75,17 +74,6 @@
         app:layout_constraintRight_toRightOf="parent"
         android:gravity="left"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="통화 내용을 녹음했다면\n녹음 파일로 보이스피싱 \n진단을 받아보세요."
-        android:textSize="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.38" />
 
     <Button
         android:id="@+id/InputByText"
@@ -100,17 +88,5 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:gravity="left"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="전체 통화 내용이 없어도\n괜찮아요. 기억나는 통화\n 내용을 입력해 보이스피싱\n진단을 받아보세요."
-        android:textSize="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

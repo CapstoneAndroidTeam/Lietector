@@ -30,12 +30,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <ImageButton
         android:id="@+id/BackButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:backgroundTint="@color/white"
-        android:text="B"
+        android:src="@drawable/backbtn"
         android:textColor="#28BEEE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,14 +44,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.05">
 
-    </Button>
+    </ImageButton>
 
-    <Button
+    <ImageButton
         android:id="@+id/HomeButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:backgroundTint="@color/white"
-        android:text="H"
+        android:src="@drawable/homebtn"
         android:textColor="#28BEEE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -95,7 +95,7 @@
         android:text="보이스피싱으로 의심되는 전화를 받았다면"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/BanNumberBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TopView" />
