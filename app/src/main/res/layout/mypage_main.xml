@@ -36,6 +36,7 @@
         android:backgroundTint="@color/white"
         android:src="@drawable/backbtn"
         android:textColor="#28BEEE"
+        android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.1"
@@ -52,6 +53,7 @@
         android:backgroundTint="@color/white"
         android:src="@drawable/editbutton"
         android:textColor="#28BEEE"
+        android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.9"
@@ -71,7 +73,9 @@
             android:layout_height="130dp"
             android:layout_marginTop="20dp"
             android:layout_gravity="center"
-            android:src="#9228BDED"
+            android:src="#00FFFFFF"
+            app:civ_border_width="3dp"
+            app:civ_border_color="#28BEEE"
             app:civ_border_overlay="true" />
 
         <TextView
@@ -107,66 +111,47 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
 
-            <Button
+            <ImageButton
                 android:id="@+id/banhistoryBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="35dp"
-                android:layout_weight="1"
-                android:width="150dp"
-                android:height="130dp"
-                android:backgroundTint="@color/white"
-                android:text="차단 내역"
-                android:textColor="@color/black" />
+                android:layout_width="150dp"
+                android:layout_height="130dp"
+                android:src="@drawable/banhistory"
+               android:layout_marginBottom="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="45dp" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/reporthistoryBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="35dp"
-                android:layout_marginEnd="40dp"
-                android:layout_weight="1"
-                android:width="150dp"
-                android:height="130dp"
-                android:backgroundTint="@color/white"
-                android:text="신고 내역"
-                android:textColor="@color/black" />
+                android:layout_width="150dp"
+                android:layout_height="130dp"
+                android:src="@drawable/reporthistorybtn"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <Button
+            <ImageButton
                 android:id="@+id/mypost"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="3dp"
-                android:layout_weight="1"
-                android:width="150dp"
-                android:height="130dp"
-                android:backgroundTint="@color/white"
-                android:text="내가 쓴 글"
-                android:textColor="@color/black" />
+                android:layout_width="150dp"
+                android:layout_height="130dp"
+                android:src="@drawable/mypostbtn"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="45dp" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/inquire"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginEnd="40dp"
-                android:layout_weight="1"
-                android:width="150dp"
-                android:height="130dp"
-                android:backgroundTint="@color/white"
-                android:text="문의하기"
-                android:textColor="@color/black" />
+                android:layout_width="150dp"
+                android:layout_height="130dp"
+                android:src="@drawable/qnabtn"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="20dp" />
 
 
         </LinearLayout>

@@ -38,6 +38,7 @@
         android:backgroundTint="@color/white"
         android:src="@drawable/backbtn"
         android:textColor="#28BEEE"
+        android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.1"
@@ -53,6 +54,7 @@
         android:src="@drawable/homebtn"
         android:textColor="#28BEEE"
         android:backgroundTint="@color/white"
+        android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,14 +62,11 @@
         app:layout_constraintVertical_bias="0.05"
         app:layout_constraintHorizontal_bias="0.9" />
 
-    <Button
+    <ImageButton
         android:id="@+id/InputByVoiceRecord"
         android:layout_width="350dp"
-        android:layout_height="200dp"
-        android:text="통화 녹음본으로\n입력하기"
-        android:textColor="@color/black"
-        android:backgroundTint="@color/white"
-        android:textSize="20dp"
+        android:layout_height="225dp"
+        android:src="@drawable/diag_1"
         app:layout_constraintTop_toBottomOf="@+id/TopView"
         android:layout_marginTop="30dp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -75,14 +74,11 @@
         android:gravity="left"/>
 
 
-    <Button
+    <ImageButton
         android:id="@+id/InputByText"
         android:layout_width="350dp"
-        android:layout_height="200dp"
-        android:text="직접 통화내용\n입력하기"
-        android:textColor="@color/black"
-        android:backgroundTint="@color/white"
-        android:textSize="20dp"
+        android:layout_height="225dp"
+        android:src="@drawable/diag_2"
         app:layout_constraintTop_toBottomOf="@+id/InputByVoiceRecord"
         android:layout_marginTop="30dp"
         app:layout_constraintLeft_toLeftOf="parent"

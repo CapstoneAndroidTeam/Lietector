@@ -95,9 +95,6 @@
         <activity android:name=".QnAWrite"
             android:parentActivityName=".QnA"
             android:exported="false"/>
-        <activity android:name=".Settings"
-            android:parentActivityName=".MypageMain"
-            android:exported="false"/>
         <activity android:name=".ReportHistory"
             android:parentActivityName=".MypageMain"
             android:exported="false"/>
