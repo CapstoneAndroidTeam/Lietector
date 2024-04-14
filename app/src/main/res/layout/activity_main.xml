@@ -48,20 +48,17 @@
         android:layout_marginRight="50dp"
         app:queryHint="번호를 입력하세요." />
 
-    <Button
+    <ImageButton
         android:id="@+id/DiagnoseButton"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:text="보이스피싱 진단하기\n방금 내가 받은 전화\n의심된다면?"
+        android:src="@drawable/diagnosebtn"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/search"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
-        android:backgroundTint="#28BEEE"
-        android:textSize="19dp"
-        android:textStyle="bold"
         android:gravity="left|center_vertical"
         />
 
@@ -70,8 +67,7 @@
                 android:id="@+id/CommunityBtn"
                 android:layout_width="150dp"
                 android:layout_height="130dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/mainbtn1"
+                android:src="@drawable/communitybtn"
                 app:layout_constraintTop_toBottomOf="@+id/DiagnoseButton"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/TreatBtn"
@@ -85,7 +81,6 @@
                 android:id="@+id/ReportBtn"
                 android:layout_width="150dp"
                 android:layout_height="130dp"
-                android:scaleType="centerInside"
                 android:src="@drawable/reportbtn"
                 app:layout_constraintTop_toBottomOf="@+id/DiagnoseButton"
                 app:layout_constraintRight_toRightOf="parent"
@@ -98,7 +93,6 @@
         android:id="@+id/TreatBtn"
         android:layout_width="150dp"
         android:layout_height="130dp"
-        android:scaleType="centerInside"
         android:src="@drawable/chatbtn"
         app:layout_constraintTop_toBottomOf="@+id/CommunityBtn"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -112,7 +106,6 @@
         android:id="@+id/MyPageBtn"
         android:layout_width="150dp"
         android:layout_height="130dp"
-        android:scaleType="centerInside"
         android:src="@drawable/mypagebtn"
         app:layout_constraintTop_toBottomOf="@+id/ReportBtn"
         app:layout_constraintRight_toRightOf="parent"

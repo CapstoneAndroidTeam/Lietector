@@ -38,6 +38,7 @@
         android:scaleType="centerInside"
         android:src="@drawable/backbtn"
         android:textColor="#28BEEE"
+        android:contentDescription="backbutton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.1"
@@ -53,6 +54,7 @@
         android:scaleType="centerInside"
         android:src="@drawable/homebtn"
         android:textColor="#28BEEE"
+        android:contentDescription="homebutton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.9"
@@ -61,11 +63,32 @@
         app:layout_constraintVertical_bias="0.05" />
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TopView">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@id/profileimg"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="top"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="40dp"
+            android:src="#28BEEE"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="60dp"
         android:orientation="horizontal"
         android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints">
 
         <EditText
             android:id="@+id/add_question"
@@ -75,15 +98,15 @@
             android:ems="10"
             android:inputType="text"
             android:text="궁금한 점을 입력해주세요"
-            app:layout_constraintStart_toStartOㄹ="parent" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_marginStart="3dp"
-            android:contentDescription="addquestionbutton"
-            app:srcCompat="@android:drawable/ic_menu_send" />
+                android:id="@+id/imageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_marginStart="3dp"
+                android:contentDescription="addquestionbutton"
+                app:srcCompat="@android:drawable/ic_menu_send" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

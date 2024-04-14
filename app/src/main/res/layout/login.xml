@@ -43,15 +43,23 @@
         android:id="@+id/LogInButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="로그인"
-        android:textSize="25dp"
+        android:text="   계정 로그인"
+        android:textSize="14dp"
         android:textStyle="bold"
         android:width="300dp"
-        android:height="70dp"
+        android:height="60dp"
         android:backgroundTint="@color/white"
         android:textColor="@color/black"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"/>
+
+    <ImageButton
+        android:id="@+id/kakaobtn"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:src="@drawable/kakaobtn"
+        android:layout_gravity="center"/>
+
 
     <LinearLayout
         android:layout_width="match_parent"
