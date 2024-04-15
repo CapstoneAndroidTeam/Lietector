@@ -5,11 +5,15 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,10 +22,17 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class SignIn extends AppCompatActivity {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+public class SignUp extends AppCompatActivity {
 
     private EditText IDEditText, PasswordEditText, PasswordOnceMoreEditText, NickNameEditText, PhoneNumEditText;
 
+    private SignUpApiService apiService;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,22 +45,63 @@ public class SignIn extends AppCompatActivity {
         PhoneNumEditText = findViewById(R.id.PhoneNum);
 
         Button signInBtn = findViewById(R.id.SignInBtn);
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://54.180.213.170/") // Replace with your actual API base URL
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        apiService = retrofit.create(SignUpApiService.class);
         signInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String ID = IDEditText.getText().toString();
-                String PW = PasswordEditText.getText().toString();
-                String PWOnceMore = PasswordOnceMoreEditText.getText().toString();
-                String NickName = NickNameEditText.getText().toString();
-                String PhoneNum = PhoneNumEditText.getText().toString();
-                if (!ID.isEmpty() && !PW.isEmpty() && !PWOnceMore.isEmpty() && !NickName.isEmpty() && !PhoneNum.isEmpty()) {
-                    // Execute AsyncTask to perform HTTP request
-                    new SignUpTask().execute(ID, PW, NickName, PhoneNum);
-                }
+                    signup();
             }
         });
     }
 
+    private void signup() {
+        String username = IDEditText.getText().toString().trim();
+        String password = PasswordEditText.getText().toString().trim();
+        String nickname = NickNameEditText.getText().toString().trim();
+        String number = PhoneNumEditText.getText().toString().trim();
+
+        if (TextUtils.isEmpty(username)) {
+            IDEditText.setError("Enter username");
+            IDEditText.requestFocus();
+            return;
+        }
+
+        if (TextUtils.isEmpty(password)) {
+            PasswordEditText.setError("Enter password");
+            PasswordEditText.requestFocus();
+            return;
+        }
+
+
+        // Call the signup API
+        Call<Void> call = apiService.signup(username,password,"choi", "youngwoo", nickname, number);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
+                if (response.isSuccessful()) {
+                    // Signup successful
+                    Toast.makeText(SignUp.this, "Signup successful!", Toast.LENGTH_SHORT).show();
+                    // Navigate to another activity or perform any other action
+                } else {
+                    // Signup failed
+                    Toast.makeText(SignUp.this, response.message(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Void> call, @NonNull Throwable t) {
+                // Network error
+                Toast.makeText(SignUp.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+}
+
+    /*
     private class SignUpTask extends AsyncTask<String, Void, String> {
 
         @Override
@@ -96,4 +148,8 @@ public class SignIn extends AppCompatActivity {
             Log.d(TAG, "Fail msg ");
         }
     }
+
+
 }
+
+     */

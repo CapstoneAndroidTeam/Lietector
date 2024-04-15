@@ -8,12 +8,19 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CommunityMain extends AppCompatActivity {
     ListView listView;
@@ -44,6 +51,30 @@ public class CommunityMain extends AppCompatActivity {
             nickname.add("닉네임");
             storytext.add("게시물 내용");
         }
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://54.180.213.170/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        CommunityService service = retrofit.create(CommunityService.class);
+
+        Call<List<communitypost_backend>> call = service.getCommunityPosts();
+        call.enqueue(new Callback<List<communitypost_backend>>() {
+            @Override
+            public void onResponse(Call<List<communitypost_backend>> call, Response<List<communitypost_backend>> response) {
+                if (!response.isSuccessful()) {
+                    List<communitypost_backend> posts = response.body();
+                    Toast.makeText(CommunityMain.this, response.message(), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(CommunityMain.this, response.errorBody().toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<communitypost_backend>> call, Throwable t) {
+                Toast.makeText(CommunityMain.this, "Network error", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
 
@@ -72,7 +103,9 @@ public class CommunityMain extends AppCompatActivity {
                 finish();
             }
         });
-        CommunityListAdapter listadapter = new CommunityListAdapter(CommunityMain.this,  profileimg, nickname, storytext);
-        listView.setAdapter(listadapter);
+        //CommunityListAdapter listadapter = new CommunityListAdapter(CommunityMain.this);
+        //listView.setAdapter(listadapter);
     }
+
+
 }

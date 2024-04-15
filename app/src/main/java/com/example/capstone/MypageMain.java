@@ -18,10 +18,10 @@ public class MypageMain extends AppCompatActivity {
 
         //edit, Inquire 왜이러는지..?
         Button editBtn = findViewById(R.id.myedit);
-        Button BanBtn = findViewById(R.id.banhistoryBtn);
-        Button ReportBtn = findViewById(R.id.reporthistoryBtn);
-        Button PostBtn = findViewById(R.id.mypost);
-        Button InquireBtn = findViewById(R.id.inquire);
+        ImageButton BanBtn = findViewById(R.id.banhistoryBtn);
+        ImageButton ReportBtn = findViewById(R.id.reporthistoryBtn);
+        ImageButton PostBtn = findViewById(R.id.mypost);
+        ImageButton InquireBtn = findViewById(R.id.inquire);
 
         ImageButton SettingBtn = findViewById(R.id.SetButton);
 

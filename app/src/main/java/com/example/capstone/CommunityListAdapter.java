@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import com.example.capstone.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CommunityListAdapter extends BaseAdapter {
     private Context context;
@@ -22,11 +23,19 @@ public class CommunityListAdapter extends BaseAdapter {
     private LayoutInflater inflater;
 
 
+    /*
     public CommunityListAdapter(CommunityMain communityMain, ArrayList<Integer> profileimg, ArrayList<String> nickname, ArrayList<String> storytext) {
         this.context = communityMain;
         this.profileimg = profileimg;
         this.nickname = nickname;
         this.storytext = storytext;
+        inflater = LayoutInflater.from(context);
+    }
+
+     */
+
+    public CommunityListAdapter(Context context) {
+        this.context = context;
         inflater = LayoutInflater.from(context);
     }
 
@@ -45,6 +54,7 @@ public class CommunityListAdapter extends BaseAdapter {
     public long getItemId(int position) {
         return position;
     }
+
 
     static class ViewHolder {
         TextView nickname;

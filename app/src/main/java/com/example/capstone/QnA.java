@@ -34,14 +34,9 @@ public class QnA extends AppCompatActivity {
             });
 
 
-            for(int i = 0; i < 5; i ++) {
-                Title.add("01012345678");
-                Story.add("기관사칭형");
-                Answer.add("2024.03.23");
-            }
 
             if(Title.size() == 0) {
-                setContentView(R.layout.qna_non);
+                listView.getEmptyView();
             }
 
             AddBtn.setOnClickListener(new View.OnClickListener() {
