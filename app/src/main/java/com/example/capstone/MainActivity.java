@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -11,13 +12,20 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.widget.SearchView;
 
+import com.kakao.sdk.common.KakaoSdk;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button diagnoseBtn = findViewById(R.id.DiagnoseButton);
+
+        KakaoSdk.init(this, "d1ccf91d3f67f62c53f4a4025df7b4b8"); // KakaoSdk.init(this, ${NATIVE_APP_KEY});
+        String kakaoHashKey = KakaoSdk.INSTANCE.getKeyHash();
+        Log.d("kakaoHashKey", kakaoHashKey);
+
+        ImageButton diagnoseBtn = findViewById(R.id.DiagnoseButton);
         ImageButton communityBtn = findViewById(R.id.CommunityBtn);
         ImageButton reportBtn = findViewById(R.id.ReportBtn);
         ImageButton treatBtn = findViewById(R.id.TreatBtn);

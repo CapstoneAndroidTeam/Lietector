@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
     
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 
     <application
@@ -17,8 +17,7 @@
         android:theme="@style/Theme.Capstone"
         tools:targetApi="31"
         android:usesCleartextTraffic="true"
-        android:hardwareAccelerated="true"
-        android:enableOnBackInvokedCallback="true">
+        android:hardwareAccelerated="true">
         <activity
             android:name=".DiagnoseMain"
             android:parentActivityName=".MainActivity"
@@ -80,7 +79,7 @@
         <activity android:name=".LogIn"
             android:exported="false">
         </activity>
-        <activity android:name=".SignUp"
+        <activity android:name=".SignIn"
             android:parentActivityName=".LogIn"
             android:exported="false">
         </activity>
@@ -115,6 +114,5 @@
         </activity>
         <activity android:name="com.example.capstone.ReportingEnd" />
     </application>
-
 
 </manifest>

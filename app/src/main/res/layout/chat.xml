@@ -65,8 +65,7 @@
         android:layout_height="60dp"
         android:orientation="horizontal"
         android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <EditText
             android:id="@+id/add_question"
@@ -76,7 +75,7 @@
             android:ems="10"
             android:inputType="text"
             android:text="궁금한 점을 입력해주세요"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOㄹ="parent" />
 
         <ImageButton
             android:id="@+id/imageButton"
