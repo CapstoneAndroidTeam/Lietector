@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#F0F0F0"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".MainActivity">
+    tools:context=".Home.MainActivity">
 
     <View
         android:id="@+id/TopView"
@@ -35,7 +35,7 @@
         android:id="@+id/BackButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@android:color/transparent"
         android:src="@drawable/backbtn"
         android:textColor="#28BEEE"
         android:scaleType="centerInside"
@@ -53,7 +53,7 @@
         android:layout_height="50dp"
         android:src="@drawable/homebtn"
         android:textColor="#28BEEE"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@android:color/transparent"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,6 +67,7 @@
         android:layout_width="350dp"
         android:layout_height="225dp"
         android:src="@drawable/diag_1"
+        android:backgroundTint="@android:color/transparent"
         app:layout_constraintTop_toBottomOf="@+id/TopView"
         android:layout_marginTop="30dp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -79,6 +80,7 @@
         android:layout_width="350dp"
         android:layout_height="225dp"
         android:src="@drawable/diag_2"
+        android:backgroundTint="@android:color/transparent"
         app:layout_constraintTop_toBottomOf="@+id/InputByVoiceRecord"
         android:layout_marginTop="30dp"
         app:layout_constraintLeft_toLeftOf="parent"

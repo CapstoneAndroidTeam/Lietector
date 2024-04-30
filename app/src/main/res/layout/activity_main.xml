@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".Home.MainActivity"
     android:background="#F0F0F0">
 
 
@@ -53,6 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:src="@drawable/diagnosebtn"
+        android:background="@android:color/transparent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/search"
@@ -68,6 +69,7 @@
                 android:layout_width="150dp"
                 android:layout_height="130dp"
                 android:src="@drawable/communitybtn"
+                android:background="@android:color/transparent"
                 app:layout_constraintTop_toBottomOf="@+id/DiagnoseButton"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/TreatBtn"
@@ -82,6 +84,7 @@
                 android:layout_width="150dp"
                 android:layout_height="130dp"
                 android:src="@drawable/reportbtn"
+                android:background="@android:color/transparent"
                 app:layout_constraintTop_toBottomOf="@+id/DiagnoseButton"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/MyPageBtn"
@@ -94,6 +97,7 @@
         android:layout_width="150dp"
         android:layout_height="130dp"
         android:src="@drawable/chatbtn"
+        android:background="@android:color/transparent"
         app:layout_constraintTop_toBottomOf="@+id/CommunityBtn"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -107,6 +111,7 @@
         android:layout_width="150dp"
         android:layout_height="130dp"
         android:src="@drawable/mypagebtn"
+        android:background="@android:color/transparent"
         app:layout_constraintTop_toBottomOf="@+id/ReportBtn"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

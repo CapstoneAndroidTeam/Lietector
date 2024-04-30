@@ -7,7 +7,7 @@
     <View
         android:id="@+id/mainview"
         android:layout_width="350dp"
-        android:layout_height="200dp"
+        android:layout_height="250dp"
         android:background="@color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -25,10 +25,10 @@
         android:layout_marginTop="20dp"/>
 
     <TextView
-        android:id="@+id/NickName"
+        android:id="@+id/writer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="닉네임"
+        android:text="작성자"
         android:textSize="20dp"
         android:textColor="@color/black"
         android:textStyle="bold"
@@ -38,7 +38,33 @@
         android:layout_marginTop="20dp"/>
 
     <TextView
-        android:id="@+id/story"
+        android:id="@+id/report_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="01000000000"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@id/mainview"
+        app:layout_constraintLeft_toRightOf="@id/writer"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="제목"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:textStyle="italic"
+        app:layout_constraintTop_toBottomOf="@id/profileimg"
+        app:layout_constraintLeft_toLeftOf="@id/mainview"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/content"
         android:layout_width="300dp"
         android:layout_height="80dp"
         android:text="개시물 내용"
@@ -46,7 +72,7 @@
         android:textSize="20dp"
         android:textColor="@color/black"
         android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@id/profileimg"
+        app:layout_constraintTop_toBottomOf="@id/title"
         app:layout_constraintLeft_toLeftOf="@id/mainview"
         app:layout_constraintRight_toRightOf="@id/mainview"/>
 
@@ -57,7 +83,7 @@
         app:layout_constrainedWidth="true"
         android:src="@drawable/line"
         android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@id/story"
+        app:layout_constraintTop_toBottomOf="@id/content"
         app:layout_constraintLeft_toLeftOf="@id/mainview"
         app:layout_constraintRight_toRightOf="@id/mainview"/>
 

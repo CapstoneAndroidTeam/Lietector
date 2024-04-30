@@ -118,9 +118,10 @@
 
     <ImageButton
         android:id="@+id/BackButton"
-        android:layout_width="50dp"
+        android:layout_width="30dp"
         android:layout_height="50dp"
-        android:backgroundTint="@color/white"
+        android:background="@android:color/transparent"
+
         android:src="@drawable/backbtn"
         android:textColor="#28BEEE"
         android:scaleType="centerInside"
@@ -135,30 +136,20 @@
 
     <ImageButton
         android:id="@+id/HomeButton"
-        android:layout_width="50dp"
+        android:layout_width="30dp"
         android:layout_height="50dp"
-        android:backgroundTint="@color/white"
         android:src="@drawable/homebtn"
         android:textColor="#28BEEE"
+        android:background="@android:color/transparent"
+
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05" />
+        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.9" />
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:iconifiedByDefault="false"
-        android:queryHint="키워드를 입력하세요."
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.15" />
 
     <TextView
         android:id="@+id/TopTextView"

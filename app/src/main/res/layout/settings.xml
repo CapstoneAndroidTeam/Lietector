@@ -29,9 +29,10 @@
 
     <ImageButton
         android:id="@+id/BackButton"
-        android:layout_width="50dp"
+        android:layout_width="30dp"
         android:layout_height="50dp"
-        android:backgroundTint="@color/white"
+        android:background="@android:color/transparent"
+
         android:src="@drawable/backbtn"
         android:textColor="#28BEEE"
         android:scaleType="centerInside"
@@ -40,11 +41,15 @@
         app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05"/>
+        app:layout_constraintVertical_bias="0.05">
+
+    </ImageButton>
+
+
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/settings_fragment"
-        android:name="com.example.capstone.SettingFragment"
+        android:name="com.example.capstone.Setting.SettingFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="110dp"

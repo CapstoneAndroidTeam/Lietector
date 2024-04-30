@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#F0F0F0"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".MainActivity">
+    tools:context=".Home.MainActivity">
 
     <View
         android:id="@+id/TopView"
@@ -33,9 +33,10 @@
 
     <ImageButton
         android:id="@+id/BackButton"
-        android:layout_width="50dp"
+        android:layout_width="30dp"
         android:layout_height="50dp"
-        android:backgroundTint="@color/white"
+        android:background="@android:color/transparent"
+
         android:src="@drawable/backbtn"
         android:textColor="#28BEEE"
         android:scaleType="centerInside"
@@ -48,21 +49,22 @@
 
     </ImageButton>
 
-
     <ImageButton
         android:id="@+id/HomeButton"
-        android:layout_width="50dp"
+        android:layout_width="30dp"
         android:layout_height="50dp"
-        android:backgroundTint="@color/white"
         android:src="@drawable/homebtn"
         android:textColor="#28BEEE"
+        android:background="@android:color/transparent"
+
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05" />
+        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.9" />
+s
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

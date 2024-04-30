@@ -7,6 +7,7 @@
 
 
     <application
+        android:name=".Login.kakaoApplication"
         android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -19,87 +20,91 @@
         android:usesCleartextTraffic="true"
         android:hardwareAccelerated="true">
         <activity
-            android:name=".DiagnoseMain"
-            android:parentActivityName=".MainActivity"
+            android:name=".Diagnose.DiagnoseMain"
+            android:parentActivityName=".Home.MainActivity"
             android:exported="false">
         </activity>
-        <activity android:name=".Settings"
+        <activity android:name=".Setting.Settings"
             android:exported="true"></activity>
-        <activity android:name=".CommunityMain"
-            android:parentActivityName=".MainActivity"
+        <activity android:name=".Community.CommunityMain"
+            android:parentActivityName=".Home.MainActivity"
             android:exported="false">
         </activity>
-        <activity android:name=".Reporting"
+        <activity android:name=".Report.Reporting"
             android:exported="false">
         </activity>
-        <activity android:name=".CommunityWrite"
-            android:parentActivityName=".CommunityMain"
+        <activity android:name=".Community.CommunityWrite"
+            android:parentActivityName=".Community.CommunityMain"
             android:exported="false">
         </activity>
-        <activity android:name=".MoreInfoPopup"
+        <activity android:name=".Diagnose.MoreInfoPopup"
             android:exported="false">
         </activity>
-        <activity android:name=".DiagnoseNotSerious"
-            android:parentActivityName=".DiagnoseMain"
+        <activity android:name=".Diagnose.DiagnoseNotSerious"
+            android:parentActivityName=".Diagnose.DiagnoseMain"
             android:exported="false">
         </activity>
-        <activity android:name=".DiagnoseSerious"
-            android:parentActivityName=".DiagnoseMain"
+        <activity android:name=".Diagnose.DiagnoseSerious"
+            android:parentActivityName=".Diagnose.DiagnoseMain"
             android:exported="false">
         </activity>
-        <activity android:name=".DiagnoseWrite"
-            android:parentActivityName=".DiagnoseMain"
+        <activity android:name=".Diagnose.DiagnoseWrite"
+            android:parentActivityName=".Diagnose.DiagnoseMain"
+            android:exported="false"/>
+        <activity android:name=".Diagnose.DiagnoseAudio"
+            android:parentActivityName=".Diagnose.DiagnoseMain"
             android:exported="false">
         </activity>
-        <activity android:name=".NumSearch"
-            android:parentActivityName=".MainActivity"
+        <activity android:name=".NumberSearch.NumSearch"
+            android:parentActivityName=".Home.MainActivity"
             android:exported="false">
         </activity>
-        <activity android:name=".NumNotSearch"
-            android:parentActivityName=".MainActivity"
+        <activity android:name=".NumberSearch.NumNotSearch"
+            android:parentActivityName=".Home.MainActivity"
             android:exported="false">
         </activity>
-        <activity android:name=".BanHistory"
-            android:parentActivityName=".MypageMain"
+        <activity android:name=".Ban.BanHistory"
+            android:parentActivityName=".MyPage.MypageMain"
             android:exported="false">
         </activity>
-        <activity android:name=".MypageMain"
-            android:parentActivityName=".MainActivity"
+        <activity android:name=".MyPage.MypageMain"
+            android:parentActivityName=".Home.MainActivity"
             android:exported="false">
         </activity>
-        <activity android:name=".MypageEdit"
-            android:parentActivityName=".MypageMain"
+        <activity android:name=".MyPage.MypageEdit"
+            android:parentActivityName=".MyPage.MypageMain"
             android:exported="false">
         </activity>
-        <activity android:name=".CommunityPost"
-            android:parentActivityName=".CommunityMain"
+        <activity android:name=".Community.CommunityPost"
+            android:parentActivityName=".Community.CommunityMain"
             android:exported="false">
         </activity>
 
-        <activity android:name=".LogIn"
+        <activity android:name=".Home.MainActivity"
             android:exported="false">
         </activity>
-        <activity android:name=".SignIn"
-            android:parentActivityName=".LogIn"
+        <activity android:name=".SignUp.SignUp"
+            android:parentActivityName=".Login.LogIn"
             android:exported="false">
         </activity>
-        <activity android:name=".MyWritingHistory"
-            android:parentActivityName=".MypageMain"
+        <activity android:name=".MyPage.MyWritingHistory"
+            android:parentActivityName=".MyPage.MypageMain"
             android:exported="false"/>
-        <activity android:name=".BanHistoryNone"
-            android:parentActivityName=".MypageMain"
+        <activity android:name=".Ban.BanHistoryNone"
+            android:parentActivityName=".MyPage.MypageMain"
             android:exported="false"/>
-        <activity android:name=".QnA"
-            android:parentActivityName=".MypageMain"
+        <activity android:name=".QnA.QnA"
+            android:parentActivityName=".MyPage.MypageMain"
             android:exported="false"/>
-        <activity android:name=".QnAWrite"
-            android:parentActivityName=".QnA"
+        <activity android:name=".QnA.QnAWrite"
+            android:parentActivityName=".QnA.QnA"
             android:exported="false"/>
-        <activity android:name=".ReportHistory"
-            android:parentActivityName=".MypageMain"
+        <activity android:name=".Report.ReportHistory"
+            android:parentActivityName=".MyPage.MypageMain"
             android:exported="false"/>
         <activity
-            android:name=".MainActivity"
+            android:name=".Login.LogIn"
+
             android:exported="true"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
@@ -112,7 +117,18 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity android:name="com.example.capstone.ReportingEnd" />
+        <activity android:name="com.example.capstone.Report.ReportingEnd" />
+
+        <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:host="oauth"
+                    android:scheme="kakao" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

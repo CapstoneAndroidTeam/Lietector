@@ -31,9 +31,9 @@
 
     <ImageButton
         android:id="@+id/BackButton"
-        android:layout_width="50dp"
+        android:layout_width="30dp"
         android:layout_height="50dp"
-        android:backgroundTint="@color/white"
+        android:background="@android:color/transparent"
         android:src="@drawable/backbtn"
         android:textColor="#28BEEE"
         android:scaleType="centerInside"
@@ -48,11 +48,11 @@
 
     <ImageButton
         android:id="@+id/HomeButton"
-        android:layout_width="50dp"
+        android:layout_width="30dp"
         android:layout_height="50dp"
         android:src="@drawable/homebtn"
         android:textColor="#28BEEE"
-        android:backgroundTint="@color/white"
+        android:background="@android:color/transparent"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

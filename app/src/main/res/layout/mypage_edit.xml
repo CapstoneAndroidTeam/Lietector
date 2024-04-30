@@ -31,9 +31,10 @@
 
     <ImageButton
         android:id="@+id/BackButton"
-        android:layout_width="50dp"
+        android:layout_width="30dp"
         android:layout_height="50dp"
-        android:backgroundTint="@color/white"
+        android:background="@android:color/transparent"
+
         android:src="@drawable/backbtn"
         android:textColor="#28BEEE"
         android:scaleType="centerInside"
@@ -46,11 +47,12 @@
 
     </ImageButton>
 
+
     <ImageButton
         android:id="@+id/SetButton"
-        android:layout_width="50dp"
+        android:layout_width="30dp"
         android:layout_height="50dp"
-        android:backgroundTint="@color/white"
+        android:background="@android:color/transparent"
         android:src="@drawable/editbutton"
         android:textColor="#28BEEE"
         android:scaleType="centerInside"
