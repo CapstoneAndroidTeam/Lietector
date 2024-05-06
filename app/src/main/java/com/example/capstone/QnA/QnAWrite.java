@@ -1,8 +1,12 @@
 package com.example.capstone.QnA;
 
+import static android.content.ContentValues.TAG;
+import static com.example.capstone.Login.LogIn.preferences;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,8 +17,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.capstone.Home.MainActivity;
 import com.example.capstone.R;
-
-import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -42,18 +44,15 @@ public class QnAWrite extends AppCompatActivity{
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         clientBuilder.addInterceptor(loggingInterceptor);
 
-        OkHttpClient client = new OkHttpClient.Builder()
-                .connectTimeout(100, TimeUnit.SECONDS)
-                .readTimeout(100,TimeUnit.SECONDS)
-                .writeTimeout(100,TimeUnit.SECONDS)
-                .build();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://54.180.213.170/") // Replace with your actual API base URL
+                .baseUrl("http://13.209.90.71/") // Replace with your actual API base URL
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(clientBuilder.build())
                 .build();
         apiService = retrofit.create(QnAApiService.class);
+
+
         BackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,7 +79,6 @@ public class QnAWrite extends AppCompatActivity{
     private void ask() {
         String Title = title.getText().toString().trim();
         String Content = content.getText().toString().trim();
-        Integer Writer = 10; // 바꾸기
 
         if (TextUtils.isEmpty(Title)) {
             title.setError("Enter title");
@@ -94,24 +92,27 @@ public class QnAWrite extends AppCompatActivity{
             return;
         }
 
-        QnAPost qnapost = new QnAPost(Title, Content, Writer);
+        Log.d(TAG, "userid : " + preferences.getString("userid",""));
 
-        Call<QnAPost> call = apiService.ask(qnapost);
-        call.enqueue(new Callback<QnAPost>() {
+
+        Call<Void> call = apiService.ask(Title, Content);
+        call.enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<QnAPost> call, Response<QnAPost> response) {
+            public void onResponse(Call<Void> call,Response<Void> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(QnAWrite.this, "Push successful!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(QnAWrite.this, "Report successful!", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(QnAWrite.this, response.message(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(QnAWrite.this, response.toString(), Toast.LENGTH_SHORT).show();
+                    Log.d(TAG, response.toString());
                 }
             }
 
             @Override
-            public void onFailure(Call<QnAPost> call, Throwable t) {
+            public void onFailure( Call<Void> call, Throwable t) {
                 // Network error
-                Toast.makeText(QnAWrite.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(QnAWrite.this, "error : " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
+
 }

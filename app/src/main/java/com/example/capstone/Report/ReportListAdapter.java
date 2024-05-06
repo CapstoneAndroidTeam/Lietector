@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,16 +16,16 @@ import java.util.ArrayList;
 
 public class ReportListAdapter extends BaseAdapter {
     private Context context;
-    private ArrayList<Integer> percent;
+    private ArrayList<Integer> riskPercent;
     private ArrayList<String> phonenum;
     private ArrayList<String> type;
     private ArrayList<String> times;
     private LayoutInflater inflater;
 
 
-    public ReportListAdapter(ReportHistory reportHistory, ArrayList<Integer> percent, ArrayList<String> phonenum, ArrayList<String> type, ArrayList<String> reportedtimes) {
+    public ReportListAdapter(ReportHistory reportHistory, ArrayList<Integer> risky, ArrayList<String> phonenum, ArrayList<String> type, ArrayList<String> reportedtimes) {
         this.context = reportHistory;
-        this.percent = percent;
+        this.riskPercent = risky;
         this.phonenum = phonenum;
         this.type = type;
         this.times = reportedtimes;
@@ -50,7 +49,7 @@ public class ReportListAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
-        ImageView percent;
+        TextView risky;
         TextView phonenum;
         TextView type;
         TextView times;
@@ -65,7 +64,7 @@ public class ReportListAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.report_listview, parent, false);
 
             holder = new ReportListAdapter.ViewHolder();
-            holder.percent = convertView.findViewById(R.id.percent);
+            holder.risky = convertView.findViewById(R.id.riskyPercent);
             holder.phonenum = convertView.findViewById(R.id.phonenumber);
             holder.type = convertView.findViewById(R.id.type);
             holder.times = convertView.findViewById(R.id.reportedtimes);
@@ -78,7 +77,7 @@ public class ReportListAdapter extends BaseAdapter {
         holder.phonenum.setText(phonenum.get(position));
         holder.times.setText(times.get(position));
         holder.type.setText(type.get(position));
-        holder.percent.setImageResource(percent.get(position));
+        //holder.risky.setText(riskPercent.get(position)); // 여기서 에러 남,, 수정할 것
 
         return convertView;
     }

@@ -52,8 +52,20 @@
         android:name="com.example.capstone.Setting.SettingFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="110dp"
-        app:layout_constraintTop_toBottomOf="@+id/topView" />
+        app:layout_constrainedHeight="true"
+        app:layout_constraintTop_toBottomOf="@+id/topView"
+        app:layout_constraintBottom_toTopOf="@id/logout"
+        />
+
+    <ImageButton
+        android:id="@+id/logout"
+        android:background="@android:color/transparent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logoutbtn"
+        app:layout_constraintTop_toBottomOf="@id/settings_fragment"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
 
 
 

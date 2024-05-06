@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.capstone.R;
 
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -36,9 +38,16 @@ public class SignUp extends AppCompatActivity {
         PhoneNumEditText = findViewById(R.id.PhoneNum);
         ImageButton BackBtn = findViewById(R.id.BackButton);
         Button signInBtn = findViewById(R.id.SignInBtn);
+
+        OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        clientBuilder.addInterceptor(loggingInterceptor);
+
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://54.180.213.170/") // Replace with your actual API base URL
+                .baseUrl("http://13.209.90.71/") // Replace with your actual API base URL
                 .addConverterFactory(GsonConverterFactory.create())
+                .client(clientBuilder.build())
                 .build();
         apiService = retrofit.create(SignUpApiService.class);
         signInBtn.setOnClickListener(new View.OnClickListener() {

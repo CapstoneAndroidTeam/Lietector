@@ -1,7 +1,7 @@
 package com.example.capstone.MyPage;
 
-import static com.example.capstone.Login.LogIn.kakaoNickName;
 import static com.example.capstone.Login.LogIn.kakaoProfileImg;
+import static com.example.capstone.Login.LogIn.preferences;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -39,7 +39,7 @@ public class MypageMain extends AppCompatActivity {
         TextView username = findViewById(R.id.name);
         CircleImageView imageView = findViewById(R.id.profileview);
         ImageButton BackBtn = findViewById(R.id.BackButton);
-        username.setText(kakaoNickName);
+        username.setText(preferences.getString("userid", ""));
 
         Glide.with(this).load(kakaoProfileImg).into(imageView);
 

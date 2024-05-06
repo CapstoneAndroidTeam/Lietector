@@ -4,7 +4,7 @@ public class QnAPost {
     private String title;
     private String content;
     private Integer writer;
-    public QnAPost (String title, String content, Integer writer) {
+    public QnAPost (String title, String content, int writer) {
         this.title = title;
         this.content = content;
         this.writer = writer;

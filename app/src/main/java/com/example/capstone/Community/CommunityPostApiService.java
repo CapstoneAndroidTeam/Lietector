@@ -1,4 +1,4 @@
-package com.example.capstone.QnA;
+package com.example.capstone.Community;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -6,9 +6,9 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 
 
-public interface QnAApiService {
+public interface CommunityPostApiService {
     @FormUrlEncoded
-    @POST("/login/?next=/ask/")
+    @POST("/posts/")
     Call<Void> ask(
             @Field("title") String title,
             @Field("content") String content

@@ -12,20 +12,24 @@ import androidx.annotation.Nullable;
 
 import com.example.capstone.R;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class QnAListAdapter extends BaseAdapter {
     private Context context;
-    private ArrayList<String> title;
-    private ArrayList<String> story;
-    private ArrayList<String> answer;
+    private List<String> title;
+    private List<String> content;
     private LayoutInflater inflater;
-    public QnAListAdapter(QnA qnA, ArrayList<String> Title, ArrayList<String> Story, ArrayList<String> Answer) {
+
+    public QnAListAdapter(QnA qnA, List<String> title, List<String> content) {
         this.context = qnA;
-        this.title = Title;
-        this.story = Story;
-        this.answer = Answer;
+        this.title = title;
+        this.content = content;
         inflater = LayoutInflater.from(context);
+    }
+
+    static class ViewHolder {
+        TextView title;
+        TextView content;
     }
 
     @Override
@@ -43,33 +47,25 @@ public class QnAListAdapter extends BaseAdapter {
         return position;
     }
 
-    static class ViewHolder {
-        TextView Title;
-        TextView Story;
-        TextView Answer;
-    }
-
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        QnAListAdapter.ViewHolder holder;
+        ViewHolder holder;
 
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.qna_listview, parent, false);
 
-            holder = new QnAListAdapter.ViewHolder();
-            holder.Title = convertView.findViewById(R.id.QTitle);
-            holder.Story = convertView.findViewById(R.id.story);
-            holder.Answer = convertView.findViewById(R.id.Answer);
+            holder = new ViewHolder();
+            holder.title = convertView.findViewById(R.id.QTitle);
+            holder.content = convertView.findViewById(R.id.story);
 
             convertView.setTag(holder);
         } else {
-            holder = (QnAListAdapter.ViewHolder) convertView.getTag();
+            holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.Title.setText(title.get(position));
-        holder.Story.setText(story.get(position));
-        holder.Answer.setText(answer.get(position));
+        holder.title.setText(title.get(position));
+        holder.content.setText(content.get(position));
 
         return convertView;
     }

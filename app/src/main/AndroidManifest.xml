@@ -126,7 +126,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:host="oauth"
-                    android:scheme="kakao" />
+                    android:scheme="kakao0f1040431656008dfafba9b194dcb098" />
             </intent-filter>
         </activity>
     </application>

@@ -5,6 +5,7 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
@@ -43,6 +44,7 @@ public class LogIn extends AppCompatActivity {
 
     public static String kakaoNickName;
     public static String kakaoProfileImg;
+    public static SharedPreferences preferences;
 
 
     @Override
@@ -84,11 +86,13 @@ public class LogIn extends AppCompatActivity {
         };
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://54.180.213.170/login/") // Adjust the base URL as per your backend endpoint
+                .baseUrl("http://13.209.90.71/") // Adjust the base URL as per your backend endpoint
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(clientBuilder.build())
                 .build();
         LogInService loginService = retrofit.create(LogInService.class);
+
+        preferences = getSharedPreferences("UserInfo", MODE_PRIVATE);
 
         logInButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,13 +107,19 @@ public class LogIn extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<LogInResponse> call, Response<LogInResponse> response) {
                         if (response.isSuccessful()) {
-                            Log.d(TAG, "계정 확인 완료용!!" + response.toString());
+                            Log.d(TAG, "계정 확인 완료!!" + response.toString());
+                            SharedPreferences.Editor editor = preferences.edit();
+                            //putString(KEY,VALUE)
+                            editor.putString("userid",idEditText.getText().toString());
+                            editor.putString("userpwd",passwordEditText.getText().toString());
+                            //항상 commit & apply 를 해주어야 저장이 된다.
+                            editor.commit();
                             Toast.makeText(getApplicationContext(), response.message(), Toast.LENGTH_SHORT).show();
                             Intent goHome = new Intent(getApplicationContext(), MainActivity.class);
                             goHome.putExtra("firstKeyName", ID); // Verify된 경우 userId 다음 액티비티로 전달하기
                             startActivity(goHome);
                         } else {
-                            Log.d(TAG, "Post Status Code ㅠㅠ : " + response.code());
+                            Log.d(TAG, "Post Status Code : " + response.code());
                             Toast.makeText(getApplicationContext(), response.message(), Toast.LENGTH_LONG).show();
                             Log.d(TAG, response.errorBody().toString());
                         }

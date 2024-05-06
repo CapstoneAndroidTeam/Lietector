@@ -2,27 +2,51 @@ package com.example.capstone.Community;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.capstone.Home.MainActivity;
 import com.example.capstone.R;
 
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class CommunityWrite extends AppCompatActivity {
+    CommunityPostApiService apiService;
+    EditText title, content;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.community_writing);
 
         ImageButton HomeBtn = findViewById(R.id.HomeButton);
-        EditText PhoneNum = findViewById(R.id.OptionalPhoneNumber);
-        EditText Story = findViewById(R.id.StoryBox);
+        title = findViewById(R.id.title);
+        content = findViewById(R.id.content);
         Button SaveBtn = findViewById(R.id.EndWriteButton);
         ImageButton BackBtn = findViewById(R.id.BackButton);
+        OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        clientBuilder.addInterceptor(loggingInterceptor);
+
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://13.209.90.71/") // Replace with your actual API base URL
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(clientBuilder.build())
+                .build();
+        apiService = retrofit.create(CommunityPostApiService.class);
         BackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,15 +66,43 @@ public class CommunityWrite extends AppCompatActivity {
         SaveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String PhoneNumString = PhoneNum.getText().toString();
-                String StoryString = Story.getText().toString();
+                pushCommunity();
+            }
+        });
+    }
 
-                if (!StoryString.isEmpty()) {
-                    Intent goCommunityMain = new Intent(getApplicationContext(), CommunityMain.class);
-                    goCommunityMain.putExtra("PhoneNum", PhoneNumString);
-                    goCommunityMain.putExtra("Story", StoryString);
-                    startActivity(goCommunityMain);
+    private void pushCommunity() {
+        String Title = title.getText().toString().trim();
+        String Content = content.getText().toString().trim();
+
+        if (TextUtils.isEmpty(Title)) {
+            title.setError("Enter title");
+            title.requestFocus();
+            return;
+        }
+
+        if (TextUtils.isEmpty(Content)) {
+            content.setError("Enter contents");
+            content.requestFocus();
+            return;
+        }
+
+
+        Call<Void> call = apiService.ask(Title, Content);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(CommunityWrite.this, "Push successful!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(CommunityWrite.this, response.message(), Toast.LENGTH_SHORT).show();
                 }
+            }
+
+            @Override
+            public void onFailure( Call<Void> call, Throwable t) {
+                // Network error
+                Toast.makeText(CommunityWrite.this, "error : " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

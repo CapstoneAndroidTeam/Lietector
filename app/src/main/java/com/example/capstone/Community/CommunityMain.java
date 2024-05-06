@@ -12,11 +12,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.capstone.Home.MainActivity;
 import com.example.capstone.R;
-import com.example.capstone.SignUp.SignUp;
 
 import java.util.ArrayList;
-import java.util.List;
 
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -43,6 +43,10 @@ public class CommunityMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.community);
+        OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        clientBuilder.addInterceptor(loggingInterceptor);
 
         ListView listView = findViewById(R.id.listView);
         if(storytext.size() == 0) {
@@ -55,8 +59,9 @@ public class CommunityMain extends AppCompatActivity {
             storytext.add("게시물 내용");
         }
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://54.180.213.170/")
+                .baseUrl("http://13.209.90.71/")
                 .addConverterFactory(GsonConverterFactory.create())
+                .client(clientBuilder.build())
                 .build();
 
         apiService = retrofit.create(CommunityService.class);

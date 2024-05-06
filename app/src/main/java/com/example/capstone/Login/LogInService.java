@@ -1,13 +1,15 @@
 package com.example.capstone.Login;
 
 import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Query;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.POST;
 
 public interface LogInService {
-    @GET("/login/")
-    Call<LogInResponse> login(@Query("username") String username,
-                              @Query("password") String password
+    @FormUrlEncoded
+    @POST("/login/")
+    Call<LogInResponse> login(@Field("username") String username,
+                              @Field("password") String password
     );
 }
 
