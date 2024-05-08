@@ -8,9 +8,9 @@ import retrofit2.http.POST;
 
 public interface QnAApiService {
     @FormUrlEncoded
-    @POST("/login/?next=/ask/")
-    Call<Void> ask(
-            @Field("title") String title,
-            @Field("content") String content
+    @POST("/ask/")
+    Call<postItems> ask(@Field("title") String title,
+                        @Field("content") String content,
+                        @Field("userId") String userId
     );
 }

@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 
+import com.example.capstone.Chatbot.Chat;
 import com.example.capstone.Community.CommunityMain;
 import com.example.capstone.Home.MainActivity;
 import com.example.capstone.R;
@@ -24,8 +25,15 @@ public class NumSearch extends AppCompatActivity {
         Button banBtn = findViewById(R.id.Banbtn);
         Button bannumBtn = findViewById(R.id.BanNumberButton);
         Button communityBtn = findViewById(R.id.GalleryButton);
-        Button preventBtn = findViewById(R.id.PreventionButton);
         ImageButton BackBtn = findViewById(R.id.BackButton);
+        Button treatBtn = findViewById(R.id.PreventionButton);
+        treatBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goChat = new Intent(getApplicationContext(), Chat.class);
+                startActivity(goChat);
+            } //진단하기 버튼 누르면 진단하기 창으로
+        });
         BackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

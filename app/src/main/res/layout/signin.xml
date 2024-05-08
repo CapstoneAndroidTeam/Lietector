@@ -110,7 +110,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="비밀번호 확인"
+                android:text="(이름) 성"
                 android:textColor="@color/black"
                 android:textSize="20dp"
                 android:layout_marginTop="20dp"
@@ -118,13 +118,35 @@
                 />
 
             <EditText
-                android:id="@+id/PasswordOnceMore"
+                android:id="@+id/lastname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:width="300dp"
                 android:height="70dp"
                 android:background="@color/white"
-                android:hint=" 비밀번호 입력"
+                android:hint=" (이름) 성 입력"
+                app:layout_constraintTop_toBottomOf="@+id/AppSignText"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(이름) 이름"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="50dp"
+                />
+
+            <EditText
+                android:id="@+id/firstname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:width="300dp"
+                android:height="70dp"
+                android:background="@color/white"
+                android:hint=" (이름) 이름 입력"
                 app:layout_constraintTop_toBottomOf="@+id/AppSignText"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center"/>
@@ -161,55 +183,17 @@
                 android:layout_marginLeft="50dp"
                 />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/PhoneNum"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:width="180dp"
-                    android:height="70dp"
-                    android:background="@color/white"
-                    android:hint="  01012345678"
-                    app:layout_constraintTop_toBottomOf="@+id/AppSignText"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="50dp"/>
-
-                <Button
-                    android:id="@+id/AuthButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="인증번호 전송"
-                    android:textColor="@color/white"
-                    android:backgroundTint="#28BEEE"
-                    android:layout_marginLeft="10dp"
-                    android:height="70dp"/>
 
 
-
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text = "인증번호"
-                android:textColor="@color/black"
-                android:textSize="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="50dp"
-                />
 
             <EditText
-                android:id="@+id/AuthNum"
+                android:id="@+id/PhoneNum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:width="300dp"
                 android:height="70dp"
                 android:background="@color/white"
-                android:hint="  인증번호 입력"
+                android:hint="  전화번호 입력"
                 app:layout_constraintTop_toBottomOf="@+id/AppSignText"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center"/>

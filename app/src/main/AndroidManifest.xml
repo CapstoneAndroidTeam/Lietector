@@ -102,6 +102,9 @@
         <activity android:name=".Report.ReportHistory"
             android:parentActivityName=".MyPage.MypageMain"
             android:exported="false"/>
+        <activity android:name=".Chatbot.Chat"
+            android:parentActivityName=".MyPage.MypageMain"
+            android:exported="false"/>
         <activity
             android:name=".Login.LogIn"
 

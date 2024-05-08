@@ -23,7 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SignUp extends AppCompatActivity {
 
-    private EditText IDEditText, PasswordEditText, PasswordOnceMoreEditText, NickNameEditText, PhoneNumEditText;
+    private EditText IDEditText, PasswordEditText, LastName, FirstName, NickNameEditText, PhoneNumEditText;
 
     private SignUpApiService apiService;
     @Override
@@ -33,7 +33,8 @@ public class SignUp extends AppCompatActivity {
 
         IDEditText = findViewById(R.id.IDEdit);
         PasswordEditText = findViewById(R.id.Password);
-        PasswordOnceMoreEditText = findViewById(R.id.PasswordOnceMore);
+        LastName = findViewById(R.id.lastname);
+        FirstName = findViewById(R.id.firstname);
         NickNameEditText = findViewById(R.id.NickName);
         PhoneNumEditText = findViewById(R.id.PhoneNum);
         ImageButton BackBtn = findViewById(R.id.BackButton);
@@ -68,8 +69,11 @@ public class SignUp extends AppCompatActivity {
     private void signup() {
         String username = IDEditText.getText().toString().trim();
         String password = PasswordEditText.getText().toString().trim();
+        String lastname = LastName.getText().toString().trim();
+        String firstname = FirstName.getText().toString().trim();
         String nickname = NickNameEditText.getText().toString().trim();
         String number = PhoneNumEditText.getText().toString().trim();
+
 
         if (TextUtils.isEmpty(username)) {
             IDEditText.setError("Enter username");
@@ -85,7 +89,7 @@ public class SignUp extends AppCompatActivity {
 
 
         // Call the signup API
-        Call<Void> call = apiService.signup(username,password,"choi", "youngwoo", nickname, number);
+        Call<Void> call = apiService.signup(username,password, lastname, firstname, nickname, number);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {

@@ -37,18 +37,6 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"/>
 
-    <TextView
-        android:id="@+id/report_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="01000000000"
-        android:textSize="20dp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="@id/mainview"
-        app:layout_constraintLeft_toRightOf="@id/writer"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"/>
 
     <TextView
         android:id="@+id/title"
@@ -67,7 +55,7 @@
         android:id="@+id/content"
         android:layout_width="300dp"
         android:layout_height="80dp"
-        android:text="개시물 내용"
+        android:text="게시물 내용"
         android:textStyle="normal"
         android:textSize="20dp"
         android:textColor="@color/black"

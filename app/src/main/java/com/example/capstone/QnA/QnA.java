@@ -1,7 +1,10 @@
 package com.example.capstone.QnA;
 
+import static android.service.controls.ControlsProviderService.TAG;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -55,6 +58,7 @@ public class QnA extends AppCompatActivity {
                 .build();
         apiService = retrofit.create(QnAListApiService.class);
 
+
         // Make API call to fetch the list of questions
         Call<List<getItems>> call = apiService.asklist( Title, Content);
         call.enqueue(new Callback<List<getItems>>() {
@@ -73,8 +77,20 @@ public class QnA extends AppCompatActivity {
                     }
                     adapter = new QnAListAdapter(QnA.this, titles, contents);
                     listView.setAdapter(adapter);
+
+                    /*
+                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            ArrayAdapter arrayAdapter = new ArrayAdapter(titles, contents);
+
+                        }
+                    });
+
+                     */
                 } else {
-                    Toast.makeText(QnA.this, "Failed to fetch data: " + response.message(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(QnA.this, "Failed to fetch data: " + response.body().toString(), Toast.LENGTH_SHORT).show();
+                    Log.d(TAG, "response data " + response.body().toString());
                 }
             }
 
@@ -83,6 +99,7 @@ public class QnA extends AppCompatActivity {
                 Toast.makeText(QnA.this, "Network error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override

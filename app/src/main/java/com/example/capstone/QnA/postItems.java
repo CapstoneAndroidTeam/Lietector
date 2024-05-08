@@ -10,11 +10,13 @@ public class postItems {
     private String content;
 
 
-    public void getTitle() {
+
+
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    public void getContent() {
+    public void setContent(String content) {
 
         this.content = content;
     }

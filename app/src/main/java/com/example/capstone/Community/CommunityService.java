@@ -8,10 +8,9 @@ import retrofit2.http.Query;
 
 public interface CommunityService {
     @GET("/posts/alllist/")
-    Call<communitypost_backend> getCommunityPosts(
+    Call<List<communitypost_backend>> getCommunityPosts(
             @Query("title") String title,
-            @Query("content") String content,
-            @Query("report_number") String report_number,
-            @Query("writer") String writer
+            @Query("content") String content
     );
+
 }

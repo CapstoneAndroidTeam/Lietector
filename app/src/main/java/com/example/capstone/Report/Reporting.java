@@ -47,7 +47,7 @@ public class Reporting extends AppCompatActivity {
         OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
         clientBuilder.retryOnConnectionFailure(true);
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.HEADERS);
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         clientBuilder.addInterceptor(loggingInterceptor);
 
 
@@ -119,7 +119,7 @@ public class Reporting extends AppCompatActivity {
         String report_content = reportreason.getText().toString();
         String report_type = type;
 
-        Call<Void> call = apiService.report(report_number, report_type, report_content, 1, 1);
+        Call<Void> call = apiService.report(report_number, report_type, report_content, 6);
 
         call.enqueue(new Callback<Void>() {
             @Override

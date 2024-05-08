@@ -1,7 +1,6 @@
 package com.example.capstone.QnA;
 
 import static android.content.ContentValues.TAG;
-import static com.example.capstone.Login.LogIn.preferences;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -53,6 +52,7 @@ public class QnAWrite extends AppCompatActivity{
         apiService = retrofit.create(QnAApiService.class);
 
 
+
         BackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,23 +92,24 @@ public class QnAWrite extends AppCompatActivity{
             return;
         }
 
-        Log.d(TAG, "userid : " + preferences.getString("userid",""));
 
 
-        Call<Void> call = apiService.ask(Title, Content);
-        call.enqueue(new Callback<Void>() {
+        postItems postItems = new postItems();
+        Call<postItems> call = apiService.ask(Title, Content, "pingu0705");
+        call.enqueue(new Callback<postItems>() {
+
             @Override
-            public void onResponse(Call<Void> call,Response<Void> response) {
+            public void onResponse(Call<postItems> call,Response<postItems> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(QnAWrite.this, "Report successful!", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(QnAWrite.this, response.toString(), Toast.LENGTH_SHORT).show();
-                    Log.d(TAG, response.toString());
+                    Log.d(TAG, "response data " + response.message());
                 }
             }
 
             @Override
-            public void onFailure( Call<Void> call, Throwable t) {
+            public void onFailure( Call<postItems> call, Throwable t) {
                 // Network error
                 Toast.makeText(QnAWrite.this, "error : " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }

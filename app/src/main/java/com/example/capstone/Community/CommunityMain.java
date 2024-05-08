@@ -1,19 +1,23 @@
 package com.example.capstone.Community;
 
+import static android.service.controls.ControlsProviderService.TAG;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.capstone.Home.MainActivity;
 import com.example.capstone.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -25,9 +29,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CommunityMain extends AppCompatActivity {
     ListView listView;
-    ArrayList<Integer> profileimg = new ArrayList<>();
-    ArrayList<String> nickname = new ArrayList<>();
-    ArrayList<String> storytext = new ArrayList<>();
 
     private CommunityService apiService;
 
@@ -39,6 +40,9 @@ public class CommunityMain extends AppCompatActivity {
     String[] storytext = {"sample AM", "sample AM", "sample AM", "sample AM", "sample AM", "sample AM", "sample AM", "sample AM", "sample PM"};
 
      */
+    String title, content;
+    String titles;
+    String contents;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,16 +52,8 @@ public class CommunityMain extends AppCompatActivity {
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         clientBuilder.addInterceptor(loggingInterceptor);
 
-        ListView listView = findViewById(R.id.listView);
-        if(storytext.size() == 0) {
-            listView.getEmptyView();
-        }
 
-        for (int i = 0; i < 5; i ++) {
-            profileimg.add(R.drawable.profileimg);
-            nickname.add("닉네임");
-            storytext.add("게시물 내용");
-        }
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://13.209.90.71/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -67,6 +63,7 @@ public class CommunityMain extends AppCompatActivity {
         apiService = retrofit.create(CommunityService.class);
 
         posting();
+        listView = findViewById(R.id.listView);
 
         ImageButton HomeBtn = findViewById(R.id.HomeButton);
         ImageButton AddBtn = findViewById(R.id.AddStoryButton);
@@ -92,31 +89,38 @@ public class CommunityMain extends AppCompatActivity {
                 finish();
             }
         });
-        //CommunityListAdapter listadapter = new CommunityListAdapter(CommunityMain.this);
-        //listView.setAdapter(listadapter);
     }
 
 
     private void posting () {
 
-        Call<communitypost_backend> call = apiService.getCommunityPosts("hello", "hi", "01011111111", "");
-        call.enqueue(new Callback<communitypost_backend>() {
+
+        Call<List<communitypost_backend>> call = apiService.getCommunityPosts(title, content);
+        call.enqueue(new Callback<List<communitypost_backend>>() {
             @Override
-            public void onResponse(@NonNull Call<communitypost_backend> call, @NonNull Response<communitypost_backend> response) {
+            public void onResponse(Call<List<communitypost_backend>> call, Response<List<communitypost_backend>> response) {
                 if (response.isSuccessful()) {
-                    // Signup successful
-                    Toast.makeText(CommunityMain.this, response.message(), Toast.LENGTH_SHORT).show();
-                    // Navigate to another activity or perform any other action
+
+                    List<communitypost_backend> items = response.body();
+                    Toast.makeText(CommunityMain.this, "Data Received Successfully", Toast.LENGTH_SHORT).show();
+                    List<String> titles = new ArrayList<>();
+                    List<String> contents = new ArrayList<>();
+                    // Iterate through each QnAItem and add its title and content to the respective lists
+                    for (communitypost_backend item : items) {
+                        titles.add(item.getTitle());
+                        contents.add(item.getContent());
+                    }
+                    ListAdapter adapter = new CommunityListAdapter(CommunityMain.this, titles, contents);
+                    listView.setAdapter(adapter);
                 } else {
-                    // Signup failed
-                    Toast.makeText(CommunityMain.this, response.message(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CommunityMain.this, "Failed to fetch data: " + response.body().toString(), Toast.LENGTH_SHORT).show();
+                    Log.d(TAG, "response data " + response.body().toString());
                 }
             }
 
             @Override
-            public void onFailure(@NonNull Call<communitypost_backend> call, @NonNull Throwable t) {
-                // Network error
-                Toast.makeText(CommunityMain.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<List<communitypost_backend>> call, Throwable t) {
+                Toast.makeText(CommunityMain.this, "Network error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

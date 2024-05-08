@@ -1,15 +1,15 @@
 package com.example.capstone.Home;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 
+import com.example.capstone.Chatbot.Chat;
 import com.example.capstone.Community.CommunityMain;
 import com.example.capstone.Diagnose.DiagnoseMain;
 import com.example.capstone.MyPage.MypageMain;
@@ -82,6 +82,15 @@ public class MainActivity extends AppCompatActivity {
                 Intent goReport = new Intent(getApplicationContext(), Reporting.class);
                 startActivity(goReport);
             }
+        });
+
+        //Go Treat page
+        treatBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goChat = new Intent(getApplicationContext(), Chat.class);
+                startActivity(goChat);
+            } //진단하기 버튼 누르면 진단하기 창으로
         });
 
         myPageBtn.setOnClickListener(new View.OnClickListener() {

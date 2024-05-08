@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.capstone.Chatbot.Chat;
 import com.example.capstone.Community.CommunityWrite;
 import com.example.capstone.Home.MainActivity;
 import com.example.capstone.R;
@@ -37,7 +38,14 @@ public class DiagnoseSerious extends AppCompatActivity {
         ImageButton HomeBtn = findViewById(R.id.HomeButton);
         Button banBtn = findViewById(R.id.BanNumberButton);
         Button CommunityBtn = findViewById(R.id.WriteinGalleryButton);
-        Button preventBtn = findViewById(R.id.PreventionButton);
+        Button treatBtn = findViewById(R.id.PreventionButton);
+        treatBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goChat = new Intent(getApplicationContext(), Chat.class);
+                startActivity(goChat);
+            } //진단하기 버튼 누르면 진단하기 창으로
+        });
         Button moreInfo = findViewById(R.id.MoreButton);
         ImageButton BackBtn = findViewById(R.id.BackButton);
         TextView riskpercent = findViewById(R.id.riskyPercent);

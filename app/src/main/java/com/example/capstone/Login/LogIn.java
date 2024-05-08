@@ -27,6 +27,10 @@ import com.kakao.sdk.auth.model.OAuthToken;
 import com.kakao.sdk.user.UserApiClient;
 import com.kakao.sdk.user.model.User;
 
+import java.net.CookieHandler;
+import java.net.CookieManager;
+import java.net.CookiePolicy;
+import java.net.CookieStore;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -63,6 +67,15 @@ public class LogIn extends AppCompatActivity {
         Button signInButton = findViewById(R.id.signButton);
         Button logInButton = findViewById(R.id.LogInButton);
         ImageButton kakao = findViewById(R.id.kakaobtn);
+
+
+        CookieManager manager = new CookieManager();
+        manager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
+        CookieHandler.setDefault(manager);
+
+        CookieStore store = manager.getCookieStore();
+
+
 
         Function2<OAuthToken,Throwable,Unit> callback =new Function2<OAuthToken, Throwable, Unit>() {
             @Override
@@ -107,7 +120,8 @@ public class LogIn extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<LogInResponse> call, Response<LogInResponse> response) {
                         if (response.isSuccessful()) {
-                            Log.d(TAG, "계정 확인 완료!!" + response.toString());
+                            Log.d(TAG, "username : " + response.body().getUsername());
+                            Log.d(TAG, "password : " + response.body().getPassword());
                             SharedPreferences.Editor editor = preferences.edit();
                             //putString(KEY,VALUE)
                             editor.putString("userid",idEditText.getText().toString());
