@@ -1,6 +1,7 @@
 package com.example.capstone.Report;
 
 import static android.content.ContentValues.TAG;
+import static com.example.capstone.Login.LogIn.userToken;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,7 +23,6 @@ import com.example.capstone.R;
 import java.io.File;
 
 import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -31,6 +31,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Reporting extends AppCompatActivity {
     EditText reportphonenum , reportreason;
+    public static String report_number;
+    public static String report_type;
     String type;
     static File file;
     private ReportApiService apiService;
@@ -44,20 +46,18 @@ public class Reporting extends AppCompatActivity {
         ImageButton HomeBtn = findViewById(R.id.HomeButton);
         Button reportButton = findViewById(R.id.EndWriteButton);
         ImageButton BackBtn = findViewById(R.id.BackButton);
-        OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
-        clientBuilder.retryOnConnectionFailure(true);
-        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        clientBuilder.addInterceptor(loggingInterceptor);
 
+        ReportTokenInterceptor interceptor=new ReportTokenInterceptor();
 
-
+        OkHttpClient client = new OkHttpClient.Builder()
+                .addInterceptor(interceptor)
+                .build();
 
 
         Retrofit retrofit = new Retrofit.Builder()
+                .client(client)
                 .baseUrl("http://13.209.90.71/") // Replace with your actual API base URL
                 .addConverterFactory(GsonConverterFactory.create())
-                .client(clientBuilder.build())
                 .build();
         apiService = retrofit.create(ReportApiService.class);
 
@@ -115,26 +115,27 @@ public class Reporting extends AppCompatActivity {
 
 
     private void reporting() {
-        String report_number = reportphonenum.getText().toString();
+        report_number = reportphonenum.getText().toString();
         String report_content = reportreason.getText().toString();
-        String report_type = type;
+        report_type = type;
 
-        Call<Void> call = apiService.report(report_number, report_type, report_content, 6);
+        Call<getReportItems> call = apiService.report(userToken, report_number, report_type, report_content);
 
-        call.enqueue(new Callback<Void>() {
+        call.enqueue(new Callback<getReportItems>() {
             @Override
-            public void onResponse(@NonNull  Call<Void> call, @NonNull  Response<Void> response) {
+            public void onResponse(@NonNull  Call<getReportItems> call, @NonNull  Response<getReportItems> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(Reporting.this, "Report successful!", Toast.LENGTH_SHORT).show();
+
                     Intent intent = new Intent(getApplicationContext(), ReportingEnd.class);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(Reporting.this, "response : " + response.message(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Reporting.this, "모든 칸을 입력하세요.", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure( @NonNull Call<Void> call, @NonNull  Throwable t) {
+            public void onFailure( @NonNull Call<getReportItems> call, @NonNull  Throwable t) {
                 // Network error
                 Toast.makeText(Reporting.this, "error : " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 Log.d(TAG, "error Log : " + t.getMessage());

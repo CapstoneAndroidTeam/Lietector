@@ -100,7 +100,7 @@
         android:layout_marginStart="60dp"
         android:layout_marginEnd="60dp"
         android:lines="20"
-        android:minLines="12"
+        
         android:maxLines="16"
         android:scrollbars="vertical"
         android:gravity="left"

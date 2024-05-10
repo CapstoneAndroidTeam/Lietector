@@ -13,7 +13,8 @@ import retrofit2.http.PartMap;
 public interface DiagnoseVoiceApiService {
     @Multipart
     @POST("/voice/")
-    Call<DgetItems> diagnoseVoice(@PartMap Map<String, RequestBody> diagnosis_type,
+    Call<DgetItems> diagnoseVoice(
+            @PartMap Map<String, RequestBody> diagnosis_type,
             @Part MultipartBody.Part audoi_file);
 
     /*

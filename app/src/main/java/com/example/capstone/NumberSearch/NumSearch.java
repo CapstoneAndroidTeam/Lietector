@@ -1,10 +1,17 @@
 package com.example.capstone.NumberSearch;
 
+import static com.example.capstone.Home.MainActivity.phonenumList;
+import static com.example.capstone.Home.MainActivity.reportTypeList;
+import static com.example.capstone.Home.MainActivity.searchNumber;
+import static com.example.capstone.Home.MainActivity.searchReportType;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
@@ -15,18 +22,32 @@ import com.example.capstone.Home.MainActivity;
 import com.example.capstone.R;
 import com.example.capstone.Report.Reporting;
 
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class NumSearch extends AppCompatActivity {
+
+    NSPApiService apiService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.num_search);
 
-        Button banBtn = findViewById(R.id.Banbtn);
         Button bannumBtn = findViewById(R.id.BanNumberButton);
         Button communityBtn = findViewById(R.id.GalleryButton);
         ImageButton BackBtn = findViewById(R.id.BackButton);
         Button treatBtn = findViewById(R.id.PreventionButton);
+        TextView num = findViewById(R.id.NumText);
+        TextView type = findViewById(R.id.TypeText);
+
+        num.setText(searchNumber);
+        type.setText(searchReportType);
         treatBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,6 +100,57 @@ public class NumSearch extends AppCompatActivity {
         });
 
         SearchView searchview = findViewById(R.id.searchView);
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://13.209.90.71/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        apiService = retrofit.create(NSPApiService.class);
+
+
+        // Make API call to fetch the list of questions
+        Call<List<NSPgetItems>> call = apiService.reportList("", "");
+
+        searchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Call<List<NSPgetItems>> call = apiService.reportList( "", "");
+                call.enqueue(new Callback<List<NSPgetItems>>() {
+
+                    @Override
+                    public void onResponse(Call<List<NSPgetItems>> call, Response<List<NSPgetItems>> response) {
+                        if (response.isSuccessful()) {
+                            if (phonenumList.contains(query)) {
+                                int index = phonenumList.indexOf(query);
+                                searchNumber = query;
+                                searchReportType = reportTypeList.get(index);
+                                Intent intent = new Intent(getApplicationContext(), NumSearch.class);
+                                startActivity(intent);
+                            } else {
+                                Intent intent = new Intent(getApplicationContext(), NumNotSearch.class);
+                                startActivity(intent);
+                            }
+                            Toast.makeText(NumSearch.this, "Data Received Successfully", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(NumSearch.this, response.message(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<NSPgetItems>> call, Throwable t) {
+                        Toast.makeText(NumSearch.this, "Network error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // Handle text change if needed
+                return false;
+            }
+        });
+
+        /*
 
         searchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -99,6 +171,8 @@ public class NumSearch extends AppCompatActivity {
                 return false;
             }
         });
+
+         */
 
 
 

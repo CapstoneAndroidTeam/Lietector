@@ -1,10 +1,12 @@
 package com.example.capstone.Report;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,35 +14,42 @@ import androidx.annotation.Nullable;
 
 import com.example.capstone.R;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class ReportListAdapter extends BaseAdapter {
     private Context context;
-    private ArrayList<Integer> riskPercent;
-    private ArrayList<String> phonenum;
-    private ArrayList<String> type;
-    private ArrayList<String> times;
+    private List<String> reportNumber;
+    private List<String> reportType;
+    private List<String> reportContent;
+    private List<Integer> reportId;
     private LayoutInflater inflater;
+    public static int reportTimes;
+    public static int reportPostId;
+    public static String  reportExistNumber;
+    public static String reportExistContent;
 
 
-    public ReportListAdapter(ReportHistory reportHistory, ArrayList<Integer> risky, ArrayList<String> phonenum, ArrayList<String> type, ArrayList<String> reportedtimes) {
+
+
+
+    public ReportListAdapter(ReportHistory reportHistory, List<Integer> reportId, List<String> reportNumber, List<String> reportType, List<String> reportContent) {
         this.context = reportHistory;
-        this.riskPercent = risky;
-        this.phonenum = phonenum;
-        this.type = type;
-        this.times = reportedtimes;
+        this.reportId = reportId;
+        this.reportNumber = reportNumber;
+        this.reportType = reportType;
+        this.reportContent = reportContent;
         inflater = LayoutInflater.from(context);
     }
 
 
     @Override
     public int getCount() {
-        return phonenum.size();
+        return reportNumber.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return phonenum.get(position);
+        return reportNumber.get(position);
     }
 
     @Override
@@ -49,10 +58,10 @@ public class ReportListAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
-        TextView risky;
-        TextView phonenum;
+        ImageButton editBtn;
+        TextView number;
         TextView type;
-        TextView times;
+        TextView contet;
     }
 
     @NonNull
@@ -63,21 +72,33 @@ public class ReportListAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.report_listview, parent, false);
 
+
             holder = new ReportListAdapter.ViewHolder();
-            holder.risky = convertView.findViewById(R.id.riskyPercent);
-            holder.phonenum = convertView.findViewById(R.id.phonenumber);
+            holder.number = convertView.findViewById(R.id.phonenumber);
             holder.type = convertView.findViewById(R.id.type);
-            holder.times = convertView.findViewById(R.id.reportedtimes);
+            holder.contet = convertView.findViewById(R.id.reportContent);
+            holder.editBtn = convertView.findViewById(R.id.editbtn);
+            reportTimes = reportNumber.size();
 
             convertView.setTag(holder);
         } else {
             holder = (ReportListAdapter.ViewHolder) convertView.getTag();
         }
 
-        holder.phonenum.setText(phonenum.get(position));
-        holder.times.setText(times.get(position));
-        holder.type.setText(type.get(position));
-        //holder.risky.setText(riskPercent.get(position)); // 여기서 에러 남,, 수정할 것
+        holder.editBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reportPostId = reportId.get(position);
+                reportExistNumber = reportNumber.get(position);
+                reportExistContent = reportContent.get(position);
+                Intent intent = new Intent(context.getApplicationContext(), ReportEdit.class);
+                context.startActivity(intent);
+            }
+        });
+
+        holder.number.setText(reportNumber.get(position));
+        holder.type.setText(reportType.get(position));
+        holder.contet.setText(reportContent.get(position));
 
         return convertView;
     }

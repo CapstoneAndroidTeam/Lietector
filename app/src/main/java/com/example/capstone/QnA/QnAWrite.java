@@ -1,6 +1,8 @@
 package com.example.capstone.QnA;
 
 import static android.content.ContentValues.TAG;
+import static com.example.capstone.Login.LogIn.preferences;
+import static com.example.capstone.Login.LogIn.userToken;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +20,6 @@ import com.example.capstone.Home.MainActivity;
 import com.example.capstone.R;
 
 import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -38,16 +39,17 @@ public class QnAWrite extends AppCompatActivity{
         content = findViewById(R.id.story);
         ImageButton BackBtn = findViewById(R.id.BackButton);
 
-        OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
-        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        clientBuilder.addInterceptor(loggingInterceptor);
 
+        AskTokenInterceptor interceptor = new AskTokenInterceptor();
+
+        OkHttpClient client = new OkHttpClient.Builder()
+                .addInterceptor(interceptor)
+                .build();
 
         Retrofit retrofit = new Retrofit.Builder()
+                .client(client)
                 .baseUrl("http://13.209.90.71/") // Replace with your actual API base URL
                 .addConverterFactory(GsonConverterFactory.create())
-                .client(clientBuilder.build())
                 .build();
         apiService = retrofit.create(QnAApiService.class);
 
@@ -94,14 +96,15 @@ public class QnAWrite extends AppCompatActivity{
 
 
 
-        postItems postItems = new postItems();
-        Call<postItems> call = apiService.ask(Title, Content, "pingu0705");
+        Call<postItems> call = apiService.ask(userToken, Title, Content, preferences.getString("userid", ""));
         call.enqueue(new Callback<postItems>() {
 
             @Override
             public void onResponse(Call<postItems> call,Response<postItems> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(QnAWrite.this, "Report successful!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(), QnA.class);
+                    startActivity(intent);
                 } else {
                     Toast.makeText(QnAWrite.this, response.toString(), Toast.LENGTH_SHORT).show();
                     Log.d(TAG, "response data " + response.message());

@@ -33,7 +33,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import okhttp3.MediaType;
@@ -56,6 +58,8 @@ public class DiagnoseAudio extends AppCompatActivity {
     private static File file;
     public static int intPercent;
     public static Number percent;
+    public static List<String> suspiciousWord = new ArrayList<>();
+    public static List<Integer> suspiciousOrder = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -205,8 +209,19 @@ public class DiagnoseAudio extends AppCompatActivity {
             public void onResponse(@NonNull Call<DgetItems> call, @NonNull Response<DgetItems> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(DiagnoseAudio.this, "Diagnosis successful", Toast.LENGTH_SHORT).show();
-                    Log.d(TAG, "data : " + response.body().suspicion_percentage);
+                    Log.d(TAG, "Audio data : " + response.body().suspicion_percentage);
                     percent = response.body().suspicion_percentage;
+                    Log.d(TAG, "Suspicious word : " + response.body().suspicion_word);
+                    for(String i : response.body().suspicion_word) {
+                        suspiciousWord.add(i);
+                    }
+                    for (int i = 1; i <= suspiciousWord.size(); i ++) {
+                        suspiciousOrder.add(i);
+                    }
+                    for(int i : suspiciousOrder) {
+                        Log.d(TAG, "suspicious order list : " + i);
+                    }
+
                     String stringPercent = "";
                     for (char x : percent.toString().toCharArray()) {
                         if (Character.isDigit(x)) {
@@ -236,6 +251,7 @@ public class DiagnoseAudio extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Call<DgetItems> call, @NonNull Throwable t) {
                 Toast.makeText(DiagnoseAudio.this, "Network error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "Network Error : " + t.getMessage());
             }
         });
     }

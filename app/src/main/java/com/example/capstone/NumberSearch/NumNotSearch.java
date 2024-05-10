@@ -1,10 +1,16 @@
 package com.example.capstone.NumberSearch;
 
+import static com.example.capstone.Home.MainActivity.phonenumList;
+import static com.example.capstone.Home.MainActivity.reportTypeList;
+import static com.example.capstone.Home.MainActivity.searchNumber;
+import static com.example.capstone.Home.MainActivity.searchReportType;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
@@ -15,7 +21,16 @@ import com.example.capstone.Home.MainActivity;
 import com.example.capstone.R;
 import com.example.capstone.Report.Reporting;
 
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class NumNotSearch extends AppCompatActivity {
+    NSPApiService apiService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,23 +83,51 @@ public class NumNotSearch extends AppCompatActivity {
         });
 
         SearchView searchview = findViewById(R.id.searchView);
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://13.209.90.71/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        apiService = retrofit.create(NSPApiService.class);
+
+
+        // Make API call to fetch the list of questions
+        Call<List<NSPgetItems>> call = apiService.reportList("", "");
 
         searchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                if (query.equals("01012345678")) {
-                    Intent goNumSearch = new Intent(getApplicationContext(), NumSearch.class);
-                    startActivity(goNumSearch);
-                } else {
-                    Intent goNumNotSearch = new Intent(getApplicationContext(), NumNotSearch.class);
-                    startActivity(goNumNotSearch);
-                }
+                Call<List<NSPgetItems>> call = apiService.reportList("", "");
+                call.enqueue(new Callback<List<NSPgetItems>>() {
+
+                    @Override
+                    public void onResponse(Call<List<NSPgetItems>> call, Response<List<NSPgetItems>> response) {
+                        if (response.isSuccessful()) {
+                            if (phonenumList.contains(query)) {
+                                int index = phonenumList.indexOf(query);
+                                searchNumber = query;
+                                searchReportType = reportTypeList.get(index);
+                                Intent intent = new Intent(getApplicationContext(), NumSearch.class);
+                                startActivity(intent);
+                            } else {
+                                Intent intent = new Intent(getApplicationContext(), NumNotSearch.class);
+                                startActivity(intent);
+                            }
+                            Toast.makeText(NumNotSearch.this, "Data Received Successfully", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(NumNotSearch.this, response.message(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<NSPgetItems>> call, Throwable t) {
+                        Toast.makeText(NumNotSearch.this, "Network error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                // Handle text change if needed
                 return false;
             }
         });

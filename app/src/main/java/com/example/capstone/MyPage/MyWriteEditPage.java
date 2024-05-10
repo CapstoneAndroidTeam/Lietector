@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.capstone.Community.MyWritingHistory;
 import com.example.capstone.Home.MainActivity;
 import com.example.capstone.R;
 

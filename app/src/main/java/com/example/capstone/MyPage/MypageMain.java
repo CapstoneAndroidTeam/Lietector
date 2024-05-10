@@ -1,11 +1,11 @@
 package com.example.capstone.MyPage;
 
 import static com.example.capstone.Login.LogIn.kakaoProfileImg;
+import static com.example.capstone.Login.LogIn.userName;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.capstone.Ban.BanHistory;
+import com.example.capstone.Community.MyWritingHistory;
 import com.example.capstone.QnA.QnA;
 import com.example.capstone.R;
 import com.example.capstone.Report.ReportHistory;
@@ -29,7 +30,6 @@ public class MypageMain extends AppCompatActivity {
         setContentView(R.layout.mypage_main);
 
         //edit, Inquire 왜이러는지..?
-        Button editBtn = findViewById(R.id.myedit);
         ImageButton BanBtn = findViewById(R.id.banhistoryBtn);
         ImageButton ReportBtn = findViewById(R.id.reporthistoryBtn);
         ImageButton PostBtn = findViewById(R.id.mypost);
@@ -38,9 +38,12 @@ public class MypageMain extends AppCompatActivity {
         TextView username = findViewById(R.id.name);
         CircleImageView imageView = findViewById(R.id.profileview);
         ImageButton BackBtn = findViewById(R.id.BackButton);
+        //reportTime.setText("신고 내역 " + ReportListAdapter.reportTimes + "회");
 
         Glide.with(this).load(kakaoProfileImg).into(imageView);
 
+
+        username.setText(userName);
 
 
 
@@ -53,13 +56,6 @@ public class MypageMain extends AppCompatActivity {
             }
         });
 
-        editBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent goEditPage = new Intent(getApplicationContext(), MypageEdit.class);
-                startActivity(goEditPage);
-            }
-        });
 
         BanBtn.setOnClickListener(new View.OnClickListener() {
 

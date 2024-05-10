@@ -49,7 +49,9 @@ public class LogIn extends AppCompatActivity {
     public static String kakaoNickName;
     public static String kakaoProfileImg;
     public static SharedPreferences preferences;
+    public static String userToken;
 
+    public static String userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,7 +107,7 @@ public class LogIn extends AppCompatActivity {
                 .build();
         LogInService loginService = retrofit.create(LogInService.class);
 
-        preferences = getSharedPreferences("UserInfo", MODE_PRIVATE);
+        preferences = getSharedPreferences("Token", MODE_PRIVATE);
 
         logInButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,21 +122,22 @@ public class LogIn extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<LogInResponse> call, Response<LogInResponse> response) {
                         if (response.isSuccessful()) {
-                            Log.d(TAG, "username : " + response.body().getUsername());
-                            Log.d(TAG, "password : " + response.body().getPassword());
+                            Log.d(TAG, "Token : " + response.body().token);
                             SharedPreferences.Editor editor = preferences.edit();
                             //putString(KEY,VALUE)
-                            editor.putString("userid",idEditText.getText().toString());
-                            editor.putString("userpwd",passwordEditText.getText().toString());
+                            editor.putString("Token",response.body().token);
+                            userToken = response.body().token;
+                            userName = response.body().getUsername();
+                            Log.d(TAG, "username : " + userName);
                             //항상 commit & apply 를 해주어야 저장이 된다.
                             editor.commit();
-                            Toast.makeText(getApplicationContext(), response.message(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "로그인 성공", Toast.LENGTH_SHORT).show();
                             Intent goHome = new Intent(getApplicationContext(), MainActivity.class);
                             goHome.putExtra("firstKeyName", ID); // Verify된 경우 userId 다음 액티비티로 전달하기
                             startActivity(goHome);
                         } else {
-                            Log.d(TAG, "Post Status Code : " + response.code());
-                            Toast.makeText(getApplicationContext(), response.message(), Toast.LENGTH_LONG).show();
+                            Log.d(TAG, "잘못된 아이디 혹은 비밀번호 입니다.");
+                            Toast.makeText(getApplicationContext(), "잘못된 아이디 혹은 비밀번호 입니다.", Toast.LENGTH_LONG).show();
                             Log.d(TAG, response.errorBody().toString());
                         }
                     }

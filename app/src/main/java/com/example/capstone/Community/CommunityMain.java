@@ -109,6 +109,7 @@ public class CommunityMain extends AppCompatActivity {
                     for (communitypost_backend item : items) {
                         titles.add(item.getTitle());
                         contents.add(item.getContent());
+                        Log.d(TAG, "community id : " + item.id);
                     }
                     ListAdapter adapter = new CommunityListAdapter(CommunityMain.this, titles, contents);
                     listView.setAdapter(adapter);

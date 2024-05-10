@@ -89,22 +89,23 @@ public class SignUp extends AppCompatActivity {
 
 
         // Call the signup API
-        Call<Void> call = apiService.signup(username,password, lastname, firstname, nickname, number);
-        call.enqueue(new Callback<Void>() {
+        Call<SignUpGetItem> call = apiService.signup(username,password, lastname, firstname, nickname, number);
+        call.enqueue(new Callback<SignUpGetItem>() {
             @Override
-            public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
+            public void onResponse(@NonNull Call<SignUpGetItem> call, @NonNull Response<SignUpGetItem> response) {
                 if (response.isSuccessful()) {
                     // Signup successful
                     Toast.makeText(SignUp.this, "Signup successful!", Toast.LENGTH_SHORT).show();
                     // Navigate to another activity or perform any other action
                 } else {
-                    // Signup failed
+
                     Toast.makeText(SignUp.this, response.message(), Toast.LENGTH_SHORT).show();
+
                 }
             }
 
             @Override
-            public void onFailure(@NonNull Call<Void> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<SignUpGetItem> call, @NonNull Throwable t) {
                 // Network error
                 Toast.makeText(SignUp.this, t.getMessage(), Toast.LENGTH_SHORT).show();
             }

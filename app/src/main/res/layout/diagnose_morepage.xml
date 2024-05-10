@@ -1,65 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="400dp"
-    android:layout_height="500dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#F0F0F0"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".Home.MainActivity"
     android:layout_gravity="center">
 
-    <LinearLayout
-        android:id="@+id/MoreInfoLabel"
-        android:background="#28BEEE"
+
+    <TextView
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
         android:gravity="center"
+        android:text="의심 단어 리스트"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        android:textStyle="italic"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/listView"/>
+
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/topBar"
+        app:layout_constraintBottom_toTopOf="@id/OkayButton"
+        app:layout_constrainedHeight="true"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/OkayButton"
+        android:text="확인"
+        android:textColor="#28BEEE"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:backgroundTint="#F0F0F0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:gravity="center"
-            android:text="더 알아보기"
-            android:textColor="@color/white"
-            android:textSize="40dp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/MoreInfoforConstraint"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/MoreInfoLabel">
-
-        <TextView
-            android:id="@+id/MoreInfoStory"
-            android:layout_width="match_parent"
-            android:layout_height="360dp"
-            android:gravity="center"
-            android:text="단어 순위 의심도\n 높게 나온 이유"
-            android:textColor="@color/black"
-            android:textSize="30dp"
-            android:textStyle="bold">
-
-        </TextView>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/MoreInfoforConstraint">
-        <Button
-            android:id="@+id/OkayButton"
-            android:text="확인"
-            android:textColor="#28BEEE"
-            android:textStyle="bold"
-            android:textSize="30dp"
-            android:backgroundTint="#F0F0F0"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@id/listView"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 
 

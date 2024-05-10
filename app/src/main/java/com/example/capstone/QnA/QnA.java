@@ -1,6 +1,7 @@
 package com.example.capstone.QnA;
 
 import static android.service.controls.ControlsProviderService.TAG;
+import static com.example.capstone.Login.LogIn.userToken;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,7 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -46,36 +46,46 @@ public class QnA extends AppCompatActivity {
         listView = findViewById(R.id.QnAlistView);
         ImageButton backBtn = findViewById(R.id.BackButton);
         ImageButton homeBtn = findViewById(R.id.HomeButton);
-        OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
-        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        clientBuilder.addInterceptor(loggingInterceptor);
+        AskTokenInterceptor interceptor = new AskTokenInterceptor();
+
+        OkHttpClient client = new OkHttpClient.Builder()
+                .addInterceptor(interceptor)
+                .build();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://13.209.90.71/")
+                .client(client)
+                .baseUrl("http://13.209.90.71/") // Replace with your actual API base URL
                 .addConverterFactory(GsonConverterFactory.create())
-                .client(clientBuilder.build())
                 .build();
         apiService = retrofit.create(QnAListApiService.class);
 
 
         // Make API call to fetch the list of questions
-        Call<List<getItems>> call = apiService.asklist( Title, Content);
+        Call<List<getItems>> call = apiService.asklist(userToken,Title, Content);
         call.enqueue(new Callback<List<getItems>>() {
+
             @Override
             public void onResponse(Call<List<getItems>> call, Response<List<getItems>> response) {
                 if (response.isSuccessful()) {
                     List<getItems> items = response.body();
+                    for(getItems item : items) {
+                        Log.d(TAG, "edit Id : " + item.id);
+                    }
                     Toast.makeText(QnA.this, "Data Received Successfully", Toast.LENGTH_SHORT).show();
                     // Create lists to hold titles and contents
                     List<String> titles = new ArrayList<>();
                     List<String> contents = new ArrayList<>();
+                    List<Integer> post_id = new ArrayList<Integer>();
                     // Iterate through each QnAItem and add its title and content to the respective lists
                     for (getItems item : items) {
                         titles.add(item.getTitle());
                         contents.add(item.getContent());
+                        post_id.add(item.id);
                     }
-                    adapter = new QnAListAdapter(QnA.this, titles, contents);
+                    for (int i = 0; i < post_id.size(); i ++) {
+                        Log.d(TAG, "id list : " + post_id.get(i));
+                    }
+                    adapter = new QnAListAdapter(QnA.this, post_id, titles, contents);
                     listView.setAdapter(adapter);
 
                     /*
@@ -89,8 +99,8 @@ public class QnA extends AppCompatActivity {
 
                      */
                 } else {
-                    Toast.makeText(QnA.this, "Failed to fetch data: " + response.body().toString(), Toast.LENGTH_SHORT).show();
-                    Log.d(TAG, "response data " + response.body().toString());
+                    listView.getEmptyView();
+                    Toast.makeText(QnA.this, "문의 사항이 없습니다.", Toast.LENGTH_SHORT).show();
                 }
             }
 

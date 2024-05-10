@@ -1,8 +1,12 @@
 package com.example.capstone.Community;
 
+import static android.service.controls.ControlsProviderService.TAG;
+import static com.example.capstone.Login.LogIn.userToken;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,7 +19,6 @@ import com.example.capstone.Home.MainActivity;
 import com.example.capstone.R;
 
 import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -24,7 +27,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CommunityWrite extends AppCompatActivity {
     CommunityPostApiService apiService;
-    EditText title, content;
+    EditText title, content, Report_number;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,18 +36,22 @@ public class CommunityWrite extends AppCompatActivity {
         ImageButton HomeBtn = findViewById(R.id.HomeButton);
         title = findViewById(R.id.title);
         content = findViewById(R.id.content);
+        Report_number = findViewById(R.id.phoneNumber);
         Button SaveBtn = findViewById(R.id.EndWriteButton);
         ImageButton BackBtn = findViewById(R.id.BackButton);
-        OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
-        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        clientBuilder.addInterceptor(loggingInterceptor);
+
+
+        TokenInterceptor interceptor=new TokenInterceptor();
+
+        OkHttpClient client = new OkHttpClient.Builder()
+                .addInterceptor(interceptor)
+                .build();
 
 
         Retrofit retrofit = new Retrofit.Builder()
+                .client(client)
                 .baseUrl("http://13.209.90.71/") // Replace with your actual API base URL
                 .addConverterFactory(GsonConverterFactory.create())
-                .client(clientBuilder.build())
                 .build();
         apiService = retrofit.create(CommunityPostApiService.class);
         BackBtn.setOnClickListener(new View.OnClickListener() {
@@ -74,6 +81,7 @@ public class CommunityWrite extends AppCompatActivity {
     private void pushCommunity() {
         String Title = title.getText().toString().trim();
         String Content = content.getText().toString().trim();
+        String report_number = Report_number.getText().toString().trim();
 
         if (TextUtils.isEmpty(Title)) {
             title.setError("Enter title");
@@ -88,14 +96,17 @@ public class CommunityWrite extends AppCompatActivity {
         }
 
 
-        Call<Void> call = apiService.ask(Title, Content);
+        Call<Void> call = apiService.post(userToken, Title, Content, report_number);
+        Log.d(TAG, "community Token : " + userToken);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(CommunityWrite.this, "Push successful!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(), CommunityMain.class);
+                    startActivity(intent);
                 } else {
-                    Toast.makeText(CommunityWrite.this, response.message(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CommunityWrite.this, "내용을 입력하세요", Toast.LENGTH_SHORT).show();
                 }
             }
 

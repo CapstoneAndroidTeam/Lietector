@@ -1,10 +1,14 @@
 package com.example.capstone.Report;
 
+import static com.example.capstone.Report.Reporting.report_number;
+import static com.example.capstone.Report.Reporting.report_type;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,6 +27,10 @@ public class ReportingEnd extends AppCompatActivity {
         Button WriteInGalleryButton = findViewById(R.id.WriteinGalleryButton);
         ImageButton BackBtn = findViewById(R.id.BackButton);
         Button treatBtn = findViewById(R.id.PreventionButton);
+        TextView reportnum = findViewById(R.id.phonenumber);
+        TextView reportreason = findViewById(R.id.reportreason);
+        reportnum.setText(report_number);
+        reportreason.setText(report_type);
         treatBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -8,13 +8,12 @@ import retrofit2.http.POST;
 
 public interface ReportApiService {
     @FormUrlEncoded
-    @POST("/login/reports/")
-    Call<Void> report(
-
+    @POST("/reports/")
+    Call<getReportItems> report(
+            @Header("Authorization") String Token,
             @Field("report_number") String report_number,
             @Field("report_type") String report_type,
-            @Field("report_content") String report_content,
-            @Header("writer") int writer
+            @Field("report_content") String report_content
     );
 
 }

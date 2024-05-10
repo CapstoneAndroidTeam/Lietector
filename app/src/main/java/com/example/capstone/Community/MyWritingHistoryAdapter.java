@@ -1,4 +1,4 @@
-package com.example.capstone.MyPage;
+package com.example.capstone.Community;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,24 +7,23 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.capstone.R;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class MyWritingHistoryAdapter extends BaseAdapter {
     private Context context;
-    private ArrayList<Integer> profileimg;
-    private ArrayList<String> nickname;
-    private ArrayList<String> storytext;
+    private List<String> nickname;
+    private List<String> storytext;
     private LayoutInflater inflater;
 
 
-    public MyWritingHistoryAdapter(MyWritingHistory myWritingHistory, ArrayList<Integer> profileimg, ArrayList<String> nickname, ArrayList<String> storytext) {
+    public MyWritingHistoryAdapter(MyWritingHistory myWritingHistory, List<String> nickname, List<String> storytext) {
         this.context = myWritingHistory;
-        this.profileimg = profileimg;
         this.nickname = nickname;
         this.storytext = storytext;
         inflater = LayoutInflater.from(context);
@@ -75,7 +74,6 @@ public class MyWritingHistoryAdapter extends BaseAdapter {
 
         holder.nickname.setText(nickname.get(position));
         holder.storytext.setText(storytext.get(position));
-        holder.profileimg.setImageResource(profileimg.get(position));
 
         return convertView;
     }

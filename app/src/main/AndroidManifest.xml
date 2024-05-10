@@ -40,6 +40,9 @@
         <activity android:name=".Diagnose.MoreInfoPopup"
             android:exported="false">
         </activity>
+        <activity android:name=".Diagnose.MoreInfoWritePopup"
+            android:exported="false">
+        </activity>
         <activity android:name=".Diagnose.DiagnoseNotSerious"
             android:parentActivityName=".Diagnose.DiagnoseMain"
             android:exported="false">
@@ -48,6 +51,9 @@
             android:parentActivityName=".Diagnose.DiagnoseMain"
             android:exported="false">
         </activity>
+        <activity android:name=".Diagnose.DiagnoseWriteSerious"
+            android:parentActivityName=".Diagnose.DiagnoseMain"
+            android:exported="false"/>
         <activity android:name=".Diagnose.DiagnoseWrite"
             android:parentActivityName=".Diagnose.DiagnoseMain"
             android:exported="false"/>
@@ -87,7 +93,7 @@
             android:parentActivityName=".Login.LogIn"
             android:exported="false">
         </activity>
-        <activity android:name=".MyPage.MyWritingHistory"
+        <activity android:name=".Community.MyWritingHistory"
             android:parentActivityName=".MyPage.MypageMain"
             android:exported="false"/>
         <activity android:name=".Ban.BanHistoryNone"
@@ -105,6 +111,15 @@
         <activity android:name=".Chatbot.Chat"
             android:parentActivityName=".MyPage.MypageMain"
             android:exported="false"/>
+
+        <activity android:name=".QnA.QnAEdit"
+            android:parentActivityName=".QnA.QnA"
+            android:exported="false"/>
+
+        <activity android:name=".Report.ReportEdit"
+            android:parentActivityName=".Report.ReportHistory"
+            android:exported="false"/>
+
         <activity
             android:name=".Login.LogIn"
 

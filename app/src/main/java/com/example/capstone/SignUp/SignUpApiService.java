@@ -8,7 +8,7 @@ import retrofit2.http.POST;
 public interface SignUpApiService {
     @FormUrlEncoded
     @POST("/signup/")
-    Call<Void> signup(
+    Call<SignUpGetItem> signup(
             @Field("username") String username,
             @Field("password") String password,
             @Field("last_name") String last_name,

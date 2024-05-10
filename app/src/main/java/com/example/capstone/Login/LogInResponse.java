@@ -10,6 +10,12 @@ public class LogInResponse {
     @SerializedName("password")
    private  String password;
 
+    @SerializedName("token")
+    public  String token;
+
+    @SerializedName("nickname")
+    public String nickname;
+
 
     public  String getMessage() {return message;}
     public String getUsername() {

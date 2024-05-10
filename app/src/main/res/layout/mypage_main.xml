@@ -91,31 +91,14 @@
             android:textColor="@color/black"
             android:textSize="24sp" />
 
-        <TextView
-            android:id="@+id/banhistory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_gravity="center"
-            android:text="신고 내역 0회"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
 
-        <Button
-            android:id="@+id/myedit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/white"
-            android:text="정보 수정"
-            android:textColor="#03A9F4" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="30dp">
 
             <ImageButton
                 android:id="@+id/banhistoryBtn"
@@ -138,6 +121,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
             android:orientation="horizontal">
 
             <ImageButton

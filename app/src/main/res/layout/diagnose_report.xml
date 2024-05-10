@@ -185,7 +185,7 @@
         android:id="@+id/MoreButton"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="더 알아보기"
+        android:text="의심 단어 리스트"
         android:textSize="25dp"
         android:textColor="@color/white"
         android:backgroundTint="#28BEEE"
