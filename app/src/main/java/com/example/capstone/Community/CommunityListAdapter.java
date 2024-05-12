@@ -18,22 +18,20 @@ public class CommunityListAdapter extends BaseAdapter {
     private Context context;
     private List<String> title;
     private List<String> content;
+    private List<Integer> writer;
     private LayoutInflater inflater;
 
 
 
-    public CommunityListAdapter(CommunityMain communityMain, List<String> title, List<String> content) {
+    public CommunityListAdapter(CommunityMain communityMain, List<String> title, List<String> content, List<Integer> writer) {
         this.context = communityMain;
         this.title = title;
         this.content = content;
+        this.writer = writer;
         inflater = LayoutInflater.from(context);
     }
 
 
-    public CommunityListAdapter(Context context) {
-        this.context = context;
-        inflater = LayoutInflater.from(context);
-    }
 
 
 
@@ -56,6 +54,7 @@ public class CommunityListAdapter extends BaseAdapter {
     static class ViewHolder {
         TextView title;
         TextView content;
+        TextView writer;
     }
 
     @NonNull
@@ -69,6 +68,7 @@ public class CommunityListAdapter extends BaseAdapter {
             holder = new ViewHolder();
             holder.title = convertView.findViewById(R.id.title);
             holder.content = convertView.findViewById(R.id.content);
+            holder.writer = convertView.findViewById(R.id.writer);
 
             convertView.setTag(holder);
         } else {
@@ -77,6 +77,7 @@ public class CommunityListAdapter extends BaseAdapter {
 
         holder.title.setText(title.get(position).toString());
         holder.content.setText(content.get(position).toString());
+        holder.writer.setText(writer.get(position).toString());
 
         return convertView;
     }

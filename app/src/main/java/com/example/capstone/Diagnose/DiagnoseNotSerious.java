@@ -3,6 +3,7 @@ package com.example.capstone.Diagnose;
 import static com.example.capstone.Diagnose.DiagnoseAudio.intPercent;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +29,7 @@ public class DiagnoseNotSerious extends AppCompatActivity {
 
         riskyPercent.setText(String.valueOf(intPercent));
         progressBar.setProgress((int) intPercent);
+        progressBar.setProgressTintList(ColorStateList.valueOf(getResources().getColor(R.color.lietectordarklightblue)));
         BackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

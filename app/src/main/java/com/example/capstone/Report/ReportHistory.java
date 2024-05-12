@@ -41,6 +41,7 @@ public class ReportHistory extends AppCompatActivity {
 
 
         listView = findViewById(R.id.listView);
+        listView.getEmptyView();
 
         ImageButton BackBtn = findViewById(R.id.BackButton);
 
@@ -82,7 +83,7 @@ public class ReportHistory extends AppCompatActivity {
 
                 } else {
                     listView.getEmptyView();
-                    Toast.makeText(ReportHistory.this, "내 작성 내역이 없습니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ReportHistory.this, response.message(), Toast.LENGTH_SHORT).show();
                 }
             }
 

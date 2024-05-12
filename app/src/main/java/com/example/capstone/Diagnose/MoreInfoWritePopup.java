@@ -1,7 +1,7 @@
 package com.example.capstone.Diagnose;
 
-import static com.example.capstone.Diagnose.DiagnoseAudio.suspiciousOrder;
-import static com.example.capstone.Diagnose.DiagnoseAudio.suspiciousWord;
+import static com.example.capstone.Diagnose.DiagnoseWrite.WsuspiciousOrder;
+import static com.example.capstone.Diagnose.DiagnoseWrite.WsuspiciousWord;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -17,9 +17,9 @@ import androidx.annotation.Nullable;
 
 import com.example.capstone.R;
 
-public class MoreInfoPopup extends Activity {
+public class MoreInfoWritePopup extends Activity {
     ListView listView;
-    private MoreInfoListView adapter;
+    private MoreInfoWriteListView adapter;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +27,7 @@ public class MoreInfoPopup extends Activity {
         setContentView(R.layout.diagnose_morepage);
         Button OKBtn = findViewById(R.id.OkayButton);
         listView = findViewById(R.id.listView);
-        adapter = new MoreInfoListView(MoreInfoPopup.this, suspiciousOrder, suspiciousWord);
+        adapter = new MoreInfoWriteListView(MoreInfoWritePopup.this, WsuspiciousOrder, WsuspiciousWord);
         listView.setAdapter(adapter);
         listView.getEmptyView();
         OKBtn.setOnClickListener(new View.OnClickListener() {

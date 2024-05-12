@@ -20,7 +20,7 @@
             app:civ_border_overlay="true" />
 
         <TextView
-            android:id="@+id/NameView"
+            android:id="@+id/replyName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
@@ -32,7 +32,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/ReplyText"
+        android:id="@+id/replyContent"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="20dp"

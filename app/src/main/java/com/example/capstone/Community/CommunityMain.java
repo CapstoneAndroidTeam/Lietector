@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -41,8 +42,10 @@ public class CommunityMain extends AppCompatActivity {
 
      */
     String title, content;
+    int writer;
     String titles;
     String contents;
+    public static int communityPostId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +67,7 @@ public class CommunityMain extends AppCompatActivity {
 
         posting();
         listView = findViewById(R.id.listView);
+        listView.getEmptyView();
 
         ImageButton HomeBtn = findViewById(R.id.HomeButton);
         ImageButton AddBtn = findViewById(R.id.AddStoryButton);
@@ -92,10 +96,11 @@ public class CommunityMain extends AppCompatActivity {
     }
 
 
+
     private void posting () {
 
 
-        Call<List<communitypost_backend>> call = apiService.getCommunityPosts(title, content);
+        Call<List<communitypost_backend>> call = apiService.getCommunityPosts(title, content, writer);
         call.enqueue(new Callback<List<communitypost_backend>>() {
             @Override
             public void onResponse(Call<List<communitypost_backend>> call, Response<List<communitypost_backend>> response) {
@@ -105,14 +110,25 @@ public class CommunityMain extends AppCompatActivity {
                     Toast.makeText(CommunityMain.this, "Data Received Successfully", Toast.LENGTH_SHORT).show();
                     List<String> titles = new ArrayList<>();
                     List<String> contents = new ArrayList<>();
+                    List<Integer> writers = new ArrayList<>();
                     // Iterate through each QnAItem and add its title and content to the respective lists
                     for (communitypost_backend item : items) {
                         titles.add(item.getTitle());
                         contents.add(item.getContent());
+                        writers.add(item.getWriter());
                         Log.d(TAG, "community id : " + item.id);
                     }
-                    ListAdapter adapter = new CommunityListAdapter(CommunityMain.this, titles, contents);
+                    ListAdapter adapter = new CommunityListAdapter(CommunityMain.this, titles, contents, writers);
                     listView.setAdapter(adapter);
+
+                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> a_parent, View a_view, int a_position, long a_id) {
+                            communityPostId = a_position + 1;
+                            Intent intent = new Intent(getApplicationContext(), CommunityPostView.class);
+                            startActivity(intent);
+                        }
+                    });
                 } else {
                     Toast.makeText(CommunityMain.this, "Failed to fetch data: " + response.body().toString(), Toast.LENGTH_SHORT).show();
                     Log.d(TAG, "response data " + response.body().toString());

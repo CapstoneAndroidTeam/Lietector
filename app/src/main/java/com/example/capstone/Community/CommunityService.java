@@ -10,7 +10,8 @@ public interface CommunityService {
     @GET("/posts/alllist/")
     Call<List<communitypost_backend>> getCommunityPosts(
             @Query("title") String title,
-            @Query("content") String content
+            @Query("content") String content,
+            @Query("writer") int writer
     );
 
 }

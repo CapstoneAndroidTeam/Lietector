@@ -44,6 +44,7 @@ public class QnA extends AppCompatActivity {
 
         ImageButton addBtn = findViewById(R.id.AddBtn);
         listView = findViewById(R.id.QnAlistView);
+        listView.getEmptyView();
         ImageButton backBtn = findViewById(R.id.BackButton);
         ImageButton homeBtn = findViewById(R.id.HomeButton);
         AskTokenInterceptor interceptor = new AskTokenInterceptor();

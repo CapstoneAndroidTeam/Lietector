@@ -12,7 +12,8 @@ public interface MyWriteApiService {
     Call<List<getMyWriteItems>> postlist(
             @Header("Authorization") String Token,
             @Query("title") String title,
-            @Query("content") String content
+            @Query("content") String content,
+            @Query("writer") int writer
     );
 
 }

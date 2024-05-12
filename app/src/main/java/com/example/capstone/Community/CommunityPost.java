@@ -1,7 +1,5 @@
 package com.example.capstone.Community;
 
-import static android.app.PendingIntent.getActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -74,7 +72,7 @@ public class CommunityPost extends AppCompatActivity {
         int rImgs[];
 
         ReplyAdapter(Context c, String name[], String description[], int imgs[]) {
-            super(c, R.layout.replies, R.id.NameView, name);
+            super(c, R.layout.replies, R.id.replyName, name);
             this.context = c;
             this.rNames = name;
             this.rReplies = description;
@@ -89,8 +87,8 @@ public class CommunityPost extends AppCompatActivity {
             View replies = layoutInflater.inflate(R.layout.replies, parent, false);
 
             CircleImageView images = replies.findViewById(R.id.profileview);
-            TextView Names = replies.findViewById(R.id.NameView);
-            TextView Replies = replies.findViewById(R.id.ReplyText);
+            TextView Names = replies.findViewById(R.id.replyName);
+            TextView Replies = replies.findViewById(R.id.replyContent);
 
             images.setImageResource(rImgs[position]);
             Names.setText(rNames[position]);

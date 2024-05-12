@@ -9,6 +9,8 @@ public class communitypost_backend {
     private String  title;
     @SerializedName("content")
     private String content;
+    @SerializedName("writer")
+    private int writer;
 
     public String getTitle() {
         return title;
@@ -18,5 +20,7 @@ public class communitypost_backend {
     public String getContent() {
         return content;
     }
+
+    public int getWriter() { return writer; }
 
 }

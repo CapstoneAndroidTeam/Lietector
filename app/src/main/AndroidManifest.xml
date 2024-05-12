@@ -37,6 +37,10 @@
             android:parentActivityName=".Community.CommunityMain"
             android:exported="false">
         </activity>
+        <activity android:name=".Community.CommunityPostView"
+            android:parentActivityName=".Community.CommunityMain"
+            android:exported="false">
+        </activity>
         <activity android:name=".Diagnose.MoreInfoPopup"
             android:exported="false">
         </activity>

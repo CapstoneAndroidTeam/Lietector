@@ -30,6 +30,7 @@ public class MyWritingHistory extends AppCompatActivity {
     ArrayList<Integer> profileimg = new ArrayList<>();
     ArrayList<String> nickname = new ArrayList<>();
     ArrayList<String> storytext = new ArrayList<>();
+    int writer;
     MyWriteApiService apiService;
 
     @Override
@@ -42,6 +43,7 @@ public class MyWritingHistory extends AppCompatActivity {
 
         ImageButton BackBtn = findViewById(R.id.BackButton);
         ImageButton HomeBtn = findViewById(R.id.HomeButton);
+        listView.getEmptyView();
         BackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,7 +73,7 @@ public class MyWritingHistory extends AppCompatActivity {
                 .build();
         apiService = retrofit.create(MyWriteApiService.class);
 
-        Call<List<getMyWriteItems>> call = apiService.postlist(userToken,"", "");
+        Call<List<getMyWriteItems>> call = apiService.postlist(userToken,"", "", writer);
         call.enqueue(new Callback<List<getMyWriteItems>>() {
 
             @Override
