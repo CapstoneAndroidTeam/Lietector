@@ -8,7 +8,6 @@ import static com.example.capstone.Home.MainActivity.searchReportType;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -16,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 
 import com.example.capstone.Chatbot.Chat;
-import com.example.capstone.Community.CommunityMain;
+import com.example.capstone.Community.CommunityWrite;
 import com.example.capstone.Home.MainActivity;
 import com.example.capstone.R;
 import com.example.capstone.Report.Reporting;
@@ -37,10 +36,10 @@ public class NumNotSearch extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.num_notsearch);
 
-        Button bannumBtn = findViewById(R.id.BanNumberBtn);
-        Button communityBtn = findViewById(R.id.GalleryBtn);
+        ImageButton reportBtn = findViewById(R.id.ReportBtn);
+        ImageButton communityBtn = findViewById(R.id.GalleryBtn);
         ImageButton BackBtn = findViewById(R.id.BackButton);
-        Button treatBtn = findViewById(R.id.PreventionBtn);
+        ImageButton treatBtn = findViewById(R.id.PreventionBtn);
         treatBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,7 +56,7 @@ public class NumNotSearch extends AppCompatActivity {
         });
 
 
-        bannumBtn.setOnClickListener(new View.OnClickListener() {
+        reportBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent goReporting = new Intent(getApplicationContext(), Reporting.class);
@@ -67,7 +66,7 @@ public class NumNotSearch extends AppCompatActivity {
         communityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goCommunity = new Intent(getApplicationContext(), CommunityMain.class);
+                Intent goCommunity = new Intent(getApplicationContext(), CommunityWrite.class);
                 startActivity(goCommunity);
             }
         });
@@ -112,7 +111,6 @@ public class NumNotSearch extends AppCompatActivity {
                                 Intent intent = new Intent(getApplicationContext(), NumNotSearch.class);
                                 startActivity(intent);
                             }
-                            Toast.makeText(NumNotSearch.this, "Data Received Successfully", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(NumNotSearch.this, response.message(), Toast.LENGTH_SHORT).show();
                         }

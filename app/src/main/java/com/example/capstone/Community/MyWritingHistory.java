@@ -27,10 +27,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MyWritingHistory extends AppCompatActivity {
     ListView listView;
-    ArrayList<Integer> profileimg = new ArrayList<>();
-    ArrayList<String> nickname = new ArrayList<>();
-    ArrayList<String> storytext = new ArrayList<>();
-    int writer;
+    List<Integer> writer = new ArrayList<>();
+    List<String> title = new ArrayList<>();
+    List<String> content = new ArrayList<>();
+    List<Integer> PostId = new ArrayList<>();
+    int writers;
     MyWriteApiService apiService;
 
     @Override
@@ -73,14 +74,13 @@ public class MyWritingHistory extends AppCompatActivity {
                 .build();
         apiService = retrofit.create(MyWriteApiService.class);
 
-        Call<List<getMyWriteItems>> call = apiService.postlist(userToken,"", "", writer);
+        Call<List<getMyWriteItems>> call = apiService.postlist(userToken,"", "", writers);
         call.enqueue(new Callback<List<getMyWriteItems>>() {
 
             @Override
             public void onResponse(Call<List<getMyWriteItems>> call, Response<List<getMyWriteItems>> response) {
                 if (response.isSuccessful()) {
                     List<getMyWriteItems> items = response.body();
-                    Toast.makeText(MyWritingHistory.this, "Data Received Successfully", Toast.LENGTH_SHORT).show();
                     // Create lists to hold titles and contents
                     List<String> titles = new ArrayList<>();
                     List<String> contents = new ArrayList<>();
@@ -88,8 +88,9 @@ public class MyWritingHistory extends AppCompatActivity {
                     for (getMyWriteItems item : items) {
                         titles.add(item.title);
                         contents.add(item.content);
+                        PostId.add(item.id);
                     }
-                    MyWritingHistoryAdapter listadapter = new MyWritingHistoryAdapter(MyWritingHistory.this, titles, contents);
+                    MyWritingHistoryAdapter listadapter = new MyWritingHistoryAdapter(MyWritingHistory.this, PostId, titles,writer, contents);
                     listView.setAdapter(listadapter);
 
                     /*

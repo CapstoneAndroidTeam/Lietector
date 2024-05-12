@@ -105,7 +105,7 @@
         android:layout_height="match_parent"
         app:layout_constrainedHeight="true"
         app:layout_constrainedWidth="true"
-        android:text="블라블라블라"
+        android:text=""
         android:textSize="20dp"
         android:textColor="@color/black"
         app:layout_constraintTop_toTopOf="@id/line"

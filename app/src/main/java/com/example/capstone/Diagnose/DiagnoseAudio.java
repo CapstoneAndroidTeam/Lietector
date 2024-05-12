@@ -208,7 +208,7 @@ public class DiagnoseAudio extends AppCompatActivity {
             @Override
             public void onResponse(@NonNull Call<DgetItems> call, @NonNull Response<DgetItems> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(DiagnoseAudio.this, "Diagnosis successful", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DiagnoseAudio.this, "진단 완료", Toast.LENGTH_SHORT).show();
                     Log.d(TAG, "Audio data : " + response.body().suspicion_percentage);
                     percent = response.body().suspicion_percentage;
                     Log.d(TAG, "Suspicious word : " + response.body().suspicion_word);

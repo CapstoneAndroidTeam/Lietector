@@ -1,6 +1,6 @@
 package com.example.capstone.Diagnose;
 
-import static com.example.capstone.Diagnose.DiagnoseAudio.intPercent;
+import static com.example.capstone.Diagnose.DiagnoseWrite.intWritePercent;
 
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.capstone.Home.MainActivity;
 import com.example.capstone.R;
 
-public class DiagnoseNotSerious extends AppCompatActivity {
+public class DiagnoseWriteNotSerious extends AppCompatActivity {
     @Override
     protected void onCreate (Bundle savedInstanceStatus) {
         super.onCreate(savedInstanceStatus);
@@ -26,8 +26,8 @@ public class DiagnoseNotSerious extends AppCompatActivity {
         TextView riskyPercent = findViewById(R.id.riskyPercent);
         ProgressBar progressBar = findViewById(R.id.progressBarCircle);
 
-        riskyPercent.setText(String.valueOf(intPercent));
-        progressBar.setProgress((int) intPercent);
+        riskyPercent.setText(String.valueOf(intWritePercent));
+        progressBar.setProgress((int) intWritePercent);
         progressBar.setProgressTintList(ColorStateList.valueOf(getResources().getColor(R.color.lietectordarklightblue)));
         BackBtn.setOnClickListener(new View.OnClickListener() {
             @Override

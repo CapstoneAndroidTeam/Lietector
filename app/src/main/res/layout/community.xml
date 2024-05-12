@@ -13,7 +13,7 @@
     <View
         android:id="@+id/TopView"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="110dp"
         android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,17 +52,6 @@
         app:layout_constraintVertical_bias="0.05"
         app:layout_constraintHorizontal_bias="0.9" />
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:iconifiedByDefault="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.15"
-        android:queryHint="키워드를 입력하세요."/>
 
     <TextView
         android:id="@+id/TopTextView"

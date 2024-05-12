@@ -1,11 +1,12 @@
 package com.example.capstone.Community;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,31 +14,40 @@ import androidx.annotation.Nullable;
 
 import com.example.capstone.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MyWritingHistoryAdapter extends BaseAdapter {
     private Context context;
-    private List<String> nickname;
-    private List<String> storytext;
+    private List<String> title = new ArrayList<>();
+    private List<Integer> writer = new ArrayList<>();
+    private List<String> content = new ArrayList<>();
+    private List<Integer> communityPostId = new ArrayList<>();
     private LayoutInflater inflater;
+    public static String communityExistTitle;
+    public static  Integer communityExistWriter;
+    public static String communityExistContent;
+    public static int editpostId;
 
 
-    public MyWritingHistoryAdapter(MyWritingHistory myWritingHistory, List<String> nickname, List<String> storytext) {
+    public MyWritingHistoryAdapter(MyWritingHistory myWritingHistory, List<Integer> communityPostId, List<String> title, List<Integer> writer, List<String> content) {
         this.context = myWritingHistory;
-        this.nickname = nickname;
-        this.storytext = storytext;
+        this.communityPostId = communityPostId;
+        this.title = title;
+        this.writer = writer;
+        this.content = content;
         inflater = LayoutInflater.from(context);
     }
 
 
     @Override
     public int getCount() {
-        return storytext.size();
+        return title.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return storytext.get(position);
+        return title.get(position);
     }
 
     @Override
@@ -46,9 +56,10 @@ public class MyWritingHistoryAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
-        TextView nickname;
-        TextView storytext;
-        ImageView profileimg;
+        TextView title;
+        TextView writer;
+        TextView content;
+        ImageButton editBtn;
     }
 
 
@@ -61,19 +72,29 @@ public class MyWritingHistoryAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.writinghistory_listview, parent, false);
 
             holder = new ViewHolder();
-            holder.profileimg = convertView.findViewById(R.id.profileimg);
-            holder.storytext = convertView.findViewById(R.id.story);
-            holder.nickname = convertView.findViewById(R.id.NickName);
+            holder.title = convertView.findViewById(R.id.title);
+            holder.writer = convertView.findViewById(R.id.writer);
+            holder.content = convertView.findViewById(R.id.content);
+            holder.editBtn = convertView.findViewById(R.id.editbtn);
+
+            holder.editBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    communityExistTitle = title.get(position);
+                    communityExistContent = content.get(position);
+                    editpostId = communityPostId.get(position);
+                    Intent intent = new Intent(context.getApplicationContext(), MyWritingHistoryEdit.class);
+                    context.startActivity(intent);
+                }
+            });
 
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        View finalConvertView = convertView;
-
-        holder.nickname.setText(nickname.get(position));
-        holder.storytext.setText(storytext.get(position));
+        holder.title.setText(title.get(position));
+        holder.content.setText(content.get(position));
 
         return convertView;
     }

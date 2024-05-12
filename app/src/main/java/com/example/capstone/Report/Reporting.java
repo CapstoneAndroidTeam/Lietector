@@ -125,7 +125,6 @@ public class Reporting extends AppCompatActivity {
             @Override
             public void onResponse(@NonNull  Call<getReportItems> call, @NonNull  Response<getReportItems> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(Reporting.this, "Report successful!", Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(getApplicationContext(), ReportingEnd.class);
                     startActivity(intent);

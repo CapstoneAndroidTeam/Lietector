@@ -107,7 +107,6 @@ public class CommunityMain extends AppCompatActivity {
                 if (response.isSuccessful()) {
 
                     List<communitypost_backend> items = response.body();
-                    Toast.makeText(CommunityMain.this, "Data Received Successfully", Toast.LENGTH_SHORT).show();
                     List<String> titles = new ArrayList<>();
                     List<String> contents = new ArrayList<>();
                     List<Integer> writers = new ArrayList<>();

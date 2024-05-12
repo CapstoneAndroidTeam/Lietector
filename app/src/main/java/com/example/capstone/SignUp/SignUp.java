@@ -95,7 +95,8 @@ public class SignUp extends AppCompatActivity {
             public void onResponse(@NonNull Call<SignUpGetItem> call, @NonNull Response<SignUpGetItem> response) {
                 if (response.isSuccessful()) {
                     // Signup successful
-                    Toast.makeText(SignUp.this, "Signup successful!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUp.this, "회원가입 완료", Toast.LENGTH_SHORT).show();
+                    finish();
                     // Navigate to another activity or perform any other action
                 } else {
 

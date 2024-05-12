@@ -131,7 +131,6 @@ public class ReportEdit extends AppCompatActivity {
             @Override
             public void onResponse(Call<getMyReportItems> call, Response<getMyReportItems> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(ReportEdit.this, "Edit successfully!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), ReportHistory.class);
                     startActivity(intent);
                 } else {

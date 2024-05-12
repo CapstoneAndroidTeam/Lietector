@@ -8,7 +8,6 @@ import static com.example.capstone.Home.MainActivity.searchReportType;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 
 import com.example.capstone.Chatbot.Chat;
-import com.example.capstone.Community.CommunityMain;
+import com.example.capstone.Community.CommunityWrite;
 import com.example.capstone.Home.MainActivity;
 import com.example.capstone.R;
 import com.example.capstone.Report.Reporting;
@@ -39,15 +38,13 @@ public class NumSearch extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.num_search);
 
-        Button bannumBtn = findViewById(R.id.BanNumberButton);
-        Button communityBtn = findViewById(R.id.GalleryButton);
+        ImageButton reportBtn = findViewById(R.id.ReportBtn);
+        ImageButton communityBtn = findViewById(R.id.GalleryBtn);
         ImageButton BackBtn = findViewById(R.id.BackButton);
-        Button treatBtn = findViewById(R.id.PreventionButton);
+        ImageButton treatBtn = findViewById(R.id.PreventionBtn);
         TextView num = findViewById(R.id.NumText);
-        TextView type = findViewById(R.id.TypeText);
 
         num.setText(searchNumber);
-        type.setText(searchReportType);
         treatBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,7 +63,7 @@ public class NumSearch extends AppCompatActivity {
         //신고된 번호 리스트랑 NumText 비교 후 없으면 notsearch 페이지로
 
 
-        bannumBtn.setOnClickListener(new View.OnClickListener() {
+        reportBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent goReporting = new Intent(getApplicationContext(), Reporting.class);
@@ -76,7 +73,7 @@ public class NumSearch extends AppCompatActivity {
         communityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goCommunity = new Intent(getApplicationContext(), CommunityMain.class);
+                Intent goCommunity = new Intent(getApplicationContext(), CommunityWrite.class);
                 startActivity(goCommunity);
             }
         });
@@ -129,7 +126,6 @@ public class NumSearch extends AppCompatActivity {
                                 Intent intent = new Intent(getApplicationContext(), NumNotSearch.class);
                                 startActivity(intent);
                             }
-                            Toast.makeText(NumSearch.this, "Data Received Successfully", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(NumSearch.this, response.message(), Toast.LENGTH_SHORT).show();
                         }

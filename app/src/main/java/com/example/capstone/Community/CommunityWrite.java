@@ -102,7 +102,6 @@ public class CommunityWrite extends AppCompatActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(CommunityWrite.this, "Push successful!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), CommunityMain.class);
                     startActivity(intent);
                 } else {

@@ -65,7 +65,7 @@ public class Settings extends AppCompatActivity {
                     public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
                         if (response.isSuccessful()) {
                             // Signup successful
-                            Toast.makeText(Settings.this, "Logout successful!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Settings.this, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), LogIn.class);
                             startActivity(intent);
                             // Navigate to another activity or perform any other action

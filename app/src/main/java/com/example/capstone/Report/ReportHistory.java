@@ -70,7 +70,6 @@ public class ReportHistory extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     List<getMyReportItems> items = response.body();
 
-                    Toast.makeText(ReportHistory.this, "Data Received Successfully", Toast.LENGTH_SHORT).show();
                     for (getMyReportItems item : items) {
                         reportNumber.add(item.report_number);
                         reportType.add(item.report_type);

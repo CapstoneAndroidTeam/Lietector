@@ -102,7 +102,6 @@ public class QnAWrite extends AppCompatActivity{
             @Override
             public void onResponse(Call<postItems> call,Response<postItems> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(QnAWrite.this, "Report successful!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), QnA.class);
                     startActivity(intent);
                 } else {

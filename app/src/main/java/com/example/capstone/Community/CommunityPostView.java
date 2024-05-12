@@ -109,7 +109,6 @@ public class CommunityPostView extends AppCompatActivity {
             @Override
             public void onResponse(Call<CommunityPostListItems> call, Response<CommunityPostListItems> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(CommunityPostView.this, "List Data Received Successfully", Toast.LENGTH_SHORT).show();
                     titles.setText(response.body().title);
                     contents.setText(response.body().content);
                     writers.setText(String.valueOf(response.body().writer));
@@ -141,7 +140,6 @@ public class CommunityPostView extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<getListComment>> call, Response<List<getListComment>> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(CommunityPostView.this, "Comment Data Received Successfully", Toast.LENGTH_SHORT).show();
 
                     Log.d(TAG, "before : " + newContents);
                     for (getListComment i : response.body()) {
@@ -206,7 +204,6 @@ public class CommunityPostView extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<Void> replyCall, Response<Void> Rresponse) {
                         if (Rresponse.isSuccessful()) {
-                            Toast.makeText(CommunityPostView.this, "Reply List Data Received Successfully", Toast.LENGTH_SHORT).show();
                             Log.d(TAG, "users : " + commentPostWriter);
                         } else {
                             Log.d(TAG, "response data " + Rresponse.message());

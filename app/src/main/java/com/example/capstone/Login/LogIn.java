@@ -2,20 +2,13 @@ package com.example.capstone.Login;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
-import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.os.Bundle;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,19 +16,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.capstone.Home.MainActivity;
 import com.example.capstone.R;
 import com.example.capstone.SignUp.SignUp;
-import com.kakao.sdk.auth.model.OAuthToken;
-import com.kakao.sdk.user.UserApiClient;
-import com.kakao.sdk.user.model.User;
 
 import java.net.CookieHandler;
 import java.net.CookieManager;
 import java.net.CookiePolicy;
 import java.net.CookieStore;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
-import kotlin.Unit;
-import kotlin.jvm.functions.Function2;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
@@ -68,7 +54,7 @@ public class LogIn extends AppCompatActivity {
         EditText passwordEditText = findViewById(R.id.PassWordEditText);
         Button signInButton = findViewById(R.id.signButton);
         Button logInButton = findViewById(R.id.LogInButton);
-        ImageButton kakao = findViewById(R.id.kakaobtn);
+        //ImageButton kakao = findViewById(R.id.kakaobtn);
 
 
         CookieManager manager = new CookieManager();
@@ -78,27 +64,29 @@ public class LogIn extends AppCompatActivity {
         CookieStore store = manager.getCookieStore();
 
 
-
-        Function2<OAuthToken,Throwable,Unit> callback =new Function2<OAuthToken, Throwable, Unit>() {
+        /*
+        Function2<OAuthToken, Throwable, Unit> callback = new Function2<OAuthToken, Throwable, Unit>() {
             @Override
             // 콜백 메서드 ,
             public Unit invoke(OAuthToken oAuthToken, Throwable throwable) {
-                Log.e(TAG,"CallBack Method");
+                Log.e(TAG, "CallBack Method");
                 //oAuthToken != null 이라면 로그인 성공
-                if(oAuthToken!=null){
+                if (oAuthToken != null) {
                     // 토큰이 전달된다면 로그인이 성공한 것이고 토큰이 전달되지 않으면 로그인 실패한다.
                     updateKakaoLoginUi();
                     Intent goHome = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(goHome);
 
-                }else {
+                } else {
                     //로그인 실패
-                    Log.e(TAG, "invoke: login fail" );
+                    Log.e(TAG, "invoke: login fail");
                 }
 
                 return null;
             }
         };
+
+         */
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://13.209.90.71/") // Adjust the base URL as per your backend endpoint
@@ -112,7 +100,7 @@ public class LogIn extends AppCompatActivity {
         logInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("getHashKey", "getHashKey"  + getKey(LogIn.this));
+                //Log.d("getHashKey", "getHashKey" + getKey(LogIn.this));
                 String ID = idEditText.getText().toString();
                 String PassWord = passwordEditText.getText().toString();
 
@@ -125,7 +113,7 @@ public class LogIn extends AppCompatActivity {
                             Log.d(TAG, "Token : " + response.body().token);
                             SharedPreferences.Editor editor = preferences.edit();
                             //putString(KEY,VALUE)
-                            editor.putString("Token",response.body().token);
+                            editor.putString("Token", response.body().token);
                             userToken = response.body().token;
                             userName = response.body().getUsername();
                             Log.d(TAG, "username : " + userName);
@@ -159,6 +147,7 @@ public class LogIn extends AppCompatActivity {
             }
         });
 
+        /*
         kakao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -218,5 +207,8 @@ public class LogIn extends AppCompatActivity {
             e.printStackTrace();
         }
         return null;
+    }
+
+         */
     }
 }

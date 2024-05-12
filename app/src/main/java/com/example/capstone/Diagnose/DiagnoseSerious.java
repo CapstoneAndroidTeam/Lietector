@@ -27,9 +27,9 @@ public class DiagnoseSerious extends AppCompatActivity {
         super.onCreate(savedInstanceStatus);
         setContentView(R.layout.diagnose_report);
         ImageButton HomeBtn = findViewById(R.id.HomeButton);
-        Button banBtn = findViewById(R.id.BanNumberButton);
-        Button CommunityBtn = findViewById(R.id.WriteinGalleryButton);
-        Button treatBtn = findViewById(R.id.PreventionButton);
+        ImageButton reportBtn = findViewById(R.id.ReportBtn);
+        ImageButton CommunityBtn = findViewById(R.id.WriteinGalleryButton);
+        ImageButton treatBtn = findViewById(R.id.PreventionButton);
         treatBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,7 +64,7 @@ public class DiagnoseSerious extends AppCompatActivity {
             }
         });
         //Go Report Page
-        banBtn.setOnClickListener(new View.OnClickListener() {
+        reportBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent goReportPage = new Intent(getApplicationContext(), Reporting.class);

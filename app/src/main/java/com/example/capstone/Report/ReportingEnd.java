@@ -6,7 +6,6 @@ import static com.example.capstone.Report.Reporting.report_type;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -23,10 +22,9 @@ public class ReportingEnd extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.endreport);
         ImageButton HomeBtn = findViewById(R.id.HomeButton);
-        Button BanNumberButton = findViewById(R.id.BanNumberButton);
-        Button WriteInGalleryButton = findViewById(R.id.WriteinGalleryButton);
+        ImageButton WriteInGalleryButton = findViewById(R.id.WriteinGalleryButton);
         ImageButton BackBtn = findViewById(R.id.BackButton);
-        Button treatBtn = findViewById(R.id.PreventionButton);
+        ImageButton treatBtn = findViewById(R.id.PreventionButton);
         TextView reportnum = findViewById(R.id.phonenumber);
         TextView reportreason = findViewById(R.id.reportreason);
         reportnum.setText(report_number);

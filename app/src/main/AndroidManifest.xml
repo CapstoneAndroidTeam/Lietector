@@ -39,6 +39,9 @@
         </activity>
         <activity android:name=".Community.CommunityPostView"
             android:parentActivityName=".Community.CommunityMain"
+            android:exported="false"/>
+        <activity android:name=".Community.MyWritingHistoryEdit"
+            android:parentActivityName=".Community.MyWritingHistory"
             android:exported="false">
         </activity>
         <activity android:name=".Diagnose.MoreInfoPopup"
@@ -56,6 +59,9 @@
             android:exported="false">
         </activity>
         <activity android:name=".Diagnose.DiagnoseWriteSerious"
+            android:parentActivityName=".Diagnose.DiagnoseMain"
+            android:exported="false"/>
+        <activity android:name=".Diagnose.DiagnoseWriteNotSerious"
             android:parentActivityName=".Diagnose.DiagnoseMain"
             android:exported="false"/>
         <activity android:name=".Diagnose.DiagnoseWrite"

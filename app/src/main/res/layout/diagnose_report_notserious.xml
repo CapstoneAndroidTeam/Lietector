@@ -105,7 +105,7 @@
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/phonenumber"
+        app:layout_constraintBottom_toBottomOf="@id/RiskPercentView"
         app:layout_constraintVertical_bias="0.25" />
 
     <TextView
@@ -123,44 +123,21 @@
 
 
 
-    <TextView
-        android:id="@+id/phonenumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="01012345678"
-        android:textSize="25dp"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/RiskPercentView"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:textStyle="bold"/>
-
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="01012345678"
-        android:textSize="25dp"
-        android:textColor="@color/black"
-        android:backgroundTint="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/RiskPercentView"
-        android:layout_marginTop="15dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:gravity="left|center_vertical"/>
 
 
 
 
 
-    <Button
+
+
+
+    <ImageButton
         android:id="@+id/ReInputButton"
         android:layout_width="350dp"
         android:layout_height="70dp"
-        android:text="통화내용 다시 입력하기"
-        android:textSize="20dp"
+        android:background="@android:color/transparent"
+        android:scaleType="centerInside"
+        android:src="@drawable/godiagnose"
         android:textColor="@color/black"
         android:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -105,7 +105,7 @@
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/phonenumber"
+        app:layout_constraintBottom_toBottomOf="@id/RiskPercentView"
         app:layout_constraintVertical_bias="0.25" />
 
     <TextView
@@ -123,56 +123,48 @@
 
 
 
-    <TextView
-        android:id="@+id/phonenumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="01012345678"
-        android:textSize="25dp"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/RiskPercentView"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:textStyle="bold"/>
 
-
-
-
-    <Button
-        android:id="@+id/BanNumberButton"
+    <ImageButton
+        android:id="@+id/ReportBtn"
         android:layout_width="350dp"
         android:layout_height="70dp"
-        android:text="신고한 번호 차단하기"
-        android:textSize="20dp"
+        android:layout_marginTop="465dp"
+        android:background="@android:color/transparent"
+        android:scaleType="centerInside"
+        android:src="@drawable/goreport"
+        android:gravity="left|center_vertical"
         android:textColor="@color/black"
-        android:backgroundTint="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/RiskPercentView"
-        android:layout_marginTop="15dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:gravity="left|center_vertical"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <Button
+
+
+    <ImageButton
         android:id="@+id/WriteinGalleryButton"
         android:layout_width="350dp"
         android:layout_height="70dp"
-        android:text="게시물 작성하기"
+        android:background="@android:color/transparent"
+        android:scaleType="centerInside"
+        android:src="@drawable/gocommunity"
         android:textSize="20dp"
         android:textColor="@color/black"
         android:backgroundTint="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/BanNumberButton"
+        app:layout_constraintTop_toBottomOf="@+id/ReportBtn"
         android:layout_marginTop="1dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:gravity="left|center_vertical"/>
 
-    <Button
+    <ImageButton
         android:id="@+id/PreventionButton"
         android:layout_width="350dp"
         android:layout_height="70dp"
-        android:text="대처 방법 보러가기"
-        android:textSize="20dp"
+        android:background="@android:color/transparent"
+        android:scaleType="centerInside"
+        android:src="@drawable/gochat"
         android:textColor="@color/black"
         android:backgroundTint="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/WriteinGalleryButton"

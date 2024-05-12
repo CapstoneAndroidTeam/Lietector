@@ -52,12 +52,6 @@
         android:layout_gravity="center"
         android:layout_marginTop="30dp"/>
 
-    <ImageButton
-        android:id="@+id/kakaobtn"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:src="@drawable/kakaobtn"
-        android:layout_gravity="center"/>
 
 
     <LinearLayout

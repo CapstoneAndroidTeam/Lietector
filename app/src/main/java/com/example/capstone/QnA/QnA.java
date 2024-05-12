@@ -72,7 +72,6 @@ public class QnA extends AppCompatActivity {
                     for(getItems item : items) {
                         Log.d(TAG, "edit Id : " + item.id);
                     }
-                    Toast.makeText(QnA.this, "Data Received Successfully", Toast.LENGTH_SHORT).show();
                     // Create lists to hold titles and contents
                     List<String> titles = new ArrayList<>();
                     List<String> contents = new ArrayList<>();

@@ -89,7 +89,6 @@ public class MainActivity extends AppCompatActivity {
                                 Intent intent = new Intent(getApplicationContext(), NumNotSearch.class);
                                 startActivity(intent);
                             }
-                            Toast.makeText(MainActivity.this, "Data Received Successfully", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(MainActivity.this, response.message(), Toast.LENGTH_SHORT).show();
                         }

@@ -88,7 +88,7 @@ public class DiagnoseWrite extends AppCompatActivity{
                 @Override
                 public void onResponse(@NonNull Call<DWritegetItems> call, @NonNull Response<DWritegetItems> response) {
                     if (response.isSuccessful()) {
-                        Toast.makeText(DiagnoseWrite.this, "Diagnosis successful", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(DiagnoseWrite.this, "진단 완료", Toast.LENGTH_SHORT).show();
                         Log.d(TAG, "write data : " + response.body().suspicion_percentage);
                         writepercent = response.body().suspicion_percentage;
                         String stringPercent = "";

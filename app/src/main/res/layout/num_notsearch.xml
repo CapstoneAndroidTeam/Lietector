@@ -100,51 +100,53 @@
         android:text="보이스피싱으로 의심되는 전화를 받았다면"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/BanNumberBtn"
+        app:layout_constraintBottom_toTopOf="@+id/ReportBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TopView" />
 
-    <Button
-        android:id="@+id/BanNumberBtn"
+    <ImageButton
+        android:id="@+id/ReportBtn"
         android:layout_width="350dp"
         android:layout_height="70dp"
         android:layout_marginTop="465dp"
-        android:backgroundTint="@color/white"
+        android:background="@android:color/transparent"
+        android:scaleType="centerInside"
+        android:src="@drawable/goreport"
         android:gravity="left|center_vertical"
-        android:text="번호 신고하기"
         android:textColor="@color/black"
-        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <Button
+    <ImageButton
         android:id="@+id/GalleryBtn"
         android:layout_width="350dp"
         android:layout_height="70dp"
         android:backgroundTint="@color/white"
         android:gravity="left|center_vertical"
         android:text="관련 게시물 보러 가기"
-        android:textColor="@color/black"
-        android:textSize="20dp"
+        android:background="@android:color/transparent"
+        android:scaleType="centerInside"
+        android:src="@drawable/gocommunity"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BanNumberBtn"
+        app:layout_constraintTop_toBottomOf="@+id/ReportBtn"
         app:layout_constraintVertical_bias="0.0" />
 
-    <Button
+    <ImageButton
         android:id="@+id/PreventionBtn"
         android:layout_width="350dp"
         android:layout_height="70dp"
         android:backgroundTint="@color/white"
         android:gravity="left|center_vertical"
         android:text="대처 방법 보러가기"
-        android:textColor="@color/black"
-        android:textSize="20dp"
+        android:background="@android:color/transparent"
+        android:scaleType="centerInside"
+        android:src="@drawable/gochat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/GalleryBtn" />
