@@ -12,13 +12,14 @@ import androidx.annotation.Nullable;
 
 import com.example.capstone.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CommunityListAdapter extends BaseAdapter {
     private Context context;
-    private List<String> title;
-    private List<String> content;
-    private List<Integer> writer;
+    private List<String> title = new ArrayList<>();
+    private List<String> content= new ArrayList<>();
+    private List<Integer> writer= new ArrayList<>();
     private LayoutInflater inflater;
 
 

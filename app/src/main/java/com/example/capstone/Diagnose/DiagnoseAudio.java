@@ -231,6 +231,9 @@ public class DiagnoseAudio extends AppCompatActivity {
                         }
                     }
                     intPercent = Integer.parseInt(stringPercent);
+                    if (intPercent < 0) {
+                        intPercent = 0;
+                    }
                     Log.d(TAG, "percent : " + intPercent);
 
                     if (intPercent > 55) {

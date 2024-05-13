@@ -100,6 +100,9 @@ public class DiagnoseWrite extends AppCompatActivity{
                             }
                         }
                         intWritePercent = Integer.parseInt(stringPercent);
+                        if (intWritePercent < 0) {
+                            intWritePercent = 0;
+                        }
                         Log.d(TAG, "percent : " + intWritePercent);
                         for(String i : response.body().suspicious_word) {
                             WsuspiciousWord.add(i);

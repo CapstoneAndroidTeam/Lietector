@@ -16,6 +16,7 @@ import com.example.capstone.QnA.AskTokenInterceptor;
 import com.example.capstone.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import okhttp3.OkHttpClient;
@@ -90,7 +91,11 @@ public class MyWritingHistory extends AppCompatActivity {
                         contents.add(item.content);
                         PostId.add(item.id);
                     }
-                    MyWritingHistoryAdapter listadapter = new MyWritingHistoryAdapter(MyWritingHistory.this, PostId, titles,writer, contents);
+                    Collections.reverse(titles);
+                    Collections.reverse(contents);
+                    Collections.reverse(PostId);
+
+                    MyWritingHistoryAdapter listadapter = new MyWritingHistoryAdapter(MyWritingHistory.this, PostId, titles, contents);
                     listView.setAdapter(listadapter);
 
                     /*

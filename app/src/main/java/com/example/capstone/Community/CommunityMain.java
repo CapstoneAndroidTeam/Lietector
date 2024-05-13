@@ -18,6 +18,7 @@ import com.example.capstone.Home.MainActivity;
 import com.example.capstone.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import okhttp3.OkHttpClient;
@@ -45,6 +46,7 @@ public class CommunityMain extends AppCompatActivity {
     int writer;
     String titles;
     String contents;
+    public static List<String> Fulltitles = new ArrayList<>();
     public static int communityPostId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,23 +109,28 @@ public class CommunityMain extends AppCompatActivity {
                 if (response.isSuccessful()) {
 
                     List<communitypost_backend> items = response.body();
-                    List<String> titles = new ArrayList<>();
                     List<String> contents = new ArrayList<>();
                     List<Integer> writers = new ArrayList<>();
+                    List<String> reversetitles = new ArrayList<>();
+                    List<String> reversecontents = new ArrayList<>();
+                    List<Integer> reversewriters = new ArrayList<>();
                     // Iterate through each QnAItem and add its title and content to the respective lists
                     for (communitypost_backend item : items) {
-                        titles.add(item.getTitle());
+                        Fulltitles.add(item.getTitle());
                         contents.add(item.getContent());
                         writers.add(item.getWriter());
                         Log.d(TAG, "community id : " + item.id);
                     }
-                    ListAdapter adapter = new CommunityListAdapter(CommunityMain.this, titles, contents, writers);
+                    Collections.reverse(Fulltitles);
+                    Collections.reverse(contents);
+                    Collections.reverse(writers);
+                    ListAdapter adapter = new CommunityListAdapter(CommunityMain.this, Fulltitles, contents, writers);
                     listView.setAdapter(adapter);
 
                     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> a_parent, View a_view, int a_position, long a_id) {
-                            communityPostId = a_position + 1;
+                            communityPostId = Fulltitles.size() - a_position;
                             Intent intent = new Intent(getApplicationContext(), CommunityPostView.class);
                             startActivity(intent);
                         }

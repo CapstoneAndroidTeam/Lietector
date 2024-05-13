@@ -30,11 +30,10 @@ public class MyWritingHistoryAdapter extends BaseAdapter {
     public static int editpostId;
 
 
-    public MyWritingHistoryAdapter(MyWritingHistory myWritingHistory, List<Integer> communityPostId, List<String> title, List<Integer> writer, List<String> content) {
+    public MyWritingHistoryAdapter(MyWritingHistory myWritingHistory, List<Integer> communityPostId, List<String> title, List<String> content) {
         this.context = myWritingHistory;
         this.communityPostId = communityPostId;
         this.title = title;
-        this.writer = writer;
         this.content = content;
         inflater = LayoutInflater.from(context);
     }
@@ -77,21 +76,23 @@ public class MyWritingHistoryAdapter extends BaseAdapter {
             holder.content = convertView.findViewById(R.id.content);
             holder.editBtn = convertView.findViewById(R.id.editbtn);
 
-            holder.editBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    communityExistTitle = title.get(position);
-                    communityExistContent = content.get(position);
-                    editpostId = communityPostId.get(position);
-                    Intent intent = new Intent(context.getApplicationContext(), MyWritingHistoryEdit.class);
-                    context.startActivity(intent);
-                }
-            });
+
 
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
+
+        holder.editBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                communityExistTitle = title.get(position);
+                communityExistContent = content.get(position);
+                editpostId = communityPostId.get(position);
+                Intent intent = new Intent(context.getApplicationContext(), MyWritingHistoryEdit.class);
+                context.startActivity(intent);
+            }
+        });
 
         holder.title.setText(title.get(position));
         holder.content.setText(content.get(position));
@@ -99,4 +100,3 @@ public class MyWritingHistoryAdapter extends BaseAdapter {
         return convertView;
     }
 }
-
