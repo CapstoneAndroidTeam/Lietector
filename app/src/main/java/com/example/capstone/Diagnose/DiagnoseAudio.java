@@ -246,7 +246,7 @@ public class DiagnoseAudio extends AppCompatActivity {
 
 
                 } else {
-                    Toast.makeText(DiagnoseAudio.this, "Diagnosis failed: " + response.message(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DiagnoseAudio.this, "Diagnosis failed: " + response.errorBody(), Toast.LENGTH_SHORT).show();
                 }
             }
 

@@ -18,13 +18,13 @@ import java.util.List;
 public class ReplyAdapter extends BaseAdapter {
     private Context context;
     private List<String> contents = new ArrayList<>();
-    private List<Integer> users = new ArrayList<>();
+    private List<String> users = new ArrayList<String>();
     private List<Integer> posts = new ArrayList<>();
     private LayoutInflater inflater;
 
 
 
-    public ReplyAdapter(CommunityPostView communityPostView, List<String> content, List<Integer> user) {
+    public ReplyAdapter(CommunityPostView communityPostView, List<String> content, List<String> user) {
         this.context = communityPostView;
         this.contents = content;
         this.users = user;
@@ -73,7 +73,7 @@ public class ReplyAdapter extends BaseAdapter {
         }
 
         holder.content.setText(contents.get(position).toString());
-        holder.user.setText(users.get(position).toString());
+        holder.user.setText(users.get(position));
 
         return convertView;
     }

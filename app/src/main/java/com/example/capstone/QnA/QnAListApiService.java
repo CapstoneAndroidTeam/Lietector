@@ -13,6 +13,7 @@ public interface QnAListApiService {
     @GET("/ask/myask/")
     Call<List<getItems>> asklist(
             @Header("Authorization") String Token,
+            @Query("user_nickname") String user_nickname,
             @Query("title") String title,
             @Query("content") String content
     );

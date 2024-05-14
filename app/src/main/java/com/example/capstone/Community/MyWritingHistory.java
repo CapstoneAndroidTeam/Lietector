@@ -85,17 +85,20 @@ public class MyWritingHistory extends AppCompatActivity {
                     // Create lists to hold titles and contents
                     List<String> titles = new ArrayList<>();
                     List<String> contents = new ArrayList<>();
+                    List<String> users = new ArrayList<>();
                     // Iterate through each QnAItem and add its title and content to the respective lists
                     for (getMyWriteItems item : items) {
                         titles.add(item.title);
                         contents.add(item.content);
+                        users.add(item.user_nickname);
                         PostId.add(item.id);
                     }
                     Collections.reverse(titles);
                     Collections.reverse(contents);
                     Collections.reverse(PostId);
+                    Collections.reverse(users);
 
-                    MyWritingHistoryAdapter listadapter = new MyWritingHistoryAdapter(MyWritingHistory.this, PostId, titles, contents);
+                    MyWritingHistoryAdapter listadapter = new MyWritingHistoryAdapter(MyWritingHistory.this, PostId, titles, contents, users);
                     listView.setAdapter(listadapter);
 
                     /*

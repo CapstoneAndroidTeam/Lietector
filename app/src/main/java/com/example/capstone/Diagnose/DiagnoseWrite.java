@@ -122,7 +122,7 @@ public class DiagnoseWrite extends AppCompatActivity{
 
 
                     } else {
-                        Toast.makeText(DiagnoseWrite.this, "Diagnosis failed: " + response.message(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(DiagnoseWrite.this, "Diagnosis failed: " + response.errorBody(), Toast.LENGTH_SHORT).show();
                     }
                 }
 

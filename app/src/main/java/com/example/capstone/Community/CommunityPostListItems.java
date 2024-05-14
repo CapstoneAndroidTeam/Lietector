@@ -7,8 +7,8 @@ public class CommunityPostListItems {
     public String title;
     @SerializedName("content")
     public String content;
-    @SerializedName("writer")
-    public int writer;
+    @SerializedName("user_nickname")
+    public String user_nickname;
     @SerializedName("report_number")
     public String report_number;
 }

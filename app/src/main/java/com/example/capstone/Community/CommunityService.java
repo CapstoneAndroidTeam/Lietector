@@ -11,7 +11,7 @@ public interface CommunityService {
     Call<List<communitypost_backend>> getCommunityPosts(
             @Query("title") String title,
             @Query("content") String content,
-            @Query("writer") int writer
+            @Query("user_nickname") String user_nickname
     );
 
 }

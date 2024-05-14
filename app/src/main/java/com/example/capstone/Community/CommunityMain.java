@@ -34,20 +34,12 @@ public class CommunityMain extends AppCompatActivity {
 
     private CommunityService apiService;
 
-
-
-    /*
-    String[] nickname = {"I", "sample", "sample", "sample", "sample", "sample", "sample", "sample"};
-    int[] profileimg = {R.drawable.profileimg, R.drawable.profileimg, R.drawable.profileimg, R.drawable.profileimg, R.drawable.profileimg, R.drawable.profileimg, R.drawable.profileimg, R.drawable.profileimg, R.drawable.profileimg};
-    String[] storytext = {"sample AM", "sample AM", "sample AM", "sample AM", "sample AM", "sample AM", "sample AM", "sample AM", "sample PM"};
-
-     */
     String title, content;
-    int writer;
+    String user_nickname;
     String titles;
     String contents;
     public static List<String> Fulltitles = new ArrayList<>();
-    public static int communityPostId;
+    public static int communityPostId = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,7 +94,7 @@ public class CommunityMain extends AppCompatActivity {
     private void posting () {
 
 
-        Call<List<communitypost_backend>> call = apiService.getCommunityPosts(title, content, writer);
+        Call<List<communitypost_backend>> call = apiService.getCommunityPosts(title, content, user_nickname);
         call.enqueue(new Callback<List<communitypost_backend>>() {
             @Override
             public void onResponse(Call<List<communitypost_backend>> call, Response<List<communitypost_backend>> response) {
@@ -110,27 +102,25 @@ public class CommunityMain extends AppCompatActivity {
 
                     List<communitypost_backend> items = response.body();
                     List<String> contents = new ArrayList<>();
-                    List<Integer> writers = new ArrayList<>();
-                    List<String> reversetitles = new ArrayList<>();
-                    List<String> reversecontents = new ArrayList<>();
-                    List<Integer> reversewriters = new ArrayList<>();
+                    List<String> writers = new ArrayList<>();
                     // Iterate through each QnAItem and add its title and content to the respective lists
                     for (communitypost_backend item : items) {
                         Fulltitles.add(item.getTitle());
                         contents.add(item.getContent());
-                        writers.add(item.getWriter());
+                        writers.add(item.user_nickname);
                         Log.d(TAG, "community id : " + item.id);
                     }
                     Collections.reverse(Fulltitles);
                     Collections.reverse(contents);
                     Collections.reverse(writers);
+                    Log.d(TAG, "user_nickname : " + writers);
                     ListAdapter adapter = new CommunityListAdapter(CommunityMain.this, Fulltitles, contents, writers);
                     listView.setAdapter(adapter);
 
                     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> a_parent, View a_view, int a_position, long a_id) {
-                            communityPostId = Fulltitles.size() - a_position;
+                            communityPostId = contents.size() - a_position;
                             Intent intent = new Intent(getApplicationContext(), CommunityPostView.class);
                             startActivity(intent);
                         }

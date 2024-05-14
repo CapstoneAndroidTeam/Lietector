@@ -33,6 +33,7 @@ public class QnA extends AppCompatActivity {
     private int ID;
     private String Title ;
     private String Content ;
+    private String userNickname;
     private int Writer;
     private ListView listView;
     private QnAListAdapter adapter;
@@ -62,7 +63,7 @@ public class QnA extends AppCompatActivity {
 
 
         // Make API call to fetch the list of questions
-        Call<List<getItems>> call = apiService.asklist(userToken,Title, Content);
+        Call<List<getItems>> call = apiService.asklist(userToken,Title, Content, userNickname);
         call.enqueue(new Callback<List<getItems>>() {
 
             @Override
@@ -73,11 +74,13 @@ public class QnA extends AppCompatActivity {
                         Log.d(TAG, "edit Id : " + item.id);
                     }
                     // Create lists to hold titles and contents
+                    List<String> user_nickname = new ArrayList<>();
                     List<String> titles = new ArrayList<>();
                     List<String> contents = new ArrayList<>();
-                    List<Integer> post_id = new ArrayList<Integer>();
+                    List<Integer> post_id = new ArrayList<>();
                     // Iterate through each QnAItem and add its title and content to the respective lists
                     for (getItems item : items) {
+                        user_nickname.add(item.user_nickname);
                         titles.add(item.getTitle());
                         contents.add(item.getContent());
                         post_id.add(item.id);
@@ -85,7 +88,7 @@ public class QnA extends AppCompatActivity {
                     for (int i = 0; i < post_id.size(); i ++) {
                         Log.d(TAG, "id list : " + post_id.get(i));
                     }
-                    adapter = new QnAListAdapter(QnA.this, post_id, titles, contents);
+                    adapter = new QnAListAdapter(QnA.this, post_id, titles, contents, user_nickname);
                     listView.setAdapter(adapter);
 
                     /*

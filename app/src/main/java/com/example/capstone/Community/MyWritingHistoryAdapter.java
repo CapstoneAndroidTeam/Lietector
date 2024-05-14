@@ -20,7 +20,7 @@ import java.util.List;
 public class MyWritingHistoryAdapter extends BaseAdapter {
     private Context context;
     private List<String> title = new ArrayList<>();
-    private List<Integer> writer = new ArrayList<>();
+    private List<String> writer = new ArrayList<>();
     private List<String> content = new ArrayList<>();
     private List<Integer> communityPostId = new ArrayList<>();
     private LayoutInflater inflater;
@@ -30,10 +30,11 @@ public class MyWritingHistoryAdapter extends BaseAdapter {
     public static int editpostId;
 
 
-    public MyWritingHistoryAdapter(MyWritingHistory myWritingHistory, List<Integer> communityPostId, List<String> title, List<String> content) {
+    public MyWritingHistoryAdapter(MyWritingHistory myWritingHistory, List<Integer> communityPostId, List<String> title, List<String> content, List<String> writer) {
         this.context = myWritingHistory;
         this.communityPostId = communityPostId;
         this.title = title;
+        this.writer = writer;
         this.content = content;
         inflater = LayoutInflater.from(context);
     }
@@ -96,7 +97,7 @@ public class MyWritingHistoryAdapter extends BaseAdapter {
 
         holder.title.setText(title.get(position));
         holder.content.setText(content.get(position));
-
+        holder.writer.setText(writer.get(position));
         return convertView;
     }
 }

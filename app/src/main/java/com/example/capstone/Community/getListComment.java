@@ -6,8 +6,8 @@ public class getListComment {
     @SerializedName("content")
     public String content;
 
-    @SerializedName("user")
-    public Integer user;
+    @SerializedName("user_nickname")
+    public String user_nickname;
 
     @SerializedName("post")
     public Integer post;

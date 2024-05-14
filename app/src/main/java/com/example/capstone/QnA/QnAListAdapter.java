@@ -24,6 +24,7 @@ public class QnAListAdapter extends BaseAdapter {
     private List<Integer> id;
     private List<String> title;
     private List<String> content;
+    private List<String> user_nickname;
     private LayoutInflater inflater;
 
     public static int postId;
@@ -34,11 +35,12 @@ public class QnAListAdapter extends BaseAdapter {
 
 
 
-    public QnAListAdapter(QnA qnA, List<Integer> id,List<String> title, List<String> content) {
+    public QnAListAdapter(QnA qnA, List<Integer> id,List<String> title, List<String> content, List<String> user_nickname) {
         this.context = qnA;
         this.id = id;
         this.title = title;
         this.content = content;
+        this.user_nickname = user_nickname;
         inflater = LayoutInflater.from(context);
     }
 
@@ -46,6 +48,7 @@ public class QnAListAdapter extends BaseAdapter {
 
         TextView title;
         TextView content;
+        TextView user_nickname;
         ImageButton editBtn;
     }
 
@@ -77,6 +80,7 @@ public class QnAListAdapter extends BaseAdapter {
             holder.title = convertView.findViewById(R.id.QTitle);
             holder.content = convertView.findViewById(R.id.story);
             holder.editBtn = convertView.findViewById(R.id.editbtn);
+            holder.user_nickname = convertView.findViewById(R.id.writer);
 
             holder.editBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -101,6 +105,7 @@ public class QnAListAdapter extends BaseAdapter {
 
         holder.title.setText(title.get(position));
         holder.content.setText(content.get(position));
+        holder.user_nickname.setText(user_nickname.get(position));
 
         return convertView;
     }

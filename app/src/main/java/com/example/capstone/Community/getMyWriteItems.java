@@ -13,4 +13,6 @@ public class getMyWriteItems {
     public String content;
     @SerializedName("writer")
     public int writer;
+    @SerializedName("user_nickname")
+    public  String user_nickname;
 }

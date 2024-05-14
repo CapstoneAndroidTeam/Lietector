@@ -36,23 +36,23 @@ public class CommunityPostView extends AppCompatActivity {
     ListCommentApiService commentApiService;
     Retrofit retrofit;
     List<String> listReplyContents = new ArrayList<>();
-    List<Integer> commentUsers = new ArrayList<>();
+    List<String> commentUsers = new ArrayList<>();
     List<Integer> listCommunityPostId = new ArrayList<>();
     List<Integer> duplicates = new ArrayList<>();
-    String title, content, reportnum;
+    String title, content, reportnum, postWriter;
     ImageButton replyBtn;
     EditText ReplyContent;
     ListView listView;
     List<String> newContents = new ArrayList<>();
-    List<Integer> newUsers = new ArrayList<>();
+    List<String> newUsers = new ArrayList<>();
     List<Integer> newPostId = new ArrayList<>();
 
     List<String> finalnewContents = new ArrayList<>();
-    List<Integer> finalnewUsers = new ArrayList<>();
+    List<String> finalnewUsers = new ArrayList<>();
     ListAdapter replyadapter;
 
-    private int postWriter;
-    public static int commentPostWriter;
+
+    public static String commentPostWriter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,20 +104,19 @@ public class CommunityPostView extends AppCompatActivity {
         });
 
         //게시글 불러오기
-        Call<CommunityPostListItems> call = apiService.communityPost(communityPostId, title, content, postWriter, reportnumber);
+        Call<CommunityPostListItems> call = apiService.communityPost(communityPostId, title, content, postWriter, reportnum);
         call.enqueue(new Callback<CommunityPostListItems>() {
             @Override
             public void onResponse(Call<CommunityPostListItems> call, Response<CommunityPostListItems> response) {
                 if (response.isSuccessful()) {
                     titles.setText(response.body().title);
                     contents.setText(response.body().content);
-                    writers.setText(String.valueOf(response.body().writer));
+                    writers.setText(response.body().user_nickname);
 
                     if (reportnumber != null) {
                         reportnumber.setText(response.body().report_number);
                     }
-                    callComments();
-                    replyPost();
+
                 } else {
                     Log.d(TAG, "response data " + response.body().toString());
                 }
@@ -126,14 +125,17 @@ public class CommunityPostView extends AppCompatActivity {
             @Override
             public void onFailure(Call<CommunityPostListItems> call, Throwable t) {
                 Toast.makeText(CommunityPostView.this, "Network error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "Network error: " + t.getMessage());
             }
 
         });
+        callComments();
+        replyPost();
     }
 
         //replyPost();
 
-    //불러오기
+    //댓글 불러오기
     private void callComments() {
         Call<List<getListComment>> commentCall = commentApiService.listComment(listReplyContents, commentUsers);
         commentCall.enqueue(new Callback<List<getListComment>>() {
@@ -144,9 +146,10 @@ public class CommunityPostView extends AppCompatActivity {
                     Log.d(TAG, "before : " + newContents);
                     for (getListComment i : response.body()) {
                         newContents.add(i.content);
-                        newUsers.add(i.user);
+                        newUsers.add(i.user_nickname);
                         listCommunityPostId.add(i.post);
                     }
+                    Log.d(TAG, "listCommunityPostId : " + listCommunityPostId);
                     Log.d(TAG, "after : " + newContents);
                     finalnewContents.clear();
                     finalnewUsers.clear();
@@ -158,8 +161,6 @@ public class CommunityPostView extends AppCompatActivity {
                         }
                     }
 
-
-                    Log.d(TAG, "finalContents : " + finalnewContents);
                     // 댓글을 표시하기 위해 어댑터를 초기화하고 ListView에 설정
                     replyadapter = new ReplyAdapter(CommunityPostView.this, finalnewContents, finalnewUsers);
                     listView.setAdapter(replyadapter);
@@ -199,7 +200,7 @@ public class CommunityPostView extends AppCompatActivity {
 
                 replyApiService = retrofit.create(CommentApiService.class);
 
-                Call<Void> replyCall = replyApiService.reply(userToken, communityPostId, stringReplyContent);
+                Call<Void> replyCall = replyApiService.reply(userToken, communityPostId, stringReplyContent );
                 replyCall.enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> replyCall, Response<Void> Rresponse) {

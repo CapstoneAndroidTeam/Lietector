@@ -5,6 +5,9 @@ import com.google.gson.annotations.SerializedName;
 public class getItems {
     @SerializedName("id")
     public int id;
+    @SerializedName("user_nickname")
+    public String user_nickname;
+
     @SerializedName("writer")
     public int writer;
 

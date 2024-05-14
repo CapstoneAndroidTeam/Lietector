@@ -10,6 +10,6 @@ public interface ListCommentApiService {
     @GET("/posts/comment/allcomment/")
     Call<List<getListComment>> listComment(
             @Query("content") List<String> content,
-            @Query("user") List<Integer> user
+            @Query("user_nickname") List<String> user_nickname
     );
 }
