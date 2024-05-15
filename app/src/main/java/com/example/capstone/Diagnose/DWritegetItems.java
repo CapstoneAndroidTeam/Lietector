@@ -9,4 +9,7 @@ public class DWritegetItems {
     public Number suspicion_percentage;
     @SerializedName("보이스피싱 의심 상위 10단어")
     public List<String> suspicious_word;
+
+    @SerializedName("message")
+    public String message;
 }

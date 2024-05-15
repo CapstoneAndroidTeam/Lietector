@@ -18,6 +18,7 @@ import com.example.capstone.Home.MainActivity;
 import com.example.capstone.QnA.AskTokenInterceptor;
 import com.example.capstone.R;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -122,7 +123,20 @@ public class DiagnoseWrite extends AppCompatActivity{
 
 
                     } else {
-                        Toast.makeText(DiagnoseWrite.this, "Diagnosis failed: " + response.errorBody(), Toast.LENGTH_SHORT).show();
+                        try {
+                            String errorMessage = response.errorBody().string();
+                            Log.d(TAG, "message0 : " + errorMessage);
+                            if(errorMessage.equals("{\"message\":\"평균 유사도가 0.7 이상이 아닙니다.\"}")) {
+                                Intent intent = new Intent(getApplicationContext(), DiagnoseWriteNotSerious.class);
+                                startActivity(intent);
+                                Log.d(TAG, "message1 : " + errorMessage);
+                            } else {
+                                Toast.makeText(DiagnoseWrite.this, response.message(), Toast.LENGTH_SHORT).show();
+                                Log.d(TAG, "message2 : " + errorMessage);
+                            }
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
                 }
 

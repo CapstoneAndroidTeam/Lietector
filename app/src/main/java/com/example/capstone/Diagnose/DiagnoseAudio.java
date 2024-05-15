@@ -55,7 +55,7 @@ public class DiagnoseAudio extends AppCompatActivity {
 
     private DiagnoseVoiceApiService apiService;
 
-    private static File file;
+    private File file;
     public static int intPercent;
     public static Number percent;
     public static List<String> suspiciousWord = new ArrayList<>();
@@ -115,7 +115,8 @@ public class DiagnoseAudio extends AppCompatActivity {
         ExportBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                diagnose();
+
+                if(file != null) diagnose();
             }
         });
     }
@@ -147,7 +148,7 @@ public class DiagnoseAudio extends AppCompatActivity {
                 }
             });
 
-    public static File getFileFromUri(Context context, Uri uri) {
+    public File getFileFromUri(Context context, Uri uri) {
         ContentResolver contentResolver = context.getContentResolver();
         String fileName = getFileName(contentResolver, uri);
 
@@ -244,10 +245,22 @@ public class DiagnoseAudio extends AppCompatActivity {
                         startActivity(intent);
                     }
 
-
                 } else {
-                    Toast.makeText(DiagnoseAudio.this, "Diagnosis failed: " + response.errorBody(), Toast.LENGTH_SHORT).show();
+                try {
+                    String errorMessage = response.errorBody().string();
+                    Log.d(TAG, "message0 : " + errorMessage);
+                    if(errorMessage.equals("{\"message\":\"평균 유사도가 0.7 이상이 아닙니다.\"}")) {
+                        Intent intent = new Intent(getApplicationContext(), DiagnoseNotSerious.class);
+                        startActivity(intent);
+                        Log.d(TAG, "message1 : " + errorMessage);
+                    } else {
+                        Toast.makeText(DiagnoseAudio.this, response.message(), Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, "message2 : " + errorMessage);
+                    }
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
                 }
+            }
             }
 
 

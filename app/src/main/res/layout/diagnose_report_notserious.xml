@@ -89,37 +89,19 @@
 
     </TextView>
 
-    <ProgressBar
-        android:id="@+id/progressBarCircle"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_centerInParent="true"
-        android:background="@drawable/drawable_circle_inner"
-        android:indeterminate="false"
-        android:max="100"
-        android:progress="100"
-        android:progressDrawable="@drawable/drawable_circle_outer"
-        android:rotation="-90"
-        app:layout_constraintTop_toBottomOf="@id/RiskLabel"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/RiskPercentView"
-        app:layout_constraintVertical_bias="0.25" />
-
     <TextView
         android:id="@+id/riskyPercent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="100%"
+        android:text="보이스피싱이\n의심되지 않았습니다."
         android:textColor="@color/black"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/progressBarCircle"
-        app:layout_constraintEnd_toEndOf="@+id/progressBarCircle"
-        app:layout_constraintStart_toStartOf="@+id/progressBarCircle"
-        app:layout_constraintTop_toTopOf="@+id/progressBarCircle" />
+        android:textSize="25sp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/RiskPercentView"
+        app:layout_constraintEnd_toEndOf="@+id/RiskPercentView"
+        app:layout_constraintStart_toStartOf="@+id/RiskPercentView"
+        app:layout_constraintTop_toTopOf="@+id/RiskPercentView" />
 
 
 

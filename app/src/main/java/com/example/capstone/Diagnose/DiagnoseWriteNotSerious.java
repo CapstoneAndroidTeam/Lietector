@@ -1,14 +1,9 @@
 package com.example.capstone.Diagnose;
 
-import static com.example.capstone.Diagnose.DiagnoseWrite.intWritePercent;
-
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,12 +18,7 @@ public class DiagnoseWriteNotSerious extends AppCompatActivity {
         ImageButton HomeBtn = findViewById(R.id.HomeButton);
         ImageButton reinputBtn = findViewById(R.id.ReInputButton);
         ImageButton BackBtn = findViewById(R.id.BackButton);
-        TextView riskyPercent = findViewById(R.id.riskyPercent);
-        ProgressBar progressBar = findViewById(R.id.progressBarCircle);
 
-        riskyPercent.setText(String.valueOf(intWritePercent));
-        progressBar.setProgress((int) intWritePercent);
-        progressBar.setProgressTintList(ColorStateList.valueOf(getResources().getColor(R.color.lietectordarklightblue)));
         BackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
