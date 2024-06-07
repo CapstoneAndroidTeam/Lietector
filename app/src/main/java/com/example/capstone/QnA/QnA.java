@@ -45,10 +45,10 @@ public class QnA extends AppCompatActivity {
 
         ImageButton addBtn = findViewById(R.id.AddBtn);
         listView = findViewById(R.id.QnAlistView);
-        listView.getEmptyView();
         ImageButton backBtn = findViewById(R.id.BackButton);
         ImageButton homeBtn = findViewById(R.id.HomeButton);
         AskTokenInterceptor interceptor = new AskTokenInterceptor();
+
 
         OkHttpClient client = new OkHttpClient.Builder()
                 .addInterceptor(interceptor)
@@ -78,9 +78,13 @@ public class QnA extends AppCompatActivity {
                     List<String> titles = new ArrayList<>();
                     List<String> contents = new ArrayList<>();
                     List<Integer> post_id = new ArrayList<>();
+                    if(titles.isEmpty()) {
+                        listView.getEmptyView();
+                    }
                     // Iterate through each QnAItem and add its title and content to the respective lists
                     for (getItems item : items) {
                         user_nickname.add(item.user_nickname);
+                        Log.d(TAG, "user_nickname :" + user_nickname );
                         titles.add(item.getTitle());
                         contents.add(item.getContent());
                         post_id.add(item.id);

@@ -17,14 +17,15 @@ import androidx.annotation.Nullable;
 
 import com.example.capstone.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class QnAListAdapter extends BaseAdapter {
     private Context context;
     private List<Integer> id;
-    private List<String> title;
-    private List<String> content;
-    private List<String> user_nickname;
+    private List<String> title = new ArrayList<>();
+    private List<String> content  = new ArrayList<>();
+    private List<String> user_nickname  = new ArrayList<>();
     private LayoutInflater inflater;
 
     public static int postId;
@@ -48,7 +49,7 @@ public class QnAListAdapter extends BaseAdapter {
 
         TextView title;
         TextView content;
-        TextView user_nickname;
+        TextView textViewuser_nickname;
         ImageButton editBtn;
     }
 
@@ -80,7 +81,7 @@ public class QnAListAdapter extends BaseAdapter {
             holder.title = convertView.findViewById(R.id.QTitle);
             holder.content = convertView.findViewById(R.id.story);
             holder.editBtn = convertView.findViewById(R.id.editbtn);
-            holder.user_nickname = convertView.findViewById(R.id.writer);
+            holder.textViewuser_nickname = convertView.findViewById(R.id.writer);
 
             holder.editBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -105,7 +106,7 @@ public class QnAListAdapter extends BaseAdapter {
 
         holder.title.setText(title.get(position));
         holder.content.setText(content.get(position));
-        holder.user_nickname.setText(user_nickname.get(position));
+//        holder.textViewuser_nickname.setText(user_nickname.get(position));
 
         return convertView;
     }
